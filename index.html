@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MedOpenClaw</title>
-  <meta name="description" content="MedOpenClaw project page: auditable full-study medical imaging demos, static examples, and the paper link." />
+  <meta name="description" content="MedOpenClaw project page with qualitative videos, static examples, the main figure, and citation information." />
   <meta property="og:title" content="MedOpenClaw" />
-  <meta property="og:description" content="Auditable full-study medical imaging demos for MedOpenClaw." />
+  <meta property="og:description" content="Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies." />
   <meta property="og:image" content="assets/images/main_figure.png" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -21,11 +21,15 @@
 
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top">MedOpenClaw</a>
+      <a class="brand" href="#top" aria-label="MedOpenClaw home">
+        <span class="brand-logo"><img src="assets/images/logo.png" alt="MedOpenClaw logo" /></span>
+        <span>MedOpenClaw</span>
+      </a>
       <nav class="site-nav" aria-label="Primary">
         <a href="#videos">Videos</a>
         <a href="#examples">Examples</a>
         <a href="#main-figure">Main Figure</a>
+        <a href="#citation">Citation</a>
         <a class="nav-paper" href="https://arxiv.org/abs/2603.24649" target="_blank" rel="noreferrer">Paper ↗</a>
       </nav>
     </div>
@@ -34,27 +38,18 @@
   <main id="top">
     <section class="hero section">
       <div class="container hero-inner reveal">
-        <div class="eyebrow">Project Page</div>
+        <div class="hero-logo-wrap">
+          <div class="hero-logo-frame">
+            <img src="assets/images/logo.png" alt="MedOpenClaw logo" class="hero-logo" />
+          </div>
+        </div>
+        <div class="eyebrow">Project Website</div>
         <h1>MedOpenClaw</h1>
         <p class="hero-subtitle">
-          Auditable medical imaging agents reasoning over uncurated full studies.
+          Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies
         </p>
-        <p class="hero-description">
-          A compact, media-first page built to showcase qualitative results: longitudinal analysis,
-          CT/PET navigation, tumor-focused view selection, and a segmentation failure case.
-        </p>
-
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://arxiv.org/abs/2603.24649" target="_blank" rel="noreferrer">Read Paper</a>
-          <a class="btn btn-secondary" href="#videos">Watch Videos</a>
-          <a class="btn btn-secondary" href="#examples">View Static Examples</a>
-        </div>
-
-        <div class="hero-tags" aria-label="Highlights">
-          <span>Longitudinal Analysis</span>
-          <span>CT/PET Workflow</span>
-          <span>Tumor-Focused View</span>
-          <span>Failure Case</span>
         </div>
       </div>
     </section>
@@ -62,15 +57,8 @@
     <section id="videos" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <div>
-            <div class="section-tag">Videos</div>
-            <h2>Featured Demo Videos</h2>
-          </div>
-          <p>
-            The page is intentionally centered on viewer recordings. Add your files to
-            <code>assets/videos/</code>. The layout accepts either <code>.mp4</code> or <code>.mov</code>,
-            with <code>.mp4</code> recommended for browser compatibility.
-          </p>
+          <div class="section-tag">Qualitative Results</div>
+          <h2>Demo Videos</h2>
         </div>
 
         <div class="demo-grid">
@@ -78,19 +66,11 @@
             <div class="demo-copy">
               <div class="demo-index">01</div>
               <h3>Longitudinal Analysis</h3>
-              <p>
-                Compare tumor size and visual extent across timepoints inside a full-study workflow.
-              </p>
-              <div class="demo-file">Expected file: <code>demo1.mp4</code> or <code>demo1.mov</code></div>
+              <p>Comparison across timepoints to inspect tumor size and overall lesion extent within a full-study workflow.</p>
             </div>
-            <div class="video-shell" data-video>
-              <video playsinline muted loop controls preload="metadata" poster="assets/images/example_brain_mri.png">
-                <source src="assets/videos/demo1.mp4" type="video/mp4" />
-                <source src="assets/videos/demo1.mov" type="video/quicktime" />
-              </video>
-              <div class="video-fallback">
-                <span>Add <code>demo1.mp4</code> or <code>demo1.mov</code> to <code>assets/videos/</code>.</span>
-              </div>
+            <div class="video-shell" data-video-shell>
+              <video class="demo-video" data-video-name="demo1" playsinline muted autoplay loop controls preload="auto" poster="assets/images/example_brain_mri.png"></video>
+              <div class="video-status" aria-live="polite"></div>
             </div>
           </article>
 
@@ -98,19 +78,11 @@
             <div class="demo-copy">
               <div class="demo-index">02</div>
               <h3>CT/PET Workflow</h3>
-              <p>
-                A multimodal CT/PET navigation example aligned with the paper’s qualitative demos.
-              </p>
-              <div class="demo-file">Expected file: <code>demo2.mp4</code> or <code>demo2.mov</code></div>
+              <p>A multimodal CT/PET example aligned with the paper’s qualitative demonstration setting.</p>
             </div>
-            <div class="video-shell" data-video>
-              <video playsinline muted loop controls preload="metadata" poster="assets/images/example_lung_ct_pet.png">
-                <source src="assets/videos/demo2.mp4" type="video/mp4" />
-                <source src="assets/videos/demo2.mov" type="video/quicktime" />
-              </video>
-              <div class="video-fallback">
-                <span>Add <code>demo2.mp4</code> or <code>demo2.mov</code> to <code>assets/videos/</code>.</span>
-              </div>
+            <div class="video-shell" data-video-shell>
+              <video class="demo-video" data-video-name="demo2" playsinline muted autoplay loop controls preload="auto" poster="assets/images/example_lung_ct_pet.png"></video>
+              <div class="video-status" aria-live="polite"></div>
             </div>
           </article>
 
@@ -118,39 +90,23 @@
             <div class="demo-copy">
               <div class="demo-index">03</div>
               <h3>Tumor-Focused View Selection</h3>
-              <p>
-                Adjust the viewpoint until the lesion becomes most conspicuous and easiest to inspect.
-              </p>
-              <div class="demo-file">Expected file: <code>demo3.mp4</code> or <code>demo3.mov</code></div>
+              <p>Viewpoint adjustment until the tumor becomes the most conspicuous and clinically inspectable target.</p>
             </div>
-            <div class="video-shell" data-video>
-              <video playsinline muted loop controls preload="metadata" poster="assets/images/example_lung_ct_pet.png">
-                <source src="assets/videos/demo3.mp4" type="video/mp4" />
-                <source src="assets/videos/demo3.mov" type="video/quicktime" />
-              </video>
-              <div class="video-fallback">
-                <span>Add <code>demo3.mp4</code> or <code>demo3.mov</code> to <code>assets/videos/</code>.</span>
-              </div>
+            <div class="video-shell" data-video-shell>
+              <video class="demo-video" data-video-name="demo3" playsinline muted autoplay loop controls preload="auto" poster="assets/images/example_lung_ct_pet.png"></video>
+              <div class="video-status" aria-live="polite"></div>
             </div>
           </article>
 
           <article class="demo-card reveal">
             <div class="demo-copy">
               <div class="demo-index">04</div>
-              <h3>Failure Case — Segmentation Breakdown</h3>
-              <p>
-                A concrete failure mode showing how segmentation can break when spatial grounding is off.
-              </p>
-              <div class="demo-file">Expected file: <code>demo4.mp4</code> or <code>demo4.mov</code></div>
+              <h3>Failure Case — Segmentation Failure</h3>
+              <p>A failure mode showing how the interaction trace breaks when segmentation is unreliable.</p>
             </div>
-            <div class="video-shell" data-video>
-              <video playsinline muted loop controls preload="metadata" poster="assets/images/benchmark_figure.png">
-                <source src="assets/videos/demo4.mp4" type="video/mp4" />
-                <source src="assets/videos/demo4.mov" type="video/quicktime" />
-              </video>
-              <div class="video-fallback">
-                <span>Add <code>demo4.mp4</code> or <code>demo4.mov</code> to <code>assets/videos/</code>.</span>
-              </div>
+            <div class="video-shell" data-video-shell>
+              <video class="demo-video" data-video-name="demo4" playsinline muted autoplay loop controls preload="auto" poster="assets/images/benchmark_figure.png"></video>
+              <div class="video-status" aria-live="polite"></div>
             </div>
           </article>
         </div>
@@ -160,13 +116,8 @@
     <section id="examples" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <div>
-            <div class="section-tag">Examples</div>
-            <h2>Static Examples from the Paper</h2>
-          </div>
-          <p>
-            Two representative traces extracted from the paper. Click any image to expand it.
-          </p>
+          <div class="section-tag">Paper Examples</div>
+          <h2>Static Examples</h2>
         </div>
 
         <div class="media-grid">
@@ -177,13 +128,10 @@
                 src="assets/images/example_brain_mri.png"
                 alt="Brain MRI static example showing an auditable execution trace."
                 loading="lazy"
-                data-caption="Brain MRI example — auditable case-level navigation and diagnosis."
+                data-caption="Brain MRI example from the paper."
               />
             </div>
-            <figcaption>
-              <strong>Brain MRI example.</strong>
-              Auditable multi-step navigation that ends in a case-level diagnostic answer.
-            </figcaption>
+            <figcaption><strong>Brain MRI example.</strong> Auditable multi-step navigation ending in a case-level answer.</figcaption>
           </figure>
 
           <figure class="media-card reveal">
@@ -193,13 +141,10 @@
                 src="assets/images/example_lung_ct_pet.png"
                 alt="Lung CT and PET static example showing an auditable execution trace."
                 loading="lazy"
-                data-caption="Lung CT/PET example — auditable multimodal localization."
+                data-caption="Lung CT/PET example from the paper."
               />
             </div>
-            <figcaption>
-              <strong>Lung CT/PET example.</strong>
-              Multimodal localization with explicit evidence gathering across fused views.
-            </figcaption>
+            <figcaption><strong>Lung CT/PET example.</strong> Multimodal localization with explicit evidence gathering across fused views.</figcaption>
           </figure>
         </div>
       </div>
@@ -208,13 +153,8 @@
     <section id="main-figure" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <div>
-            <div class="section-tag">Figure</div>
-            <h2>Main Figure</h2>
-          </div>
-          <p>
-            The conceptual figure that frames the shift from pre-selected 2D inputs to auditable full-study workflows.
-          </p>
+          <div class="section-tag">Overview</div>
+          <h2>Main Figure</h2>
         </div>
 
         <figure class="single-figure-card reveal">
@@ -224,27 +164,40 @@
               src="assets/images/main_figure.png"
               alt="MedOpenClaw main figure."
               loading="lazy"
-              data-caption="Main figure — from pre-selected 2D benchmarks to auditable full-study workflows."
+              data-caption="Main figure from the paper."
             />
           </div>
-          <figcaption>
-            From static-image evaluation to bounded, auditable viewer-native interaction.
-          </figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="section">
+    <section id="citation" class="section">
       <div class="container">
-        <div class="paper-panel reveal">
-          <div class="paper-copy">
-            <div class="section-tag">Paper</div>
-            <h2>MedOpenClaw: Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies</h2>
-            <p>
-              The site is intentionally minimal. The paper link is here for direct reference.
-            </p>
+        <div class="section-header reveal">
+          <div class="section-tag">Citation</div>
+          <h2>BibTeX</h2>
+        </div>
+
+        <div class="citation-card reveal">
+          <div class="citation-head">
+            <div>
+              <h3>MedOpenClaw</h3>
+              <p>Use the following BibTeX entry to cite the paper.</p>
+            </div>
+            <div class="citation-actions">
+              <a class="btn btn-secondary" href="https://arxiv.org/abs/2603.24649" target="_blank" rel="noreferrer">Open arXiv</a>
+              <button class="btn btn-primary copy-btn" type="button" id="copy-bibtex">Copy BibTeX</button>
+            </div>
           </div>
-          <a class="btn btn-primary" href="https://arxiv.org/abs/2603.24649" target="_blank" rel="noreferrer">Open arXiv</a>
+          <pre class="bibtex-block"><code id="bibtex-content">@misc{shen2026medopenclawauditablemedicalimaging,
+  title={MedOpenClaw: Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies},
+  author={Weixiang Shen and Yanzhu Hu and Che Liu and Junde Wu and Jiayuan Zhu and Chengzhi Shen and Min Xu and Yueming Jin and Benedikt Wiestler and Daniel Rueckert and Jiazhen Pan},
+  year={2026},
+  eprint={2603.24649},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2603.24649},
+}</code></pre>
         </div>
       </div>
     </section>
@@ -252,8 +205,10 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>MedOpenClaw</div>
-      <div>A lightweight static site for GitHub Pages.</div>
+      <div class="footer-brand">
+        <span class="footer-logo"><img src="assets/images/logo.png" alt="MedOpenClaw logo" /></span>
+        <span>MedOpenClaw</span>
+      </div>
     </div>
   </footer>
 
