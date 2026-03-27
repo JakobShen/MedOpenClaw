@@ -1,59 +1,43 @@
-# MedOpenClaw Website
+# MedOpenClaw website
 
-This package is a refactored GitHub Pages site with a layout and media setup closer to the K2Sight-style academic project page.
+Static GitHub Pages website for the MedOpenClaw project.
 
 ## Structure
 
-- `index.html`
-- `static/css/index.css`
-- `static/js/index.js`
-- `static/images/`
-- `static/videos/`
+- `index.html` — the page
+- `static/css/index.css` — styling
+- `static/js/index.js` — BibTeX copy button
+- `static/images/` — logo and paper figures
+- `static/videos/` — demo videos
+- `.nojekyll` — disables Jekyll processing on GitHub Pages
 
-## Video placement
+## Video filenames
 
-Preferred layout:
+The page supports these filenames for each demo slot:
 
-- `static/videos/demo1.mp4`
-- `static/videos/demo2.mp4`
-- `static/videos/demo3.mp4`
-- `static/videos/demo4.mp4`
+- `demo1.mp4` / `demo1.MP4` / `demo1.mov` / `demo1.MOV`
+- `demo2.mp4` / `demo2.MP4` / `demo2.mov` / `demo2.MOV`
+- `demo3.mp4` / `demo3.MP4` / `demo3.mov` / `demo3.MOV`
+- `demo4.mp4` / `demo4.MP4` / `demo4.mov` / `demo4.MOV`
 
-This version also includes native HTML `<source>` fallbacks for:
-
-- `assets/videos/demo1.mp4` ... `demo4.mp4`
-- repo-root `demo1.mp4` ... `demo4.mp4`
-
-So if you already uploaded videos under the old `assets/videos/` folder, the page can still find them.
+Recommended for web playback: H.264 MP4.
 
 ## Deploy on GitHub Pages
 
-1. Create or open your GitHub repository.
-2. Replace the old website files with the contents of this zip.
-3. Commit and push to the `main` branch.
-4. In GitHub, go to `Settings -> Pages`.
-5. Under `Build and deployment`, choose:
-   - `Source`: `Deploy from a branch`
-   - `Branch`: `main`
-   - `Folder`: `/ (root)`
-6. Save and wait for GitHub Pages to publish.
+1. Put all files from this folder in the repository root.
+2. Put the four demo videos into `static/videos/`.
+3. Commit and push to `main`.
+4. In GitHub, open **Settings → Pages**.
+5. Under **Build and deployment**:
+   - **Source**: `Deploy from a branch`
+   - **Branch**: `main`
+   - **Folder**: `/(root)`
+6. Save.
 
-Your site URL will be:
+The site URL will be:
 
-`https://YOUR_USERNAME.github.io/REPO_NAME/`
+`https://<your-username>.github.io/<repo-name>/`
 
-## Important note about videos
+## Practical note
 
-If a video appears to load but still does not actually play, the remaining problem is usually the video codec rather than the website code.
-
-For the most reliable browser playback, re-encode to H.264 MP4. Example:
-
-```bash
-ffmpeg -i demo1.mov -c:v libx264 -pix_fmt yuv420p -movflags +faststart -an demo1.mp4
-```
-
-If your video has audio and you want to keep it:
-
-```bash
-ffmpeg -i demo1.mov -c:v libx264 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 128k demo1.mp4
-```
+If a MOV file does not play in some browsers, convert it to MP4 and keep the same demo number.

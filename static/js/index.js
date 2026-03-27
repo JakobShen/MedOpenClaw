@@ -1,13 +1,34 @@
-window.HELP_IMPROVE_VIDEOJS = false;
+(function () {
+  function initCopyBibtex() {
+    var button = document.querySelector('[data-copy-bibtex]');
+    var code = document.getElementById('bibtex-code');
+    if (!button || !code) return;
 
-document.addEventListener('DOMContentLoaded', function () {
-  var mainVideo = document.getElementById('main-showcase-video');
-  if (!mainVideo) return;
+    var original = button.textContent;
 
-  var playPromise = mainVideo.play();
-  if (playPromise && typeof playPromise.catch === 'function') {
-    playPromise.catch(function () {
-      // Autoplay can be blocked by the browser. Controls remain available.
+    button.addEventListener('click', async function () {
+      var text = code.textContent || '';
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = 'Copied';
+      } catch (error) {
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'absolute';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        button.textContent = 'Copied';
+      }
+
+      window.setTimeout(function () {
+        button.textContent = original;
+      }, 1400);
     });
   }
-});
+
+  document.addEventListener('DOMContentLoaded', initCopyBibtex);
+})();
