@@ -37,8 +37,8 @@
         </a>
         <nav class="site-nav" aria-label="Primary navigation">
           <a href="#overview">Overview</a>
+          <a href="#figure">Main Figure</a>
           <a href="#demos">Demos</a>
-          <a href="#figures">Figures</a>
           <a href="#bibtex">BibTeX</a>
         </nav>
       </div>
@@ -63,9 +63,9 @@
           </div>
 
           <p class="hero-summary">
-            MedOpenClaw studies medical-imaging agents over full, uncurated studies, exposing
-            navigation, evidence gathering, longitudinal comparison, and failure behavior as
-            auditable runtime traces.
+            MedOpenClaw studies medical-imaging agents over uncurated full studies,
+            exposing navigation, evidence gathering, longitudinal comparison, view
+            selection, and failure behavior as auditable runtime traces.
           </p>
 
           <div class="publication-links">
@@ -76,156 +76,164 @@
               rel="noreferrer"
               >Paper</a
             >
+            <a class="button-link button-link-secondary" href="#figure">Main Figure</a>
             <a class="button-link button-link-secondary" href="#demos">Watch Demos</a>
             <a class="button-link button-link-secondary" href="#bibtex">BibTeX</a>
           </div>
         </div>
       </section>
 
-      <section id="demos" class="section">
+      <section id="figure" class="section">
         <div class="container section-stack">
-          <div class="section-heading">
+          <div class="section-heading section-heading-compact">
             <div>
-              <p class="section-label">Qualitative Demos</p>
-              <h2 class="section-title">Representative behaviors on full studies</h2>
+              <p class="section-label">Main Figure</p>
+              <h2 class="section-title">From pre-selected inputs to auditable full-study workflows</h2>
             </div>
-            <p class="section-copy">
-              The demos highlight auditable localization and differentiation, longitudinal tumor-size
-              comparison, view adjustment toward the most informative tumor slice, and an explicit
-              segmentation failure case.
-            </p>
           </div>
 
-          <div class="demo-grid">
-            <article class="demo-card panel-card">
-              <div class="demo-head">
-                <p class="demo-tag">Demo 01</p>
-                <h3>Brain Tumor Localization and Differentiation</h3>
-              </div>
-              <div class="video-shell">
-                <video controls playsinline preload="metadata" poster="./static/images/combined_demo_figure.png">
-                  <source src="./static/videos/demo1.mp4" type="video/mp4" />
-                  <source src="./static/videos/demo1.MP4" type="video/mp4" />
-                  <source src="./static/videos/demo1.mov" />
-                  <source src="./static/videos/demo1.MOV" />
-                  Your browser does not support the HTML5 video tag.
-                </video>
-              </div>
-              <p>
-                Study-level inspection for tumor localization together with differentiation across
-                the relevant imaging evidence.
-              </p>
-            </article>
-
-            <article class="demo-card panel-card">
-              <div class="demo-head">
-                <p class="demo-tag">Demo 02</p>
-                <h3>Longitudinal Analysis of Tumor Size</h3>
-              </div>
-              <div class="video-shell">
-                <video controls playsinline preload="metadata" poster="./static/images/combined_demo_figure.png">
-                  <source src="./static/videos/demo2.mp4" type="video/mp4" />
-                  <source src="./static/videos/demo2.MP4" type="video/mp4" />
-                  <source src="./static/videos/demo2.mov" />
-                  <source src="./static/videos/demo2.MOV" />
-                  Your browser does not support the HTML5 video tag.
-                </video>
-              </div>
-              <p>
-                Before-versus-after comparison for longitudinal change, centered on tumor size and
-                study-to-study evolution.
-              </p>
-            </article>
-
-            <article class="demo-card panel-card">
-              <div class="demo-head">
-                <p class="demo-tag">Demo 03</p>
-                <h3>Adjust to the Most Informative Tumor View</h3>
-              </div>
-              <div class="video-shell">
-                <video controls playsinline preload="metadata" poster="./static/images/combined_demo_figure.png">
-                  <source src="./static/videos/demo3.mp4" type="video/mp4" />
-                  <source src="./static/videos/demo3.MP4" type="video/mp4" />
-                  <source src="./static/videos/demo3.mov" />
-                  <source src="./static/videos/demo3.MOV" />
-                  Your browser does not support the HTML5 video tag.
-                </video>
-              </div>
-              <p>
-                A focused viewer-control example where the agent adjusts to the slice or perspective
-                that makes the tumor most evident.
-              </p>
-            </article>
-
-            <article class="demo-card panel-card panel-card-failure">
-              <div class="demo-head">
-                <p class="demo-tag">Demo 04</p>
-                <h3>Failure Case: Segmentation Failure</h3>
-              </div>
-              <div class="video-shell">
-                <video controls playsinline preload="metadata" poster="./static/images/main_figure.png">
-                  <source src="./static/videos/demo4.mp4" type="video/mp4" />
-                  <source src="./static/videos/demo4.MP4" type="video/mp4" />
-                  <source src="./static/videos/demo4.mov" />
-                  <source src="./static/videos/demo4.MOV" />
-                  Your browser does not support the HTML5 video tag.
-                </video>
-              </div>
-              <p>
-                An explicit failure case that makes segmentation breakdowns visible instead of
-                hiding them behind a final prediction.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="figures" class="section">
-        <div class="container section-stack">
-          <div class="section-heading">
-            <div>
-              <p class="section-label">Figures</p>
-              <h2 class="section-title">Representative trace and main figure</h2>
-            </div>
-            <p class="section-copy">
-              A static trace and the main paper figure complement the demos by making the full-study
-              interaction workflow explicit in a single glance.
-            </p>
-          </div>
-
-          <figure class="panel-card figure-card figure-card-tall">
-            <div class="figure-head">
-              <div>
-                <p class="figure-tag">Representative Trace</p>
-                <h3>Auditable runtime traces</h3>
-              </div>
-            </div>
-            <img
-              src="./static/images/combined_demo_figure.png"
-              alt="Representative auditable traces reconstructed from MedOpenClaw runtime behavior"
-              loading="lazy"
-            />
-            <figcaption>
-              Representative auditable traces reconstructed from runtime behavior across multi-view
-              and multi-modal studies.
-            </figcaption>
-          </figure>
-
-          <figure class="panel-card figure-card figure-card-wide">
-            <div class="figure-head">
-              <div>
-                <p class="figure-tag">Main Figure</p>
-                <h3>From pre-selected inputs to auditable full-study workflows</h3>
-              </div>
-            </div>
+          <figure class="panel-card figure-card figure-card-wide figure-card-main">
             <img
               src="./static/images/main_figure.png"
               alt="Main figure of MedOpenClaw"
               loading="lazy"
             />
             <figcaption>
-              MedOpenClaw shifts from static image settings toward full-study interaction loops with
-              visible traces and grounded final answers.
+              MedOpenClaw shifts from static image settings toward full-study interaction
+              loops with visible traces and grounded final answers.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="demos" class="section">
+        <div class="container section-stack">
+          <div class="section-heading section-heading-compact">
+            <div>
+              <p class="section-label">Qualitative Demos</p>
+              <h2 class="section-title">Representative behaviors on full studies</h2>
+            </div>
+          </div>
+
+          <article class="demo-card feature-demo panel-card">
+            <div class="feature-demo-head">
+              <p class="demo-tag">Main Demo</p>
+              <h3>Brain Tumor Localization and Differentiation</h3>
+              <p>
+                Study-level inspection for tumor localization together with differentiation
+                across the relevant imaging evidence.
+              </p>
+            </div>
+            <div class="video-shell video-shell-feature">
+              <video
+                class="project-video"
+                controls
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                data-video="demo1"
+                data-priority="high"
+                aria-label="Brain Tumor Localization and Differentiation demo video"
+              ></video>
+            </div>
+          </article>
+
+          <div class="secondary-demo-grid">
+            <article class="demo-card panel-card secondary-demo">
+              <div class="demo-head">
+                <p class="demo-tag">Demo 02</p>
+                <h3>Longitudinal Analysis of Tumor Size</h3>
+              </div>
+              <div class="video-shell">
+                <video
+                  class="project-video"
+                  controls
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  data-video="demo2"
+                  aria-label="Longitudinal Analysis of Tumor Size demo video"
+                ></video>
+              </div>
+              <p>
+                Before-versus-after comparison for longitudinal change, centered on tumor
+                size and study-to-study evolution.
+              </p>
+            </article>
+
+            <article class="demo-card panel-card secondary-demo">
+              <div class="demo-head">
+                <p class="demo-tag">Demo 03</p>
+                <h3>Adjust to the Most Informative Tumor View</h3>
+              </div>
+              <div class="video-shell">
+                <video
+                  class="project-video"
+                  controls
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  data-video="demo3"
+                  aria-label="Adjust to the Most Informative Tumor View demo video"
+                ></video>
+              </div>
+              <p>
+                A focused viewer-control example where the agent adjusts the view to the
+                slice or perspective that makes the tumor most evident.
+              </p>
+            </article>
+
+            <article class="demo-card panel-card panel-card-failure secondary-demo">
+              <div class="demo-head">
+                <p class="demo-tag">Demo 04</p>
+                <h3>Failure Case: Segmentation Failure</h3>
+              </div>
+              <div class="video-shell">
+                <video
+                  class="project-video"
+                  controls
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  data-video="demo4"
+                  aria-label="Failure Case: Segmentation Failure demo video"
+                ></video>
+              </div>
+              <p>
+                An explicit failure case that makes segmentation breakdowns visible instead
+                of hiding them behind a final prediction.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="trace" class="section">
+        <div class="container section-stack trace-stack">
+          <div class="section-heading section-heading-compact">
+            <div>
+              <p class="section-label">Representative Trace</p>
+              <h2 class="section-title">Auditable runtime traces</h2>
+            </div>
+          </div>
+
+          <figure class="panel-card figure-card figure-card-trace">
+            <img
+              src="./static/images/combined_demo_figure.png"
+              alt="Representative auditable traces reconstructed from MedOpenClaw runtime behavior"
+              loading="lazy"
+            />
+            <figcaption>
+              Representative trace visualizations reconstructed from auditable runtime
+              behavior.
             </figcaption>
           </figure>
         </div>

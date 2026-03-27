@@ -1,9 +1,9 @@
-Put the four demo videos here.
+Place your showcase videos here.
 
-Supported filenames for each slot:
-- demo1.mp4 / demo1.MP4 / demo1.mov / demo1.MOV
-- demo2.mp4 / demo2.MP4 / demo2.mov / demo2.MOV
-- demo3.mp4 / demo3.MP4 / demo3.mov / demo3.MOV
-- demo4.mp4 / demo4.MP4 / demo4.mov / demo4.MOV
+Expected base names:
+- demo1 -> Brain Tumor Localization and Differentiation
+- demo2 -> Longitudinal Analysis of Tumor Size
+- demo3 -> Adjust to the Most Informative Tumor View
+- demo4 -> Failure Case: Segmentation Failure
 
-Recommended for the web: H.264 MP4.
+Supported extensions in the page loader: .mp4, .MP4, .mov, .MOV, .webm, .WEBM

@@ -1,43 +1,47 @@
 # MedOpenClaw website
 
-Static GitHub Pages website for the MedOpenClaw project.
+Static GitHub Pages project page for **MedOpenClaw**.
 
 ## Structure
 
-- `index.html` — the page
+- `index.html` — page content
 - `static/css/index.css` — styling
-- `static/js/index.js` — BibTeX copy button
-- `static/images/` — logo and paper figures
+- `static/js/index.js` — BibTeX copy button and robust video loading/autoplay
+- `static/images/` — logo and figures
 - `static/videos/` — demo videos
 - `.nojekyll` — disables Jekyll processing on GitHub Pages
 
 ## Video filenames
 
-The page supports these filenames for each demo slot:
+Put the videos in `static/videos/` using these base names:
 
-- `demo1.mp4` / `demo1.MP4` / `demo1.mov` / `demo1.MOV`
-- `demo2.mp4` / `demo2.MP4` / `demo2.mov` / `demo2.MOV`
-- `demo3.mp4` / `demo3.MP4` / `demo3.mov` / `demo3.MOV`
-- `demo4.mp4` / `demo4.MP4` / `demo4.mov` / `demo4.MOV`
+- `demo1` — Brain Tumor Localization and Differentiation
+- `demo2` — Longitudinal Analysis of Tumor Size
+- `demo3` — Adjust to the Most Informative Tumor View
+- `demo4` — Failure Case: Segmentation Failure
 
-Recommended for web playback: H.264 MP4.
+Supported extensions in the page loader:
+
+- `.mp4`
+- `.MP4`
+- `.mov`
+- `.MOV`
+- `.webm`
+- `.WEBM`
+
+Recommended for web playback: **H.264 MP4**.
 
 ## Deploy on GitHub Pages
 
-1. Put all files from this folder in the repository root.
-2. Put the four demo videos into `static/videos/`.
-3. Commit and push to `main`.
-4. In GitHub, open **Settings → Pages**.
-5. Under **Build and deployment**:
+1. Upload all files in this folder to the repository root.
+2. Put the demo videos into `static/videos/`.
+3. In GitHub, open **Settings → Pages**.
+4. Set:
    - **Source**: `Deploy from a branch`
    - **Branch**: `main`
    - **Folder**: `/(root)`
-6. Save.
+5. Save.
 
-The site URL will be:
+Your site will be published at:
 
-`https://<your-username>.github.io/<repo-name>/`
-
-## Practical note
-
-If a MOV file does not play in some browsers, convert it to MP4 and keep the same demo number.
+`https://<your-username>.github.io/MedOpenClaw/`
