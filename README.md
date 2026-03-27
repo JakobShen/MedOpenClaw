@@ -1,128 +1,55 @@
-# MedOpenClaw — GitHub Pages project site
+# MedOpenClaw website
 
-A lightweight static project page built for **GitHub Pages**. No build step is required.
+This is a lightweight static website designed for GitHub Pages.
 
-## Included content
+## Structure
 
-- 4 demo video slots
-- 2 static examples cropped from the paper figure
-- 1 main figure section
-- Direct arXiv paper link
-
-## File structure
-
-```text
-.
-├── index.html
-├── .nojekyll
-├── assets
-│   ├── css/styles.css
-│   ├── js/main.js
-│   ├── images/
-│   └── videos/
-└── README.md
-```
+- `index.html` — the whole page
+- `static/css/index.css` — styling
+- `static/js/index.js` — reveal animations, BibTeX copy button, automatic video detection
+- `static/images/` — logo and paper figures
+- `static/videos/` — put your demo videos here
 
 ## Add your videos
 
-Put the files into:
+Recommended:
 
-```text
-assets/videos/
-```
+- `static/videos/demo1.mp4`
+- `static/videos/demo2.mp4`
+- `static/videos/demo3.mp4`
+- `static/videos/demo4.mp4`
 
-Supported naming used by the page:
+Optional combined reel:
 
-- `demo1.mp4` or `demo1.mov` → Longitudinal Analysis
-- `demo2.mp4` or `demo2.mov` → CT/PET Workflow
-- `demo3.mp4` or `demo3.mov` → Tumor-Focused View Selection
-- `demo4.mp4` or `demo4.mov` → Failure Case — Segmentation Breakdown
+- `static/videos/demo1234.mp4`
 
-### Strong recommendation
+Fallback names supported by the page:
 
-Use **MP4 (H.264)** instead of MOV for better browser compatibility and smaller file size.
+- `demo1.mov`
+- `demo2.mov`
+- `demo3.mov`
+- `demo4.mov`
+- `demo1234.mov`
 
-Example conversion with `ffmpeg`:
+For best browser compatibility, use MP4 (H.264/AAC).
 
-```bash
-ffmpeg -i demo1.mov -vcodec h264 -acodec aac -movflags +faststart assets/videos/demo1.mp4
-```
+## Deploy on GitHub Pages
 
-Repeat for `demo2`, `demo3`, `demo4`.
-
----
-
-## Simplest GitHub deployment
-
-### Option A — Use GitHub web UI only
-
-1. Create a new GitHub repository, for example: `MedOpenClaw`.
+1. Create a GitHub repository, for example `MedOpenClaw`.
 2. Upload all files from this folder to the repository root.
-3. Upload your demo videos into `assets/videos/`.
-4. On GitHub, open **Settings → Pages**.
-5. Under **Build and deployment**, choose:
-   - **Source:** `Deploy from a branch`
-   - **Branch:** `main`
-   - **Folder:** `/ (root)`
-6. Click **Save**.
-7. Wait about 1–3 minutes.
+3. Put your videos into `static/videos/`.
+4. Commit and push.
+5. On GitHub, open **Settings** → **Pages**.
+6. Under **Build and deployment**:
+   - **Source**: `Deploy from a branch`
+   - **Branch**: `main`
+   - **Folder**: `/(root)`
+7. Save.
+8. Your site will appear at:
+   - `https://<your-username>.github.io/MedOpenClaw/`
 
-Your site will be available at:
+## Notes
 
-```text
-https://<your-github-username>.github.io/<repo-name>/
-```
-
-### Option B — Use git locally
-
-```bash
-git init
-git add .
-git commit -m "Initial MedOpenClaw website"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git push -u origin main
-```
-
-Then enable **Settings → Pages** the same way as above.
-
----
-
-## Important note about videos on GitHub Pages
-
-GitHub Pages is fine for a small demo site, but large videos are the weak point.
-
-Practical advice:
-
-- Keep each video clearly below `100 MB`
-- Prefer MP4 over MOV
-- Compress the videos before upload
-- If your videos are too large, host them elsewhere and replace the `src` paths in `index.html`
-
----
-
-## Editing text
-
-You only need to edit `index.html` for titles, captions, and links.
-
-## Editing style
-
-You only need to edit:
-
-```text
-assets/css/styles.css
-```
-
-## Local preview
-
-Run a simple local server from this folder:
-
-```bash
-python -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000
-```
+- This site uses relative paths, so it works for normal GitHub project pages.
+- `.nojekyll` is included so GitHub Pages serves the site directly as a static page.
+- If you want to change demo titles or descriptions, edit `index.html`.

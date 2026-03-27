@@ -1,127 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MedOpenClaw</title>
-  <meta name="description" content="MedOpenClaw project page for qualitative showcases and paper figures." />
-  <meta property="og:title" content="MedOpenClaw" />
-  <meta property="og:description" content="Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies." />
-  <meta property="og:image" content="./static/images/main_figure.png" />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="icon" type="image/png" href="./static/images/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans:400,500,600,700,800|Castoro:400,400i&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./static/css/index.css" />
-</head>
-<body>
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <img class="site-logo" src="./static/images/logo.png" alt="MedOpenClaw logo" />
-        <h1 class="publication-title">MedOpenClaw</h1>
-        <p class="publication-subtitle">Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies</p>
-        <p class="publication-authors">
-          Weixiang Shen · Yanzhu Hu · Che Liu · Junde Wu · Jiayuan Zhu · Chengzhi Shen · Min Xu · Yueming Jin · Benedikt Wiestler · Daniel Rueckert · Jiazhen Pan
-        </p>
-        <div class="publication-links">
-          <a class="button-link" href="https://arxiv.org/abs/2603.24649" target="_blank" rel="noreferrer">Paper</a>
-          <a class="button-link button-link-secondary" href="#bibtex">BibTeX</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MedOpenClaw</title>
+    <meta
+      name="description"
+      content="MedOpenClaw: project website for qualitative medical imaging agent demos over full studies."
+    />
+    <meta name="theme-color" content="#0f1f38" />
+    <meta property="og:title" content="MedOpenClaw" />
+    <meta
+      property="og:description"
+      content="Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies"
+    />
+    <meta property="og:image" content="./static/images/main_figure.png" />
+    <link rel="icon" type="image/png" href="./static/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <script defer src="./static/js/index.js"></script>
+  </head>
+  <body id="top">
+    <div class="page-backdrop" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="MedOpenClaw home">
+          <img src="./static/images/logo.png" alt="MedOpenClaw logo" />
+          <span>MedOpenClaw</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#overview">Overview</a>
+          <a href="#demos">Demos</a>
+          <a href="#figures">Figures</a>
+          <a href="#citation">BibTeX</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="container hero-inner reveal">
+          <img class="hero-logo" src="./static/images/logo.png" alt="MedOpenClaw logo" />
+          <p class="eyebrow">Project Website</p>
+          <h1 class="hero-title">MedOpenClaw</h1>
+          <p class="hero-subtitle">
+            Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies
+          </p>
+          <p class="hero-authors">
+            Weixiang Shen · Yanzhu Hu · Che Liu · Junde Wu · Jiayuan Zhu · Chengzhi Shen ·
+            Min Xu · Yueming Jin · Benedikt Wiestler · Daniel Rueckert · Jiazhen Pan
+          </p>
+          <div class="action-row">
+            <a
+              class="button button-primary"
+              href="https://arxiv.org/abs/2603.24649"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Paper
+            </a>
+            <a class="button button-secondary" href="#demos">Watch demos</a>
+            <button class="button button-ghost" type="button" data-copy-bibtex>
+              Copy BibTeX
+            </button>
+          </div>
+          <p class="hero-note">
+            This page is intentionally lightweight and video-first. It focuses on qualitative case
+            demonstrations, two static example panels, and the main figure from the paper.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Main Showcase</h2>
-        <p class="section-intro">Brain tumor localization and differentiation with an auditable viewer trace.</p>
-        <figure class="feature-card">
-          <video id="main-showcase-video" class="video-frame feature-frame" autoplay muted loop playsinline controls preload="metadata" poster="./static/images/example_brain_mri.png">
-            <source src="./static/videos/demo1.mp4" type="video/mp4" />
-            <source src="./assets/videos/demo1.mp4" type="video/mp4" />
-            <source src="./demo1.mp4" type="video/mp4" />
-            <source src="./static/videos/demo1.mov" type="video/quicktime" />
-            <source src="./assets/videos/demo1.mov" type="video/quicktime" />
-            Your browser does not support the HTML5 video tag.
-          </video>
-        </figure>
-      </div>
-    </section>
+      <section id="overview" class="section">
+        <div class="container section-stack">
+          <div class="section-heading reveal">
+            <div>
+              <p class="section-eyebrow">Overview</p>
+              <h2 class="section-title">A clean GitHub Pages site for qualitative evidence</h2>
+            </div>
+            <p class="section-text">
+              MedOpenClaw presents study-level medical imaging agent behavior over full, uncurated
+              studies. The layout is optimized for direct qualitative inspection: viewers can jump
+              straight into the demo videos, then inspect the main figure and two static examples.
+            </p>
+          </div>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Additional Showcases</h2>
-        <div class="results-grid">
-          <article class="result-card">
-            <h3>Longitudinal Analysis</h3>
-            <p>Comparison across timepoints to inspect tumor size and lesion extent within a full-study workflow.</p>
-            <video class="video-frame" controls muted playsinline preload="metadata" poster="./static/images/example_brain_mri.png">
-              <source src="./static/videos/demo2.mp4" type="video/mp4" />
-              <source src="./assets/videos/demo2.mp4" type="video/mp4" />
-              <source src="./demo2.mp4" type="video/mp4" />
-              <source src="./static/videos/demo2.mov" type="video/quicktime" />
-              <source src="./assets/videos/demo2.mov" type="video/quicktime" />
-              Your browser does not support the HTML5 video tag.
-            </video>
+          <div class="stat-grid reveal">
+            <article class="stat-card card">
+              <span class="stat-value">4</span>
+              <span class="stat-label">Demo slots</span>
+            </article>
+            <article class="stat-card card">
+              <span class="stat-value">1</span>
+              <span class="stat-label">Optional combined reel</span>
+            </article>
+            <article class="stat-card card">
+              <span class="stat-value">2</span>
+              <span class="stat-label">Static example panels</span>
+            </article>
+            <article class="stat-card card">
+              <span class="stat-value">0</span>
+              <span class="stat-label">Build steps required</span>
+            </article>
+          </div>
+
+          <article class="hero-figure card reveal">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">Main figure</p>
+                <h3>From pre-selected 2D inputs to auditable full-study workflows</h3>
+              </div>
+              <a
+                class="text-link"
+                href="https://arxiv.org/abs/2603.24649"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read paper
+              </a>
+            </div>
+            <figure>
+              <img
+                src="./static/images/main_figure.png"
+                alt="Main figure showing the shift from static image QA to auditable full-study workflow"
+                loading="eager"
+              />
+              <figcaption>
+                Main figure from the paper. Click the paper link above for the full manuscript.
+              </figcaption>
+            </figure>
+          </article>
+        </div>
+      </section>
+
+      <section id="demos" class="section">
+        <div class="container section-stack">
+          <div class="section-heading reveal">
+            <div>
+              <p class="section-eyebrow">Video demos</p>
+              <h2 class="section-title">Primary showcase</h2>
+            </div>
+            <p class="section-text">
+              The page is built around native HTML5 video players, so deployment stays simple and
+              GitHub Pages-friendly. Upload your clips into <code>static/videos/</code> and the page
+              will automatically surface any files that match the expected names.
+            </p>
+          </div>
+
+          <article class="reel-card card reveal" data-optional-section hidden>
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">Optional combined reel</p>
+                <h3>Single-file overview video</h3>
+              </div>
+              <a class="text-link hidden" data-download-link href="#">Download video</a>
+            </div>
+            <div
+              class="video-shell video-shell-large"
+              data-video-slot
+              data-sources="./static/videos/demo1234.mp4|video/mp4,./static/videos/demo1234.mov|video/quicktime"
+              data-missing-label="Add static/videos/demo1234.mp4 (or demo1234.mov)"
+            >
+              <video controls playsinline preload="metadata" aria-label="Combined demo reel"></video>
+              <div class="video-placeholder">
+                <div>
+                  <strong>Optional combined reel not found yet.</strong>
+                  <span>Add <code>static/videos/demo1234.mp4</code> if you want one large summary video at the top.</span>
+                </div>
+              </div>
+            </div>
           </article>
 
-          <article class="result-card">
-            <h3>Tumor-Focused View Selection</h3>
-            <p>The agent adjusts the view until the lesion becomes the most conspicuous target for inspection.</p>
-            <video class="video-frame" controls muted playsinline preload="metadata" poster="./static/images/example_lung_ct_pet.png">
-              <source src="./static/videos/demo3.mp4" type="video/mp4" />
-              <source src="./assets/videos/demo3.mp4" type="video/mp4" />
-              <source src="./demo3.mp4" type="video/mp4" />
-              <source src="./static/videos/demo3.mov" type="video/quicktime" />
-              <source src="./assets/videos/demo3.mov" type="video/quicktime" />
-              Your browser does not support the HTML5 video tag.
-            </video>
-          </article>
+          <div class="demo-grid">
+            <article class="demo-card card reveal">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">Demo 01</p>
+                  <h3>Brain Tumor Localization and Differentiation</h3>
+                </div>
+                <a class="text-link hidden" data-download-link href="#">Download</a>
+              </div>
+              <div
+                class="video-shell"
+                data-video-slot
+                data-sources="./static/videos/demo1.mp4|video/mp4,./static/videos/demo1.mov|video/quicktime"
+                data-missing-label="Add static/videos/demo1.mp4 (or demo1.mov)"
+              >
+                <video controls playsinline preload="metadata" aria-label="Brain tumor localization and differentiation demo"></video>
+                <div class="video-placeholder">
+                  <div>
+                    <strong>Demo slot ready.</strong>
+                    <span>Add <code>static/videos/demo1.mp4</code> or <code>demo1.mov</code>.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="card-text">
+                Study-level inspection for tumor localization together with differentiation across
+                relevant imaging evidence.
+              </p>
+            </article>
 
-          <article class="result-card">
-            <h3>Failure Case: Segmentation Failure</h3>
-            <p>A representative failure mode showing how the interaction chain breaks when segmentation is unreliable.</p>
-            <video class="video-frame" controls muted playsinline preload="metadata" poster="./static/images/benchmark_figure.png">
-              <source src="./static/videos/demo4.mp4" type="video/mp4" />
-              <source src="./assets/videos/demo4.mp4" type="video/mp4" />
-              <source src="./demo4.mp4" type="video/mp4" />
-              <source src="./static/videos/demo4.mov" type="video/quicktime" />
-              <source src="./assets/videos/demo4.mov" type="video/quicktime" />
-              Your browser does not support the HTML5 video tag.
-            </video>
-          </article>
+            <article class="demo-card card reveal">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">Demo 02</p>
+                  <h3>Longitudinal Analysis of Tumor Size</h3>
+                </div>
+                <a class="text-link hidden" data-download-link href="#">Download</a>
+              </div>
+              <div
+                class="video-shell"
+                data-video-slot
+                data-sources="./static/videos/demo2.mp4|video/mp4,./static/videos/demo2.mov|video/quicktime"
+                data-missing-label="Add static/videos/demo2.mp4 (or demo2.mov)"
+              >
+                <video controls playsinline preload="metadata" aria-label="Longitudinal analysis demo"></video>
+                <div class="video-placeholder">
+                  <div>
+                    <strong>Demo slot ready.</strong>
+                    <span>Add <code>static/videos/demo2.mp4</code> or <code>demo2.mov</code>.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="card-text">
+                Before-versus-after comparison for longitudinal change, centered on tumor size and
+                study-to-study evolution.
+              </p>
+            </article>
+
+            <article class="demo-card card reveal">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">Demo 03</p>
+                  <h3>Adjust to the Most Informative Tumor View</h3>
+                </div>
+                <a class="text-link hidden" data-download-link href="#">Download</a>
+              </div>
+              <div
+                class="video-shell"
+                data-video-slot
+                data-sources="./static/videos/demo3.mp4|video/mp4,./static/videos/demo3.mov|video/quicktime"
+                data-missing-label="Add static/videos/demo3.mp4 (or demo3.mov)"
+              >
+                <video controls playsinline preload="metadata" aria-label="Most informative tumor view demo"></video>
+                <div class="video-placeholder">
+                  <div>
+                    <strong>Demo slot ready.</strong>
+                    <span>Add <code>static/videos/demo3.mp4</code> or <code>demo3.mov</code>.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="card-text">
+                A focused viewer-control example where the agent adjusts the view to the slice or
+                perspective that makes the tumor most evident.
+              </p>
+            </article>
+
+            <article class="demo-card card card-failure reveal">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">Demo 04</p>
+                  <h3>Failure Case: Segmentation Failure</h3>
+                </div>
+                <a class="text-link hidden" data-download-link href="#">Download</a>
+              </div>
+              <div
+                class="video-shell"
+                data-video-slot
+                data-sources="./static/videos/demo4.mp4|video/mp4,./static/videos/demo4.mov|video/quicktime"
+                data-missing-label="Add static/videos/demo4.mp4 (or demo4.mov)"
+              >
+                <video controls playsinline preload="metadata" aria-label="Failure case demo"></video>
+                <div class="video-placeholder">
+                  <div>
+                    <strong>Demo slot ready.</strong>
+                    <span>Add <code>static/videos/demo4.mp4</code> or <code>demo4.mov</code>.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="card-text">
+                An explicit failure case that makes segmentation breakdowns visible instead of hiding
+                them behind a final prediction.
+              </p>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Paper Examples</h2>
-        <div class="figures-grid">
-          <figure class="image-card">
-            <img src="./static/images/example_brain_mri.png" alt="Brain MRI example from the paper." loading="lazy" />
-            <figcaption><strong>Brain MRI example.</strong> Auditable navigation and grounded differentiation inside a four-view study layout.</figcaption>
-          </figure>
-          <figure class="image-card">
-            <img src="./static/images/example_lung_ct_pet.png" alt="Lung CT and PET example from the paper." loading="lazy" />
-            <figcaption><strong>Lung CT/PET example.</strong> Explicit multimodal evidence gathering across CT and PET views.</figcaption>
-          </figure>
+      <section id="figures" class="section">
+        <div class="container section-stack">
+          <div class="section-heading reveal">
+            <div>
+              <p class="section-eyebrow">Selected figures</p>
+              <h2 class="section-title">Two static examples plus the benchmark overview</h2>
+            </div>
+            <p class="section-text">
+              These panels complement the videos without overloading the page. They are included as
+              reference material for readers who want a quick static snapshot of the workflow.
+            </p>
+          </div>
+
+          <div class="figure-layout reveal">
+            <article class="figure-card card figure-card-wide">
+              <div class="card-head">
+                <div>
+                  <p class="card-kicker">Static example A</p>
+                  <h3>Representative auditable traces</h3>
+                </div>
+              </div>
+              <figure>
+                <img
+                  src="./static/images/combined_demo_figure.png"
+                  alt="Representative static examples showing auditable traces for brain MRI and lung CT PET cases"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Representative trace visualizations reconstructed from auditable runtime behavior.
+                </figcaption>
+              </figure>
+            </article>
+
+            <div class="figure-stack">
+              <article class="figure-card card">
+                <div class="card-head">
+                  <div>
+                    <p class="card-kicker">Static example B</p>
+                    <h3>Benchmark and protocol summary</h3>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="./static/images/benchmark_figure.png"
+                    alt="Benchmark overview showing brain MRI and lung CT PET modules, answer protocols, and benchmark tracks"
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    Modules, answer protocols, and benchmark tracks summarized in one figure.
+                  </figcaption>
+                </figure>
+              </article>
+
+              <article class="paper-card card">
+                <div class="card-head">
+                  <div>
+                    <p class="card-kicker">Paper</p>
+                    <h3>Open the manuscript</h3>
+                  </div>
+                </div>
+                <p class="card-text">
+                  The website is intentionally concise. For the full framing, implementation details,
+                  and evaluation protocol, read the arXiv manuscript.
+                </p>
+                <div class="inline-actions">
+                  <a
+                    class="button button-primary button-compact"
+                    href="https://arxiv.org/abs/2603.24649"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    arXiv
+                  </a>
+                  <a class="button button-secondary button-compact" href="#citation">BibTeX</a>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <figure class="image-card main-figure-card">
-          <img src="./static/images/main_figure.png" alt="Main figure of MedOpenClaw." loading="lazy" />
-          <figcaption><strong>Main figure.</strong> MedOpenClaw turns full-study navigation into an auditable interaction loop with visible traces and grounded answers.</figcaption>
-        </figure>
-      </div>
-    </section>
+      <section id="citation" class="section section-last">
+        <div class="container section-stack">
+          <div class="section-heading reveal">
+            <div>
+              <p class="section-eyebrow">Citation</p>
+              <h2 class="section-title">BibTeX</h2>
+            </div>
+            <p class="section-text">
+              The citation block is included in the same publication-page style used by many project
+              websites, so readers can copy it directly without opening another page.
+            </p>
+          </div>
 
-    <section class="section bibtex-section" id="bibtex">
-      <div class="container bibtex-container">
-        <h2 class="section-title">BibTeX</h2>
-        <div class="bibtex-card">
-<pre><code>@misc{shen2026medopenclawauditablemedicalimaging,
+          <article class="citation-card card reveal">
+            <div class="card-head">
+              <div>
+                <p class="card-kicker">BibTeX</p>
+                <h3>Cite MedOpenClaw</h3>
+              </div>
+              <button class="button button-ghost button-compact" type="button" data-copy-bibtex>
+                Copy
+              </button>
+            </div>
+            <pre id="bibtex-block"><code>@misc{shen2026medopenclawauditablemedicalimaging,
   title={MedOpenClaw: Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies},
   author={Weixiang Shen and Yanzhu Hu and Che Liu and Junde Wu and Jiayuan Zhu and Chengzhi Shen and Min Xu and Yueming Jin and Benedikt Wiestler and Daniel Rueckert and Jiazhen Pan},
   year={2026},
@@ -130,11 +406,17 @@
   primaryClass={cs.CV},
   url={https://arxiv.org/abs/2603.24649},
 }</code></pre>
+          </article>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <script src="./static/js/index.js"></script>
-</body>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>
+          MedOpenClaw project page. Static, GitHub Pages-ready, and designed for simple deployment.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
