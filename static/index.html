@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MedOpenClaw</title>
+    <meta
+      name="description"
+      content="MedOpenClaw: Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies."
+    />
+    <meta property="og:title" content="MedOpenClaw" />
+    <meta
+      property="og:description"
+      content="Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies."
+    />
+    <meta property="og:image" content="./static/images/main_figure.png" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/png" href="./static/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Noto+Sans:400,500,600,700,800|Castoro:400,400i&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <script defer src="./static/js/index.js"></script>
+  </head>
+  <body>
+    <div class="page-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="MedOpenClaw home">
+          <img src="./static/images/logo.png" alt="MedOpenClaw logo" />
+          <span>MedOpenClaw</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#overview">Overview</a>
+          <a href="#figure">Main Figure</a>
+          <a href="#demos">Demos</a>
+          <a href="#bibtex">BibTeX</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section id="overview" class="hero section">
+        <div class="container hero-inner">
+          <img class="site-logo" src="./static/images/logo.png" alt="MedOpenClaw logo" />
+          <p class="eyebrow">Project</p>
+          <h1 class="publication-title">MedOpenClaw</h1>
+          <p class="publication-subtitle">
+            Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies
+          </p>
+
+          <div class="publication-authors" aria-label="Authors">
+            <div class="author-line">
+              Weixiang Shen · Yanzhu Hu · Che Liu · Junde Wu · Jiayuan Zhu · Chengzhi
+              Shen · Min Xu · Yueming Jin
+            </div>
+            <div class="author-line">Benedikt Wiestler · Daniel Rueckert · Jiazhen Pan</div>
+          </div>
+
+          <p class="hero-summary">
+        MedOpenClaw studies medical-imaging agents over uncurated full studies, exposing complex clinical interactions and task execution as auditable runtime traces.
+          </p>
+
+          <div class="publication-links">
+            <a
+              class="button-link"
+              href="https://arxiv.org/abs/2603.24649"
+              target="_blank"
+              rel="noreferrer"
+              >Paper</a
+            >
+            <a class="button-link button-link-secondary" href="#figure">Main Figure</a>
+            <a class="button-link button-link-secondary" href="#demos">Watch Demos</a>
+            <a class="button-link button-link-secondary" href="#bibtex">BibTeX</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="figure" class="section">
+        <div class="container section-stack">
+          <div class="section-heading section-heading-compact">
+            <div>
+              <p class="section-label">Main Figure</p>
+              <h2 class="section-title">From pre-selected inputs to auditable full-study workflows</h2>
+            </div>
+          </div>
+
+          <figure class="panel-card figure-card figure-card-wide figure-card-main">
+            <img
+              src="./static/images/main_figure.png"
+              alt="Main figure of MedOpenClaw"
+              loading="lazy"
+            />
+            <figcaption>
+              MedOpenClaw shifts from static image settings toward full-study interaction
+              loops with visible traces and grounded final answers.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="demos" class="section">
+        <div class="container section-stack">
+          <div class="section-heading section-heading-compact">
+            <div>
+              <p class="section-label">Qualitative Demos</p>
+              <h2 class="section-title">Representative behaviors on full studies</h2>
+            </div>
+          </div>
+
+          <article class="demo-card feature-demo panel-card">
+            <div class="feature-demo-head">
+              <p class="demo-tag">Main Demo</p>
+              <h3>Brain Tumor Localization and Differentiation</h3>
+              <p>
+                Study-level inspection for tumor localization together with differentiation
+                across the relevant imaging evidence.
+              </p>
+            </div>
+            <div class="video-shell video-shell-feature">
+              <video
+                class="project-video"
+                controls
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                data-video="demo1"
+                data-priority="high"
+                aria-label="Brain Tumor Localization and Differentiation demo video"
+              ></video>
+            </div>
+          </article>
+
+          <div class="secondary-demo-grid">
+            <article class="demo-card panel-card secondary-demo">
+              <div class="demo-head">
+                <p class="demo-tag">Demo 02</p>
+                <h3>Longitudinal Analysis of Tumor Size</h3>
+              </div>
+              <div class="video-shell">
+                <video
+                  class="project-video"
+                  controls
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  data-video="demo2"
+                  aria-label="Longitudinal Analysis of Tumor Size demo video"
+                ></video>
+              </div>
+              <p>
+                Before-versus-after comparison for longitudinal change, centered on tumor
+                size and study-to-study evolution.
+              </p>
+            </article>
+
+            <article class="demo-card panel-card secondary-demo">
+              <div class="demo-head">
+                <p class="demo-tag">Demo 03</p>
+                <h3>Adjust to the Most Informative Tumor View</h3>
+              </div>
+              <div class="video-shell">
+                <video
+                  class="project-video"
+                  controls
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  data-video="demo3"
+                  aria-label="Adjust to the Most Informative Tumor View demo video"
+                ></video>
+              </div>
+              <p>
+                A focused viewer-control example where the agent adjusts the view to the
+                slice or perspective that makes the tumor most evident.
+              </p>
+            </article>
+
+            <article class="demo-card panel-card panel-card-failure secondary-demo">
+              <div class="demo-head">
+                <p class="demo-tag">Demo 04</p>
+                <h3>Failure Case: Segmentation Failure</h3>
+              </div>
+              <div class="video-shell">
+                <video
+                  class="project-video"
+                  controls
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  data-video="demo4"
+                  aria-label="Failure Case: Segmentation Failure demo video"
+                ></video>
+              </div>
+              <p>
+                An explicit failure case that makes segmentation breakdowns visible instead
+                of hiding them behind a final prediction.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="trace" class="section">
+        <div class="container section-stack trace-stack">
+          <div class="section-heading section-heading-compact">
+            <div>
+              <p class="section-label">Representative Trace</p>
+              <h2 class="section-title">Auditable runtime traces</h2>
+            </div>
+          </div>
+
+          <figure class="panel-card figure-card figure-card-trace">
+            <img
+              src="./static/images/combined_demo_figure.png"
+              alt="Representative auditable traces reconstructed from MedOpenClaw runtime behavior"
+              loading="lazy"
+            />
+            <figcaption>
+              Representative trace visualizations reconstructed from auditable runtime
+              behavior.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="bibtex" class="section bibtex-section">
+        <div class="container bibtex-container">
+          <div class="bibtex-header">
+            <div>
+              <p class="section-label">Citation</p>
+              <h2 class="section-title">BibTeX</h2>
+            </div>
+            <button class="copy-button" type="button" data-copy-bibtex>Copy</button>
+          </div>
+
+          <div class="panel-card bibtex-card">
+            <pre><code id="bibtex-code">@misc{shen2026medopenclawauditablemedicalimaging,
+  title={MedOpenClaw: Auditable Medical Imaging Agents Reasoning over Uncurated Full Studies},
+  author={Weixiang Shen and Yanzhu Hu and Che Liu and Junde Wu and Jiayuan Zhu and Chengzhi Shen and Min Xu and Yueming Jin and Benedikt Wiestler and Daniel Rueckert and Jiazhen Pan},
+  year={2026},
+  eprint={2603.24649},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2603.24649},
+}</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
