@@ -1,33 +1,78 @@
 (function () {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.querySelectorAll('[data-video]').forEach((shell) => {
-    const video = shell.querySelector('video');
-    if (!video) return;
+  function tryVideoCandidates(video, shell, statusEl) {
+    const baseName = video.dataset.videoName;
+    if (!baseName) return;
 
-    const markReady = () => shell.classList.add('is-ready');
-    const tryAutoplay = () => {
+    const candidates = [
+      `assets/videos/${baseName}.mp4`,
+      `${baseName}.mp4`,
+      `videos/${baseName}.mp4`,
+      `assets/videos/${baseName}.mov`,
+      `${baseName}.mov`,
+      `videos/${baseName}.mov`
+    ];
+
+    let index = 0;
+    let settled = false;
+
+    const cleanup = () => {
+      video.removeEventListener('loadedmetadata', onReady);
+      video.removeEventListener('canplay', onReady);
+      video.removeEventListener('error', onError);
+      video.removeEventListener('stalled', onError);
+      video.removeEventListener('abort', onError);
+    };
+
+    const onReady = () => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      shell.classList.remove('is-missing');
+      if (statusEl) statusEl.textContent = '';
       const playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(() => {});
       }
     };
 
-    video.addEventListener('loadeddata', () => {
-      markReady();
-      tryAutoplay();
-    }, { once: true });
+    const onError = () => {
+      cleanup();
+      index += 1;
+      attempt();
+    };
 
-    video.addEventListener('canplay', () => {
-      markReady();
-      tryAutoplay();
-    }, { once: true });
+    const attempt = () => {
+      if (settled) return;
+      if (index >= candidates.length) {
+        shell.classList.add('is-missing');
+        if (statusEl) statusEl.textContent = 'Video unavailable.';
+        return;
+      }
 
-    // If neither source loads, keep the fallback overlay visible.
-    // If the browser rejects the codec after sources are present, keep the overlay visible as well.
-    video.addEventListener('error', () => {
-      shell.classList.remove('is-ready');
-    });
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+
+      video.addEventListener('loadedmetadata', onReady, { once: true });
+      video.addEventListener('canplay', onReady, { once: true });
+      video.addEventListener('error', onError, { once: true });
+      video.addEventListener('stalled', onError, { once: true });
+      video.addEventListener('abort', onError, { once: true });
+
+      video.src = candidates[index];
+      video.load();
+    };
+
+    attempt();
+  }
+
+  document.querySelectorAll('[data-video-shell]').forEach((shell) => {
+    const video = shell.querySelector('video');
+    const statusEl = shell.querySelector('.video-status');
+    if (!video) return;
+    tryVideoCandidates(video, shell, statusEl);
   });
 
   const lightbox = document.getElementById('lightbox');
@@ -76,6 +121,38 @@
       closeLightbox();
     }
   });
+
+  const bibtexContent = document.getElementById('bibtex-content');
+  const copyButton = document.getElementById('copy-bibtex');
+
+  async function copyBibtex() {
+    if (!bibtexContent || !copyButton) return;
+    const text = bibtexContent.textContent || '';
+
+    try {
+      await navigator.clipboard.writeText(text);
+      copyButton.textContent = 'Copied';
+      setTimeout(() => {
+        copyButton.textContent = 'Copy BibTeX';
+      }, 1600);
+    } catch (error) {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(bibtexContent);
+      if (selection) {
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+      copyButton.textContent = 'Select and Copy';
+      setTimeout(() => {
+        copyButton.textContent = 'Copy BibTeX';
+      }, 1800);
+    }
+  }
+
+  if (copyButton) {
+    copyButton.addEventListener('click', copyBibtex);
+  }
 
   if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
