@@ -24,6 +24,50 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./static/css/index.css" />
+    <style>
+      .publication-authors .author-link {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .publication-authors .author-link:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+      }
+
+      .publication-authors sup,
+      .author-affiliations sup {
+        font-size: 0.72em;
+        vertical-align: super;
+        line-height: 0;
+      }
+
+      .author-note,
+      .author-affiliations {
+        width: min(980px, 100%);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .author-note {
+        margin-top: 0.35rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .author-affiliations {
+        margin-top: 0.55rem;
+        display: grid;
+        gap: 0.2rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .affiliation-line {
+        line-height: 1.55;
+      }
+    </style>
     <script defer src="./static/js/index.js"></script>
   </head>
   <body>
@@ -56,10 +100,103 @@
 
           <div class="publication-authors" aria-label="Authors">
             <div class="author-line">
-              Weixiang Shen · Yanzhu Hu · Che Liu · Junde Wu · Jiayuan Zhu · Chengzhi
-              Shen · Min Xu · Yueming Jin
+              <a
+                class="author-link"
+                href="https://scholar.google.com/citations?user=TuDvingAAAAJ&amp;hl=zh-CN&amp;authuser=1#"
+                target="_blank"
+                rel="noreferrer"
+                >Weixiang Shen</a
+              ><sup>1,2,3</sup> ·
+              <a
+                class="author-link"
+                href="https://www.researchgate.net/profile/Yanzhu-Hu"
+                target="_blank"
+                rel="noreferrer"
+                >Yanzhu Hu</a
+              ><sup>2</sup> ·
+              <a
+                class="author-link"
+                href="https://scholar.google.com/citations?user=HED_458AAAAJ&amp;hl=zh-CN"
+                target="_blank"
+                rel="noreferrer"
+                >Che Liu</a
+              ><sup>4</sup> ·
+              <a
+                class="author-link"
+                href="https://www.linkedin.com/in/junde-wu-712187257/"
+                target="_blank"
+                rel="noreferrer"
+                >Junde Wu</a
+              ><sup>5</sup> ·
+              <a
+                class="author-link"
+                href="https://www.linkedin.com/in/jiayuan-zhu-5a68b51a7/"
+                target="_blank"
+                rel="noreferrer"
+                >Jiayuan Zhu</a
+              ><sup>5</sup> ·
+              <a
+                class="author-link"
+                href="https://zuseschoolrelai.de/people/scientists/chengzhi-shen/"
+                target="_blank"
+                rel="noreferrer"
+                >Chengzhi Shen</a
+              ><sup>1,2</sup> ·
+              <a
+                class="author-link"
+                href="https://ming-xu-research.github.io/"
+                target="_blank"
+                rel="noreferrer"
+                >Min Xu</a
+              ><sup>6</sup> ·
+              <a
+                class="author-link"
+                href="https://yuemingjin.github.io/"
+                target="_blank"
+                rel="noreferrer"
+                >Yueming Jin</a
+              ><sup>7</sup>
             </div>
-            <div class="author-line">Benedikt Wiestler · Daniel Rueckert · Jiazhen Pan</div>
+            <div class="author-line">
+              <a
+                class="author-link"
+                href="https://scholar.google.com/citations?user=-EEm-_MAAAAJ&amp;hl=en"
+                target="_blank"
+                rel="noreferrer"
+                >Benedikt Wiestler</a
+              ><sup>1,2,8,*</sup> ·
+              <a
+                class="author-link"
+                href="https://www.professoren.tum.de/rueckert-daniel"
+                target="_blank"
+                rel="noreferrer"
+                >Daniel Rueckert</a
+              ><sup>1,2,4,8,*</sup> ·
+              <a
+                class="author-link"
+                href="https://jiazhenpan.me/"
+                target="_blank"
+                rel="noreferrer"
+                >Jiazhen Pan</a
+              ><sup>1,2,8,*</sup>
+            </div>
+          </div>
+
+          <p class="author-note">*Shared senior authors.</p>
+
+          <div class="author-affiliations" aria-label="Affiliations">
+            <div class="affiliation-line">
+              <sup>1</sup> Technical University of Munich (TUM)
+              <sup>2</sup> TUM University Hospital
+              <sup>3</sup> LMU Munich
+              <sup>4</sup> Imperial College London
+            </div>
+            <div class="affiliation-line">
+              <sup>5</sup> University of Oxford
+              <sup>6</sup> Carnegie Mellon University
+              <sup>7</sup> National University of Singapore
+              <sup>8</sup> Munich Center for Machine Learning
+            </div>
           </div>
 
           <p class="hero-summary">
