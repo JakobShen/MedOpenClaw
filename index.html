@@ -67,6 +67,23 @@
       .affiliation-line {
         line-height: 1.55;
       }
+
+      .project-status {
+        width: min(980px, 100%);
+        margin: 0.85rem auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.45rem 1rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .project-status strong {
+        color: var(--text);
+      }
+
     </style>
     <script defer src="./static/js/index.js"></script>
   </head>
@@ -106,13 +123,15 @@
                 target="_blank"
                 rel="noreferrer"
                 >Weixiang Shen</a
-              ><sup>1,2,3</sup> · <a
+              ><sup>1,2,3</sup> ·
+              <a
                 class="author-link"
                 href="https://www.researchgate.net/profile/Yanzhu-Hu"
                 target="_blank"
                 rel="noreferrer"
                 >Yanzhu Hu</a
-              ><sup>2</sup> · <a
+              ><sup>2</sup> ·
+              <a
                 class="author-link"
                 href="https://scholar.google.com/citations?user=HED_458AAAAJ&amp;hl=zh-CN"
                 target="_blank"
@@ -142,7 +161,7 @@
               ><sup>1,2</sup> ·
               <a
                 class="author-link"
-                href="https://ming-xu-research.github.io/"
+                href="https://xulabs.github.io/min-xu/"
                 target="_blank"
                 rel="noreferrer"
                 >Min Xu</a
@@ -200,6 +219,11 @@
           <p class="hero-summary">
         MedOpenClaw studies medical-imaging agents over uncurated full studies, exposing complex clinical interactions and task execution as auditable runtime traces.
           </p>
+
+          <div class="project-status" aria-label="Website status">
+            <span><strong>Project website v1.</strong> More functions will follow soon.</span>
+            <span>Last update: March 30, 2026</span>
+          </div>
 
           <div class="publication-links">
             <a
