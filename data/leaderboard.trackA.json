@@ -1,0 +1,270 @@
+[
+  {
+    "model": "Gemini 3.1 Pro Preview",
+    "modelType": "General-purpose",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.53,
+    "strictAvg": 0.32,
+    "locAvg": 0.59,
+    "date": "2026-06-01",
+    "notes": "Best reported Track A Strict average",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.37, "strict": 0.08 },
+      "brain": { "task": 0.73, "strict": 0.73, "loc": 0.96 },
+      "lung": { "task": 0.5, "strict": 0.14, "loc": 0.21 }
+    },
+    "pathology": {
+      "breast": { "task": 0.34, "strict": 0.15, "loc": 0.19 },
+      "lymph": { "task": 0.26, "strict": 0.12, "loc": 0.38 },
+      "strictAvg": 0.14
+    }
+  },
+  {
+    "model": "Gemini 3 Flash Preview",
+    "modelType": "General-purpose",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.47,
+    "strictAvg": 0.26,
+    "locAvg": 0.57,
+    "date": "2026-06-01",
+    "notes": "Strong localization with lower cost backbone",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.3, "strict": 0.07 },
+      "brain": { "task": 0.67, "strict": 0.59, "loc": 0.87 },
+      "lung": { "task": 0.45, "strict": 0.13, "loc": 0.26 }
+    },
+    "pathology": {
+      "breast": { "task": 0.2, "strict": 0.16, "loc": 0.13 },
+      "lymph": { "task": 0.18, "strict": 0.05, "loc": 0.07 },
+      "strictAvg": 0.11
+    }
+  },
+  {
+    "model": "GPT-5.5",
+    "modelType": "General-purpose",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.53,
+    "strictAvg": 0.24,
+    "locAvg": 0.49,
+    "date": "2026-06-01",
+    "notes": "Highest Track A Task average tie",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.33, "strict": 0.04 },
+      "brain": { "task": 0.71, "strict": 0.66, "loc": 0.91 },
+      "lung": { "task": 0.55, "strict": 0.03, "loc": 0.07 }
+    }
+  },
+  {
+    "model": "Qwen3.5-27B",
+    "modelType": "Open-weight",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.37,
+    "strictAvg": 0.12,
+    "locAvg": 0.18,
+    "date": "2026-06-01",
+    "notes": "Open-weight baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.21, "strict": 0.09 },
+      "brain": { "task": 0.53, "strict": 0.27, "loc": 0.36 },
+      "lung": { "task": 0.37, "strict": 0.0, "loc": 0.0 }
+    }
+  },
+  {
+    "model": "Claude Sonnet 4.6",
+    "modelType": "General-purpose",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.32,
+    "strictAvg": 0.12,
+    "locAvg": 0.18,
+    "date": "2026-06-01",
+    "notes": "Higher longitudinal Strict, weaker localization",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.33, "strict": 0.17 },
+      "brain": { "task": 0.38, "strict": 0.18, "loc": 0.36 },
+      "lung": { "task": 0.26, "strict": 0.0, "loc": 0.0 }
+    }
+  },
+  {
+    "model": "Qwen3.5-35B-A3B",
+    "modelType": "Open-weight",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.4,
+    "strictAvg": 0.11,
+    "locAvg": 0.06,
+    "date": "2026-06-01",
+    "notes": "Best open-weight longitudinal Strict tie",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.33, "strict": 0.18 },
+      "brain": { "task": 0.53, "strict": 0.15, "loc": 0.11 },
+      "lung": { "task": 0.35, "strict": 0.01, "loc": 0.01 }
+    }
+  },
+  {
+    "model": "Claude Opus 4.7",
+    "modelType": "General-purpose",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.36,
+    "strictAvg": 0.1,
+    "locAvg": 0.35,
+    "date": "2026-06-01",
+    "notes": "Best longitudinal Strict tie",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.28, "strict": 0.18 },
+      "brain": { "task": 0.37, "strict": 0.11, "loc": 0.68 },
+      "lung": { "task": 0.43, "strict": 0.01, "loc": 0.01 }
+    }
+  },
+  {
+    "model": "GPT-5.4 mini",
+    "modelType": "General-purpose",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.31,
+    "strictAvg": 0.08,
+    "locAvg": 0.19,
+    "date": "2026-06-01",
+    "notes": "Compact proprietary baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.23, "strict": 0.05 },
+      "brain": { "task": 0.38, "strict": 0.18, "loc": 0.37 },
+      "lung": { "task": 0.31, "strict": 0.0, "loc": 0.0 }
+    },
+    "pathology": {
+      "breast": { "task": 0.2, "strict": 0.04, "loc": 0.03 },
+      "lymph": { "task": 0.16, "strict": 0.05, "loc": 0.39 },
+      "strictAvg": 0.05
+    }
+  },
+  {
+    "model": "Qwen3.5-4B",
+    "modelType": "Open-weight",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.25,
+    "strictAvg": 0.06,
+    "locAvg": 0.02,
+    "date": "2026-06-01",
+    "notes": "Small open-weight baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.22, "strict": 0.11 },
+      "brain": { "task": 0.32, "strict": 0.06, "loc": 0.03 },
+      "lung": { "task": 0.2, "strict": 0.0, "loc": 0.0 }
+    }
+  },
+  {
+    "model": "Qwen3.5-9B",
+    "modelType": "Open-weight",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.23,
+    "strictAvg": 0.05,
+    "locAvg": 0.04,
+    "date": "2026-06-01",
+    "notes": "Small open-weight baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.17, "strict": 0.08 },
+      "brain": { "task": 0.35, "strict": 0.05, "loc": 0.06 },
+      "lung": { "task": 0.16, "strict": 0.01, "loc": 0.01 }
+    }
+  },
+  {
+    "model": "Gemma 3 27B IT",
+    "modelType": "Open-weight",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.33,
+    "strictAvg": 0.04,
+    "locAvg": 0.03,
+    "date": "2026-06-01",
+    "notes": "Open-weight baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.32, "strict": 0.01 },
+      "brain": { "task": 0.33, "strict": 0.11, "loc": 0.07 },
+      "lung": { "task": 0.35, "strict": 0.0, "loc": 0.0 }
+    }
+  },
+  {
+    "model": "MedGemma 1.5 4B IT",
+    "modelType": "Medical-domain",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.26,
+    "strictAvg": 0.04,
+    "locAvg": 0.0,
+    "date": "2026-06-01",
+    "notes": "Medical-domain baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.16, "strict": 0.02 },
+      "brain": { "task": 0.45, "strict": 0.09, "loc": 0.0 },
+      "lung": { "task": 0.16, "strict": 0.0, "loc": 0.0 }
+    }
+  },
+  {
+    "model": "Lingshu-32B",
+    "modelType": "Medical-domain",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.27,
+    "strictAvg": 0.03,
+    "locAvg": 0.01,
+    "date": "2026-06-01",
+    "notes": "Medical-domain baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.16, "strict": 0.0 },
+      "brain": { "task": 0.36, "strict": 0.08, "loc": 0.02 },
+      "lung": { "task": 0.31, "strict": 0.0, "loc": 0.0 }
+    }
+  },
+  {
+    "model": "MedGemma 27B IT",
+    "modelType": "Medical-domain",
+    "track": "A",
+    "method": "Viewer-Native",
+    "taskAvg": 0.19,
+    "strictAvg": 0.0,
+    "locAvg": 0.02,
+    "date": "2026-06-01",
+    "notes": "Medical-domain baseline",
+    "paperUrl": "https://arxiv.org/abs/2603.24649",
+    "codeUrl": "https://github.com/jakobshen/MedOpenClaw",
+    "radiology": {
+      "longitudinal": { "task": 0.11, "strict": 0.0 },
+      "brain": { "task": 0.3, "strict": 0.0, "loc": 0.03 },
+      "lung": { "task": 0.16, "strict": 0.0, "loc": 0.0 }
+    }
+  }
+]
+

@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Dedicated MedFlowBench leaderboard page with switchable Track A, Track B, and Track C views."><link rel="canonical" href="https://jakobshen.github.io/MedOpenClaw/leaderboard/"><meta property="og:title" content="MedFlowBench Leaderboard | Track A/B/C rankings"><meta property="og:description" content="Dedicated MedFlowBench leaderboard page with switchable Track A, Track B, and Track C views."><meta property="og:type" content="website"><meta property="og:image" content="/MedOpenClaw/assets/paper/main_figure.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="MedFlowBench Leaderboard | Track A/B/C rankings"><meta name="twitter:description" content="Dedicated MedFlowBench leaderboard page with switchable Track A, Track B, and Track C views."><meta name="twitter:image" content="/MedOpenClaw/assets/paper/main_figure.jpg"><title>MedFlowBench Leaderboard | Track A/B/C rankings</title><link rel="stylesheet" href="/MedOpenClaw/_astro/BaseLayout.DCfjidWG.css"></head> <body> <header class="glass-nav sticky top-0 z-50"> <div class="shell flex min-h-16 items-center justify-between gap-4"> <a class="focus-ring flex items-center gap-3 rounded-full" href="/MedOpenClaw/" aria-label="MedOpenClaw home"> <span class="grid h-10 w-10 place-items-center rounded-full border border-line bg-white p-1 shadow-soft"> <img class="h-full w-full object-contain" src="/MedOpenClaw/assets/logo-lobster.png" alt=""> </span> <span class="leading-tight"> <span class="block text-sm font-black text-ink">MedOpenClaw</span> <span class="hidden text-xs font-semibold text-ink-soft sm:block">Auditable imaging agents</span> </span> </a> <nav class="hidden items-center gap-1 md:flex" aria-label="Primary navigation"> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/">Runtime</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/demos/">Demos</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/medflowbench/">MedFlowBench</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep bg-teal-soft text-teal-deep" href="/MedOpenClaw/leaderboard/">Leaderboard</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/about/">About Us</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/contact/">Contact</a> </nav> <div class="flex items-center gap-2"> <a class="focus-ring hidden items-center gap-2 rounded-full border border-line bg-white px-3 py-2 text-sm font-bold text-ink-soft transition hover:border-teal-deep hover:text-teal-deep sm:inline-flex" href="https://arxiv.org/abs/2603.24649"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-file-text"> <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path>  </svg>
+Paper
+</a> <a class="focus-ring inline-flex items-center gap-2 rounded-full bg-ink px-3 py-2 text-sm font-bold text-white transition hover:bg-teal-deep" href="https://github.com/jakobshen/MedOpenClaw"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-code-xml"> <path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path>  </svg>
+Code
+</a> <a class="focus-ring inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-2 text-sm font-bold text-ink-soft transition hover:border-blue-deep hover:text-blue-deep md:hidden" href="/MedOpenClaw/leaderboard/"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-chart-column"> <path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path>  </svg>
+Board
+</a> </div> </div> </header> <main>  <section class="bg-ink text-white"> <div class="shell flex min-h-[calc(54vh-64px)] items-center py-16 md:py-20"> <div class="max-w-4xl"> <span class="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-black text-white backdrop-blur"> <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-chart-column"> <path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path>  </svg>
+Leaderboard
+</span> <h1 class="mt-7 max-w-4xl text-5xl font-black leading-none text-white md:text-7xl">
+Track-specific rankings for MedFlowBench.
+</h1> <p class="mt-7 max-w-3xl text-lg leading-8 text-slate-100 md:text-xl">
+This page is only for Track A/B/C results. The table stays focused on scores, methods, and interpretation.
+</p> </div> </div> </section> <section class="border-b border-line bg-white py-5"> <div class="shell grid gap-3 md:grid-cols-3"> <div class="flex min-h-24 gap-4 rounded-lg border border-line bg-surface p-5"> <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-white"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-monitor-check"> <path d="m9 10 2 2 4-4"></path><rect width="20" height="14" x="2" y="3" rx="2"></rect><path d="M12 17v4"></path><path d="M8 21h8"></path>  </svg> </span> <div> <h2 class="font-black text-ink">Track A</h2> <p class="mt-1 text-sm leading-6 text-ink-soft">Viewer-native model rankings sorted by evidence-constrained Strict score.</p> </div> </div><div class="flex min-h-24 gap-4 rounded-lg border border-line bg-surface p-5"> <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-white"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-boxes"> <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"></path><path d="m7 16.5-4.74-2.85"></path><path d="m7 16.5 5-3"></path><path d="M7 16.5v5.17"></path><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"></path><path d="m17 16.5-5-3"></path><path d="m17 16.5 4.74-2.85"></path><path d="M17 16.5v5.17"></path><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"></path><path d="M12 8 7.26 5.15"></path><path d="m12 8 4.74-2.85"></path><path d="M12 13.5V8"></path>  </svg> </span> <div> <h2 class="font-black text-ink">Track B</h2> <p class="mt-1 text-sm leading-6 text-ink-soft">Advanced-operation deltas against matched viewer-native controls.</p> </div> </div><div class="flex min-h-24 gap-4 rounded-lg border border-line bg-surface p-5"> <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-white"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-network"> <rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path>  </svg> </span> <div> <h2 class="font-black text-ink">Track C</h2> <p class="mt-1 text-sm leading-6 text-ink-soft">Runtime-agnostic pipelines that output the same answer and evidence schema.</p> </div> </div> </div> </section> <section id="leaderboard" class="section-pad bg-white"> <div class="shell"> <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between"> <div class="max-w-3xl"> <span class="eyebrow">Leaderboard</span> <h2 class="mt-5 text-3xl font-black leading-tight text-ink md:text-5xl">Track-specific results for models, operations, and pipelines.</h2> <p class="mt-4 text-lg leading-8 text-ink-soft">
+Track A is sorted by evidence-constrained Strict score by default. Track B reports deltas from viewer-native controls, and Track C compares runtime-agnostic alternatives.
+</p> </div> <div class="metric-card p-4 text-sm leading-6 text-ink-soft lg:max-w-sm"> <strong class="text-ink">Strict</strong> is the product-critical metric: a final answer only receives credit when the required evidence passes deterministic hidden-reference checks.
+</div> </div> <div class="mt-10 rounded-lg border border-line bg-surface p-3"> <div data-leaderboard data-base="/MedOpenClaw/"> <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between"> <div class="flex flex-wrap gap-2" role="tablist" aria-label="Leaderboard tracks"> <button class="track-tab focus-ring rounded-full px-4 py-2 text-sm font-black" type="button" data-track="A">Track A</button> <button class="track-tab focus-ring rounded-full px-4 py-2 text-sm font-black" type="button" data-track="B">Track B</button> <button class="track-tab focus-ring rounded-full px-4 py-2 text-sm font-black" type="button" data-track="C">Track C</button> </div> <div class="flex flex-wrap gap-2" data-subtabs aria-label="Track A views"></div> </div> <div class="mt-4 table-scroll rounded-lg border border-line bg-white"> <table class="leaderboard-table" aria-live="polite"> <thead data-head></thead> <tbody data-body></tbody> </table> </div> <p class="mt-3 text-sm font-semibold text-ink-soft" data-summary></p> </div> </div> </div> </section> <script>(function(){const base = "/MedOpenClaw/";
+
+  const root = document.querySelector("[data-leaderboard]");
+  const head = root.querySelector("[data-head]");
+  const body = root.querySelector("[data-body]");
+  const summary = root.querySelector("[data-summary]");
+  const trackButtons = Array.from(root.querySelectorAll(".track-tab"));
+  const subtabs = root.querySelector("[data-subtabs]");
+
+  const state = {
+    track: "A",
+    subtab: "overall",
+    data: { A: [], B: [], C: [] },
+  };
+
+  const sources = {
+    A: `${base}data/leaderboard.trackA.json`,
+    B: `${base}data/leaderboard.trackB.json`,
+    C: `${base}data/leaderboard.trackC.json`,
+  };
+
+  const fmt = (value) => {
+    if (value === null || value === undefined || Number.isNaN(Number(value))) return "—";
+    return Number(value).toFixed(2);
+  };
+
+  const pill = (value) => `<span class="score-pill">${fmt(value)}</span>`;
+
+  const delta = (value) => {
+    if (value === null || value === undefined) return `<span class="delta-flat">—</span>`;
+    const number = Number(value);
+    const cls = number > 0 ? "delta-up" : number < 0 ? "delta-down" : "delta-flat";
+    const sign = number > 0 ? "+" : "";
+    return `<span class="${cls}">${sign}${number.toFixed(2)}</span>`;
+  };
+
+  const safe = (value) => String(value ?? "—");
+
+  function setActiveButtons() {
+    trackButtons.forEach((button) => {
+      const active = button.dataset.track === state.track;
+      button.className = `track-tab focus-ring rounded-full px-4 py-2 text-sm font-black transition ${active ? "bg-ink text-white" : "bg-white text-ink-soft hover:bg-teal-soft hover:text-teal-deep"}`;
+      button.setAttribute("aria-selected", active ? "true" : "false");
+    });
+  }
+
+  function renderSubtabs() {
+    if (state.track !== "A") {
+      subtabs.innerHTML = "";
+      return;
+    }
+    const tabs = [
+      ["overall", "Overall"],
+      ["radiology", "Radiology"],
+      ["pathology", "Pathology"],
+    ];
+    subtabs.innerHTML = tabs.map(([id, label]) => {
+      const active = state.subtab === id;
+      return `<button type="button" data-subtab="${id}" class="focus-ring rounded-full px-4 py-2 text-sm font-black transition ${active ? "bg-teal-deep text-white" : "bg-white text-ink-soft hover:bg-teal-soft hover:text-teal-deep"}">${label}</button>`;
+    }).join("");
+    subtabs.querySelectorAll("[data-subtab]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.subtab = button.dataset.subtab;
+        render();
+      });
+    });
+  }
+
+  function renderTrackA() {
+    const rows = [...state.data.A];
+    if (state.subtab === "pathology") {
+      rows.sort((a, b) => (b.pathology?.strictAvg ?? -1) - (a.pathology?.strictAvg ?? -1));
+      head.innerHTML = `<tr><th>Model</th><th>Type</th><th>Breast Task</th><th>Breast Strict</th><th>Breast Loc.</th><th>Lymph Task</th><th>Lymph Strict</th><th>Lymph Loc.</th><th>Path. Strict Avg.</th></tr>`;
+      body.innerHTML = rows
+        .filter((row) => row.pathology)
+        .map((row) => `<tr>
+          <td><strong class="text-ink">${safe(row.model)}</strong><div class="mt-1 text-xs font-semibold text-ink-soft">${safe(row.method)}</div></td>
+          <td>${safe(row.modelType)}</td>
+          <td>${pill(row.pathology.breast.task)}</td>
+          <td>${pill(row.pathology.breast.strict)}</td>
+          <td>${pill(row.pathology.breast.loc)}</td>
+          <td>${pill(row.pathology.lymph.task)}</td>
+          <td>${pill(row.pathology.lymph.strict)}</td>
+          <td>${pill(row.pathology.lymph.loc)}</td>
+          <td>${pill(row.pathology.strictAvg)}</td>
+        </tr>`)
+        .join("");
+      summary.textContent = `${body.children.length} pathology rows. Evidence is coordinate-grounded in QuPath.`;
+      return;
+    }
+
+    if (state.subtab === "radiology") {
+      rows.sort((a, b) => (b.strictAvg ?? 0) - (a.strictAvg ?? 0));
+      head.innerHTML = `<tr><th>Model</th><th>Long. Strict</th><th>Brain Strict</th><th>Brain Loc.</th><th>Lung Strict</th><th>Lung Loc.</th><th>Radiology Strict Avg.</th><th>Notes</th></tr>`;
+      body.innerHTML = rows.map((row) => `<tr>
+        <td><strong class="text-ink">${safe(row.model)}</strong><div class="mt-1 text-xs font-semibold text-ink-soft">${safe(row.modelType)}</div></td>
+        <td>${pill(row.radiology.longitudinal.strict)}</td>
+        <td>${pill(row.radiology.brain.strict)}</td>
+        <td>${pill(row.radiology.brain.loc)}</td>
+        <td>${pill(row.radiology.lung.strict)}</td>
+        <td>${pill(row.radiology.lung.loc)}</td>
+        <td>${pill(row.strictAvg)}</td>
+        <td>${safe(row.notes)}</td>
+      </tr>`).join("");
+      summary.textContent = `${rows.length} radiology rows. Default ordering uses model-average Strict.`;
+      return;
+    }
+
+    rows.sort((a, b) => (b.strictAvg ?? 0) - (a.strictAvg ?? 0));
+    head.innerHTML = `<tr><th>Rank</th><th>Model</th><th>Type</th><th>Method</th><th>Task Avg.</th><th>Strict Avg.</th><th>Loc. Avg.</th><th>Date</th></tr>`;
+    body.innerHTML = rows.map((row, index) => `<tr>
+      <td><strong class="text-ink">#${index + 1}</strong></td>
+      <td><strong class="text-ink">${safe(row.model)}</strong><div class="mt-1 text-xs font-semibold text-ink-soft">${safe(row.notes)}</div></td>
+      <td>${safe(row.modelType)}</td>
+      <td>${safe(row.method)}</td>
+      <td>${pill(row.taskAvg)}</td>
+      <td>${pill(row.strictAvg)}</td>
+      <td>${pill(row.locAvg)}</td>
+      <td>${safe(row.date)}</td>
+    </tr>`).join("");
+    summary.textContent = `${rows.length} Track A rows. Sorted by evidence-constrained Strict score.`;
+  }
+
+  function renderTrackB() {
+    const rows = [...state.data.B].sort((a, b) => (b.strictDelta ?? -99) - (a.strictDelta ?? -99));
+    head.innerHTML = `<tr><th>Backbone</th><th>Operation</th><th>Module</th><th>Task</th><th>Task Δ</th><th>Strict</th><th>Strict Δ</th><th>Loc.</th><th>Loc. Δ</th><th>Interpretation</th></tr>`;
+    body.innerHTML = rows.map((row) => `<tr>
+      <td><strong class="text-ink">${safe(row.backbone)}</strong></td>
+      <td>${safe(row.operation)}</td>
+      <td>${safe(row.module)}</td>
+      <td>${pill(row.task)}</td>
+      <td>${delta(row.taskDelta)}</td>
+      <td>${pill(row.strict)}</td>
+      <td>${delta(row.strictDelta)}</td>
+      <td>${pill(row.loc)}</td>
+      <td>${delta(row.locDelta)}</td>
+      <td>${safe(row.notes)}</td>
+    </tr>`).join("");
+    summary.textContent = `${rows.length} Track B operation rows. Positive deltas indicate improvement over matched viewer-native controls.`;
+  }
+
+  function renderTrackC() {
+    const rows = [...state.data.C].sort((a, b) => (b.strictAvg ?? 0) - (a.strictAvg ?? 0));
+    head.innerHTML = `<tr><th>Model</th><th>Method</th><th>Task Avg.</th><th>Strict Avg.</th><th>Loc. Avg.</th><th>Long. Strict</th><th>Brain Strict</th><th>Lung Strict</th><th>Notes</th></tr>`;
+    body.innerHTML = rows.map((row) => `<tr>
+      <td><strong class="text-ink">${safe(row.model)}</strong><div class="mt-1 text-xs font-semibold text-ink-soft">${safe(row.modelType)}</div></td>
+      <td>${safe(row.method)}</td>
+      <td>${pill(row.taskAvg)}</td>
+      <td>${pill(row.strictAvg)}</td>
+      <td>${pill(row.locAvg)}</td>
+      <td>${pill(row.radiology.longitudinal.strict)}</td>
+      <td>${pill(row.radiology.brain.strict)}</td>
+      <td>${pill(row.radiology.lung.strict)}</td>
+      <td>${safe(row.notes)}</td>
+    </tr>`).join("");
+    summary.textContent = `${rows.length} Track C rows. Runtime-agnostic methods output the same answer/evidence schema without the same replayable viewer trace.`;
+  }
+
+  function render() {
+    setActiveButtons();
+    renderSubtabs();
+    if (state.track === "A") renderTrackA();
+    if (state.track === "B") renderTrackB();
+    if (state.track === "C") renderTrackC();
+  }
+
+  trackButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      state.track = button.dataset.track;
+      if (state.track !== "A") state.subtab = "overall";
+      render();
+    });
+  });
+
+  Promise.all(Object.entries(sources).map(async ([key, url]) => {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Failed to load ${url}`);
+    state.data[key] = await response.json();
+  }))
+    .then(render)
+    .catch((error) => {
+      head.innerHTML = "";
+      body.innerHTML = `<tr><td>Leaderboard data could not be loaded.</td></tr>`;
+      summary.textContent = error.message;
+    });
+})();</script>  </main> <div class="image-lightbox" data-lightbox hidden> <button class="image-lightbox__backdrop" type="button" data-lightbox-close aria-label="Close enlarged image"></button> <figure class="image-lightbox__figure"> <button class="image-lightbox__close focus-ring" type="button" data-lightbox-close aria-label="Close enlarged image">Close</button> <img data-lightbox-image alt=""> </figure> </div> <footer class="border-t border-line bg-white py-10"> <div class="shell flex flex-col gap-5 md:flex-row md:items-center md:justify-between"> <div> <p class="text-sm font-bold text-ink">MedOpenClaw</p> <p class="mt-1 max-w-2xl text-sm leading-6 text-ink-soft">
+Controlled evaluation and auditable runtime research for full-study medical imaging agents.
+</p> </div> <div class="flex flex-wrap gap-3 text-sm font-semibold text-ink-soft"> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/">Runtime</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/demos/">Demos</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/medflowbench/">MedFlowBench</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/leaderboard/">Leaderboard</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/about/">About Us</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/contact/">Contact</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="https://arxiv.org/abs/2603.24649">Paper</a> </div> </div> </footer> <script type="module">const t=document.querySelector("[data-lightbox]"),o=document.querySelector("[data-lightbox-image]"),a=document.querySelectorAll("[data-lightbox-src]"),c=()=>{!t||!(t instanceof HTMLElement)||!(o instanceof HTMLImageElement)||(t.hidden=!0,o.removeAttribute("src"),o.alt="",document.body.classList.remove("overflow-hidden"))};a.forEach(e=>{e.addEventListener("click",()=>{if(!t||!(t instanceof HTMLElement)||!(o instanceof HTMLImageElement))return;const n=e.getAttribute("data-lightbox-src");n&&(o.src=n,o.alt=e.getAttribute("data-lightbox-alt")||"Enlarged image",t.hidden=!1,document.body.classList.add("overflow-hidden"))})});document.querySelectorAll("[data-lightbox-close]").forEach(e=>{e.addEventListener("click",c)});document.addEventListener("keydown",e=>{e.key==="Escape"&&c()});</script> </body> </html>

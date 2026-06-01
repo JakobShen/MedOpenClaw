@@ -1,0 +1,48 @@
+[
+  {
+    "domain": "Radiology",
+    "source": "LUMIERE",
+    "cases": 139,
+    "inputUnit": "Baseline/follow-up brain MRI",
+    "software": "3D Slicer",
+    "primaryTask": "RANO response category with lesion-state fields",
+    "evidenceRequirement": "Strict requires the response label plus all scorable FOLLOWUP-study evidence fields to be correct."
+  },
+  {
+    "domain": "Radiology",
+    "source": "UCSF-PDGM",
+    "cases": 495,
+    "inputUnit": "Multi-sequence brain MRI",
+    "software": "3D Slicer",
+    "primaryTask": "Case-level tumor diagnosis",
+    "evidenceRequirement": "Key axial, sagittal, and coronal slice offsets must fall within hidden tumor-mask RAS ranges; localization uses an RAS point inside the mask."
+  },
+  {
+    "domain": "Radiology",
+    "source": "NSCLC PET/CT",
+    "cases": 162,
+    "inputUnit": "Paired lung PET/CT study",
+    "software": "3D Slicer",
+    "primaryTask": "Tumor location, T stage, N stage, histology, and grade",
+    "evidenceRequirement": "Strict score is gated by all three key slices and an RAS point inside the hidden lesion mask."
+  },
+  {
+    "domain": "Pathology",
+    "source": "BRACS",
+    "cases": 113,
+    "inputUnit": "Breast whole-slide image",
+    "software": "QuPath",
+    "primaryTask": "Seven-class slide diagnosis",
+    "evidenceRequirement": "Returned WSI coordinates are checked against QuPath annotation ROIs."
+  },
+  {
+    "domain": "Pathology",
+    "source": "CAMELYON17",
+    "cases": 550,
+    "inputUnit": "Lymph-node whole-slide image",
+    "software": "QuPath",
+    "primaryTask": "Tumor presence and largest metastasis category",
+    "evidenceRequirement": "Returned tumor coordinates must hit the ground-truth tumor mask or XML polygon and avoid exclusion regions."
+  }
+]
+
