@@ -1,0 +1,227 @@
+{
+  "rano": {
+    "schemaVersion": 1,
+    "contact": {
+      "name": "",
+      "email": "",
+      "affiliation": ""
+    },
+    "task": {
+      "name": "RANO 2.0 Longitudinal Tumor Response Assessment",
+      "description": "Assess tumor response over time.",
+      "data": "Brain MRIs over time and EHR / clinical records (e.g. steroid use, radiotherapy).",
+      "tools": [
+        {
+          "id": "tool-slicer",
+          "name": "3D Slicer"
+        },
+        {
+          "id": "tool-ehr",
+          "name": "EHR / clinical records"
+        }
+      ],
+      "modalities": [
+        {
+          "id": "modality-mri",
+          "name": "MRI"
+        },
+        {
+          "id": "modality-records",
+          "name": "Text / clinical records"
+        }
+      ],
+      "note": "This example uses volumetric assessment. Include lesion IDs and scan dates, and link each recorded item to its source image or note. Importance labels are illustrative.",
+      "reference": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10860967/"
+    },
+    "steps": [
+      {
+        "id": "rano-step-1",
+        "description": "Select target lesions.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "rano-step-2",
+        "description": "Segment and measure the target lesions.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": [
+          {
+            "id": "rano-evidence-2-1",
+            "description": "Volume of each target lesion at each visit (mm³).",
+            "importance": "essential"
+          }
+        ]
+      },
+      {
+        "id": "rano-step-3",
+        "description": "Compare measurements across visits.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": [
+          {
+            "id": "rano-evidence-3-1",
+            "description": "Change in total target-lesion volume from baseline (%), with the baseline visit ID.",
+            "importance": "essential"
+          },
+          {
+            "id": "rano-evidence-3-2",
+            "description": "Change from the lowest prior total volume (%), with its visit ID.",
+            "importance": "essential"
+          },
+          {
+            "id": "rano-evidence-3-3",
+            "description": "New lesions: present / absent / uncertain.",
+            "importance": "essential"
+          },
+          {
+            "id": "rano-evidence-3-4",
+            "description": "Change in non-target lesions.",
+            "importance": "essential"
+          }
+        ]
+      },
+      {
+        "id": "rano-step-4",
+        "description": "Consider other findings and clinical factors.",
+        "toolIds": [
+          "tool-ehr"
+        ],
+        "modalityIds": [
+          "modality-records"
+        ],
+        "evidence": [
+          {
+            "id": "rano-evidence-4-1",
+            "description": "Relevant clinical findings (e.g., steroid dose, clinical status, treatment timing) and how they affect the response assessment.",
+            "importance": "essential"
+          }
+        ]
+      },
+      {
+        "id": "rano-step-5",
+        "description": "Assign the RANO 2.0 response category.",
+        "toolIds": [
+          "tool-slicer",
+          "tool-ehr"
+        ],
+        "modalityIds": [
+          "modality-mri",
+          "modality-records"
+        ],
+        "evidence": []
+      }
+    ],
+    "expectedResult": "Response category at each visit, linked to the recorded evidence.",
+    "comments": ""
+  },
+  "vsd": {
+    "schemaVersion": 1,
+    "contact": {
+      "name": "",
+      "email": "",
+      "affiliation": ""
+    },
+    "task": {
+      "name": "Ventricular Septal Defect (VSD) Assessment",
+      "description": "Determine whether an opening is visible between the left and right ventricles.",
+      "data": "Cardiac MRI, including cine images (moving images of the heart).",
+      "tools": [
+        {
+          "id": "tool-slicer",
+          "name": "3D Slicer"
+        }
+      ],
+      "modalities": [
+        {
+          "id": "modality-mri",
+          "name": "MRI"
+        }
+      ],
+      "note": "Link saved images and coordinates to the source series and cine frame. Importance labels are illustrative."
+    },
+    "steps": [
+      {
+        "id": "vsd-step-1",
+        "description": "Open the MRI.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "vsd-step-2",
+        "description": "Segment the ventricles, if helpful.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "vsd-step-3",
+        "description": "Adjust the views to show the wall between the ventricles.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "vsd-step-4",
+        "description": "Inspect the slices and cine frames.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": [
+          {
+            "id": "vsd-evidence-4-1",
+            "description": "Saved views showing the wall between the ventricles.",
+            "importance": "important"
+          },
+          {
+            "id": "vsd-evidence-4-2",
+            "description": "If visible: hole centre (x, y, z), with coordinate system and units (e.g. RAS, mm).",
+            "importance": "essential"
+          }
+        ]
+      },
+      {
+        "id": "vsd-step-5",
+        "description": "Decide whether an opening is visible.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-mri"
+        ],
+        "evidence": []
+      }
+    ],
+    "expectedResult": "Opening seen / not seen / uncertain, supported by the recorded evidence.",
+    "comments": ""
+  }
+}
