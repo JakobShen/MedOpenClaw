@@ -1,5 +1,5 @@
 export const RECIPIENT = 'weixiang.shen@tum.de';
-export const IMPORTANCE = ['essential', 'important', 'optional'];
+export const IMPORTANCE = ['essential', 'optional'];
 export const uid = () => `id-${crypto.randomUUID()}`;
 export const blankStep = () => ({ id: uid(), description: '', toolIds: [], modalityIds: [], evidence: [] });
 export function blankTask() {

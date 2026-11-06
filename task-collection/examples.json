@@ -48,7 +48,7 @@
           {
             "id": "pe-evidence-1-1",
             "description": "Most proximal clot location (main / lobar / segmental / subsegmental), with series and slice.",
-            "importance": "important"
+            "importance": "optional"
           }
         ]
       },
@@ -125,7 +125,7 @@
           {
             "id": "pe-evidence-5-2",
             "description": "sPESI total score.",
-            "importance": "important"
+            "importance": "optional"
           }
         ]
       },

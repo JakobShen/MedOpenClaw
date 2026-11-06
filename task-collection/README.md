@@ -4,7 +4,7 @@ Buildless HTML/CSS/JavaScript page served by the existing GitHub Pages site.
 
 - Contributors need no account; name, affiliation, and email are required.
 - Tools and modalities are entered once. A single item applies to all steps; multiple items enable per-step choices.
-- Steps can have zero or more evidence items. Each evidence item has an explicit importance selection.
+- Steps can have zero or more evidence items. Each evidence item has an explicit Essential / Optional importance selection. Older draft values outside these choices must be selected again; evidence text is preserved.
 - Drafts stay in the visitor's browser. JSON download/import, readable preview, and an email fallback preserve the complete task.
 - The sole example covers ESC 2019 pulmonary embolism risk stratification, with six steps and seven evidence items. It opens in a separate read-only dialog and never replaces, saves, or edits the contributor’s draft.
 

@@ -1,4 +1,4 @@
-import { RECIPIENT, IMPORTANCE, uid, blankTask, blankStep, activeItems, effectiveIds, normalizeTask, exportTask, validationError, taskSummary } from './model.js?v=pe-20261107';
+import { RECIPIENT, IMPORTANCE, uid, blankTask, blankStep, activeItems, effectiveIds, normalizeTask, exportTask, validationError, taskSummary } from './model.js?v=importance-two-20261107';
 import { exampleMarkup } from './example-view.js?v=example-view-20261107';
 import { SUBMISSION_ENDPOINT } from './config.js';
 
@@ -201,7 +201,7 @@ document.addEventListener('click', async event => {
   if (example) {
     button.disabled = true;
     try {
-      const response = await fetch('./examples.json?v=pe-20261107'); if (!response.ok) throw new Error();
+      const response = await fetch('./examples.json?v=importance-two-20261107'); if (!response.ok) throw new Error();
       const examples = await response.json();
       const exampleData = normalizeTask(examples[example]);
       $('#example-content').innerHTML = exampleMarkup(exampleData);

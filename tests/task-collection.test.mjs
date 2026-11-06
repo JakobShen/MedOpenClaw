@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { exampleMarkup } from '../task-collection/example-view.js';
 import {
-  blankTask, effectiveIds, exportTask, normalizeTask,
+  IMPORTANCE, blankTask, effectiveIds, exportTask, normalizeTask,
   validationError, taskSummary,
 } from '../task-collection/model.js';
 
@@ -121,7 +121,7 @@ test('arbitrary evidence counts are retained through export, summary, and import
   const state = validSingle();
   state.steps[0].evidence = Array.from({ length: 7 }, (_, i) => ({
     id: `e-${i}`, description: `Unique evidence item ${i + 1}.`,
-    importance: ['essential', 'important', 'optional'][i % 3],
+    importance: ['essential', 'optional'][i % 2],
   }));
   assert.equal(validationError(state), '');
   const result = exportTask(state);
@@ -153,6 +153,23 @@ test('an empty evidence entry requires a description and an explicit importance 
   assert.equal(validationError(state), 'Select the importance of evidence 2 in step 1.');
   state.steps[0].evidence[1].importance = 'optional';
   assert.equal(validationError(state), '');
+});
+
+test('importance allows only essential or optional and legacy labels require a new choice', () => {
+  assert.deepEqual(IMPORTANCE, ['essential', 'optional']);
+  const raw = exportTask(validSingle());
+  const description = raw.steps[0].evidence[0].description;
+  raw.steps[0].evidence[0].importance = 'important';
+  assert.equal(validationError(raw), 'Select the importance of evidence 1 in step 1.');
+  const restored = normalizeTask(raw);
+  assert.equal(restored.steps[0].evidence[0].description, description);
+  assert.equal(restored.steps[0].evidence[0].importance, '');
+  assert.equal(raw.steps[0].evidence[0].importance, 'important', 'Import must not mutate the original draft');
+  assert.equal(validationError(restored), 'Select the importance of evidence 1 in step 1.');
+  for (const importance of IMPORTANCE) {
+    restored.steps[0].evidence[0].importance = importance;
+    assert.equal(validationError(restored), '');
+  }
 });
 
 test('at least one evidence item is needed for a completed submission', () => {
@@ -245,7 +262,7 @@ test('the sole pulmonary embolism example retains its six steps, seven evidence 
   ]);
   assert.deepEqual(restored.steps.map(step => step.evidence.length), [1, 0, 2, 2, 2, 0]);
   assert.deepEqual(restored.steps.flatMap(step => step.evidence.map(item => item.importance)),
-    ['important', 'essential', 'essential', 'essential', 'essential', 'essential', 'important']);
+    ['optional', 'essential', 'essential', 'essential', 'essential', 'essential', 'optional']);
   const exported = exportTask(restored);
   const names = (items, ids) => items.filter(item => ids.includes(item.id)).map(item => item.name);
   assert.deepEqual(exported.steps.map(step => names(exported.task.tools, step.toolIds)), [
