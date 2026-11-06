@@ -1,4 +1,5 @@
 import { RECIPIENT, IMPORTANCE, uid, blankTask, blankStep, activeItems, effectiveIds, normalizeTask, exportTask, validationError, taskSummary } from './model.js?v=pe-20261107';
+import { exampleMarkup } from './example-view.js?v=example-view-20261107';
 import { SUBMISSION_ENDPOINT } from './config.js';
 
 const $ = selector => document.querySelector(selector);
@@ -15,7 +16,6 @@ let saveTimer;
 let submissionId;
 let submitting = false;
 let revision = 0;
-let loadedExample = false;
 let initialMessage = '';
 try {
   const draft = localStorage.getItem(STORAGE_KEY);
@@ -94,18 +94,7 @@ function render() {
     form.elements[name].value = path.reduce((obj, key) => obj[key], state);
   }
   renderItems('tools'); renderItems('modalities'); renderSteps();
-  $('#example-heading').hidden = !state.task.exampleTitle;
-  $('#example-title').textContent = state.task.exampleTitle || '';
-  $('#example-subtitle').textContent = state.task.exampleTitle ? state.task.description : '';
-  const note = $('#example-note');
-  if (note) {
-    note.hidden = !state.task.note;
-    note.textContent = state.task.note || '';
-    if (state.task.reference) {
-      const a = document.createElement('a'); a.href = state.task.reference; a.textContent = ' Reference';
-      a.target = '_blank'; a.rel = 'noopener noreferrer'; a.className = 'text-link'; note.append(a);
-    }
-  }
+
 }
 function hasContent() {
   return Boolean(state.task.name || state.task.description || state.task.data || state.expectedResult || state.comments ||
@@ -210,20 +199,21 @@ document.addEventListener('click', async event => {
   if (!button) return;
   const { action, example } = button.dataset;
   if (example) {
-    if (!await mayReplace()) return;
+    button.disabled = true;
     try {
       const response = await fetch('./examples.json?v=pe-20261107'); if (!response.ok) throw new Error();
       const examples = await response.json();
-      const contact = structuredClone(state.contact); state = normalizeTask(examples[example]); state.contact = contact;
-      loadedExample = true; render(); changed(); status('Example loaded. Edit it freely, or choose Start blank for your own task.');
-    } catch { status('The example could not be loaded. Your draft has been kept.'); }
+      const exampleData = normalizeTask(examples[example]);
+      $('#example-content').innerHTML = exampleMarkup(exampleData);
+      if (!$('#example-dialog').open) {
+        $('#example-dialog').addEventListener('close', () => button.focus(), { once: true });
+        $('#example-dialog').showModal();
+      }
+    } catch { status('The example could not be displayed. Please try again.'); }
+    finally { button.disabled = false; }
     return;
   }
-  if (action === 'new-task') {
-    if (!await mayReplace()) return;
-    const contact = structuredClone(state.contact); state = blankTask(); state.contact = contact;
-    loadedExample = false; render(); changed(); status('Blank task started.'); form.elements.taskName.focus(); return;
-  }
+  if (action === 'close-example') { $('#example-dialog').close(); return; }
   if (action === 'close-review') { dialog.close(); return; }
   if (action === 'download-json') { download(); status('Task file downloaded.'); return; }
   if (action === 'copy-summary') { await copySummary(); return; }
@@ -272,7 +262,7 @@ $('#draft-file').addEventListener('change', async event => {
     if (file.size > 2 * 1024 * 1024) throw new Error('Choose a task JSON file smaller than 2 MB.');
     const imported = normalizeTask(JSON.parse(await file.text()));
     if (!await mayReplace()) return;
-    state = imported; loadedExample = false; render(); changed(); status('Draft loaded.');
+    state = imported; render(); changed(); status('Draft loaded.');
   } catch (error) { status(error instanceof SyntaxError ? 'This file is not valid JSON. Your draft has been kept.' : error.message); }
   finally { event.target.value = ''; }
 });
@@ -287,7 +277,6 @@ $('#submit-task')?.addEventListener('click', async () => {
   if (!SUBMIT_URL) { status('Use “Send by email” to send this task to the team.', true); return; }
   if (submitting) return;
   const error = validationError(state); if (error) { status(error, true); return; }
-  if (loadedExample && !await confirmAction('This contains a loaded example. Submit it only if you have adapted it for your own task.', 'Submit this task')) return;
   if (form.elements.website?.value) { status('Unable to submit. Please send your task by email instead.', true); return; }
   submitting = true; const button = $('#submit-task'); button.disabled = true; button.textContent = 'Submitting…';
   submissionId ||= `MOC-${crypto.randomUUID()}`;

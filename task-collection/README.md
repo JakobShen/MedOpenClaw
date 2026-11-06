@@ -6,7 +6,7 @@ Buildless HTML/CSS/JavaScript page served by the existing GitHub Pages site.
 - Tools and modalities are entered once. A single item applies to all steps; multiple items enable per-step choices.
 - Steps can have zero or more evidence items. Each evidence item has an explicit importance selection.
 - Drafts stay in the visitor's browser. JSON download/import, readable preview, and an email fallback preserve the complete task.
-- The sole example covers ESC 2019 pulmonary embolism risk stratification, with six steps and seven evidence items.
+- The sole example covers ESC 2019 pulmonary embolism risk stratification, with six steps and seven evidence items. It opens in a separate read-only dialog and never replaces, saves, or edits the contributor’s draft.
 
 ## Direct submissions
 

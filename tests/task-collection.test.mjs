@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { exampleMarkup } from '../task-collection/example-view.js';
 import {
   blankTask, effectiveIds, exportTask, normalizeTask,
   validationError, taskSummary,
@@ -8,6 +9,24 @@ import {
 
 const examples = JSON.parse(await readFile(new URL('../task-collection/examples.json', import.meta.url), 'utf8'));
 const testContact = () => ({ name: 'Example contributor', email: 'example@example.org', affiliation: 'Example institution' });
+
+test('the example display is read-only, escaped, and independent of the contributor draft', () => {
+  const example = normalizeTask(examples.pulmonaryEmbolism);
+  const before = structuredClone(example);
+  const markup = exampleMarkup(example);
+  assert.deepEqual(example, before);
+  assert.doesNotMatch(markup, /<(input|textarea|select|form)\b/i);
+  assert.doesNotMatch(markup, /data-action="(?:download-json|new-task|copy-summary)"/);
+  assert.match(markup, /<table\b/);
+  assert.equal((markup.match(/<tbody>/g) || []).length, 6);
+  assert.match(markup, /rowspan="2"/);
+  for (const step of example.steps) {
+    for (const item of step.evidence) assert.ok(markup.includes(item.description.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')));
+  }
+  example.task.name = '<img src=x onerror=alert(1)>';
+  assert.doesNotMatch(exampleMarkup(example), /<img\b/);
+  assert.match(exampleMarkup(example), /&lt;img/);
+});
 
 function validSingle() {
   const state = blankTask();
