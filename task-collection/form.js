@@ -1,10 +1,11 @@
 import { RECIPIENT, IMPORTANCE, uid, blankTask, blankStep, activeItems, effectiveIds, normalizeTask, exportTask, validationError, taskSummary } from './model.js';
+import { SUBMISSION_ENDPOINT } from './config.js';
 
 const $ = selector => document.querySelector(selector);
 const form = $('#task-form');
 const dialog = $('#review-dialog');
 const STORAGE_KEY = 'medopenclaw.task-collection.v1';
-const SUBMIT_URL = `https://formsubmit.co/ajax/${RECIPIENT}`;
+const SUBMIT_URL = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(SUBMISSION_ENDPOINT) ? SUBMISSION_ENDPOINT : '';
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const fieldPaths = { taskName: ['task', 'name'], goal: ['task', 'description'], dataDescription: ['task', 'data'],
   contactName: ['contact', 'name'], email: ['contact', 'email'], affiliation: ['contact', 'affiliation'], expectedResult: ['expectedResult'], comments: ['comments'] };
@@ -13,6 +14,7 @@ let storageAvailable = true;
 let saveTimer;
 let submissionId;
 let submitting = false;
+let revision = 0;
 let loadedExample = false;
 let initialMessage = '';
 try {
@@ -36,6 +38,7 @@ function save() {
   }
 }
 function changed() {
+  revision += 1;
   submissionId = undefined;
   const submit = $('#submit-task');
   if (submit && !submitting) { submit.disabled = false; submit.textContent = 'Submit task'; }
@@ -220,7 +223,7 @@ document.addEventListener('click', async event => {
   if (action === 'download-json') { download(); status('Task file downloaded.'); return; }
   if (action === 'copy-summary') { await copySummary(); return; }
   if (action === 'import-draft') { $('#draft-file').click(); return; }
-  if (action === 'print') { window.print(); return; }
+  if (action === 'print') { openReview(false); window.print(); return; }
   if (action === 'add-tool' || action === 'add-modality') {
     const kind = action === 'add-tool' ? 'tools' : 'modalities'; const item = { id: uid(), name: '' };
     state.task[kind].push(item); renderItems(kind); changed(); focusField(item.id); return;
@@ -276,6 +279,7 @@ $('#send-email').addEventListener('click', () => {
   } else status('Your email app should open with a draft. Send it there to complete your submission.', true);
 });
 $('#submit-task')?.addEventListener('click', async () => {
+  if (!SUBMIT_URL) { status('Use “Send by email” to send this task to the team.', true); return; }
   if (submitting) return;
   const error = validationError(state); if (error) { status(error, true); return; }
   if (loadedExample && !await confirmAction('This contains a loaded example. Submit it only if you have adapted it for your own task.', 'Submit this task')) return;
@@ -283,29 +287,41 @@ $('#submit-task')?.addEventListener('click', async () => {
   submitting = true; const button = $('#submit-task'); button.disabled = true; button.textContent = 'Submitting…';
   submissionId ||= `MOC-${crypto.randomUUID()}`;
   const data = snapshot();
-  const payload = { _subject: `MedOpenClaw task: ${state.task.name.replace(/[\r\n]/g, ' ').slice(0, 140)}`, _template: 'table',
-    _url: 'https://jakobshen.github.io/MedOpenClaw/task-collection/', submission_id: submissionId,
-    task: state.task.name, contributor: state.contact.name || 'Not provided', affiliation: state.contact.affiliation || 'Not provided',
-    workflow: taskSummary(state), structured_task_json: JSON.stringify(data) };
-  if (state.contact.email) payload.email = state.contact.email;
+  const sentId = submissionId;
+  const sentRevision = revision;
+  const payload = { subject: `MedOpenClaw task: ${state.task.name.replace(/[\r\n]/g, ' ').slice(0, 140)}`,
+    source: 'https://jakobshen.github.io/MedOpenClaw/task-collection/', submission_id: sentId,
+    task: state.task.name, name: state.contact.name.trim(), email: state.contact.email.trim(), affiliation: state.contact.affiliation.trim(),
+    message: taskSummary(state), structured_task_json: JSON.stringify(data), _gotcha: '' };
   status('Sending your task. Please keep this window open.', true);
   const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 25000);
   try {
     const response = await fetch(SUBMIT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(payload), signal: controller.signal });
     const result = await response.json();
-    if (!response.ok || !(result.success === true || result.success === 'true')) throw new Error('Submission was not acknowledged.');
-    status(`Your task was accepted for forwarding to ${RECIPIENT}. Reference: ${submissionId}. Your draft remains saved on this device.`, true);
-    button.textContent = 'Submitted';
+    if (!response.ok || result.ok === false || result.error || result.errors?.length) throw new Error('Submission was not acknowledged.');
+    status(`“${data.task.name}” was accepted for forwarding to ${RECIPIENT}. Reference: ${sentId}. ${revision === sentRevision ? 'Your draft remains saved on this device.' : 'Your newer edits have not been submitted.'}`, dialog.open);
+    if (revision === sentRevision) button.textContent = 'Submitted';
   } catch {
-    status(`We could not confirm delivery. Your draft is safe. Retry, or use “Send by email instead” to contact ${RECIPIENT}. Reference: ${submissionId}.`, true);
+    status(`We could not confirm delivery. Your draft is safe. Retry, or use “Send by email instead” to contact ${RECIPIENT}. Reference: ${sentId}.`, dialog.open);
     button.disabled = false; button.textContent = 'Retry submission';
-  } finally { clearTimeout(timeout); submitting = false; }
+  } finally {
+    clearTimeout(timeout); submitting = false;
+    if (revision !== sentRevision) { button.disabled = false; button.textContent = 'Submit task'; }
+  }
 });
 window.addEventListener('pagehide', save);
 const datalist = document.createElement('datalist'); datalist.id = 'modality-options';
 datalist.innerHTML = ['MRI', 'CT', 'Ultrasound', 'X-ray', 'Pathology slides', 'Text / clinical records', 'ECG', 'Laboratory data', 'Other'].map(value => `<option value="${value}"></option>`).join('');
 document.body.append(datalist);
+if (!SUBMIT_URL) {
+  $('#submit-task').hidden = true;
+  $('#send-email').textContent = 'Send by email';
+  $('#send-email').className = 'button';
+  $('#review-button').textContent = 'Review & send →';
+  $('#delivery-note').textContent = `Send your prepared task to ${RECIPIENT}, or download it to keep a copy. Automatic submission is being set up.`;
+  $('#privacy-note').textContent = 'Task descriptions only — do not include patient-identifiable information.';
+}
 render();
 if (initialMessage) status(initialMessage);
 if (initialMessage.startsWith('Your saved')) $('#save-status').textContent = 'Saved draft restored on this device.';
