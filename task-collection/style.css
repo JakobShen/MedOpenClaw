@@ -156,6 +156,7 @@ body:has(#example-dialog[open]) { overflow: hidden; }
 #review-content { font-size: .9rem; line-height: 1.7; overflow-wrap: anywhere; }
 #review-content pre { white-space: pre-wrap; font: inherit; }
 .preserve-lines { white-space: pre-wrap; }
+.review-comments { margin-top: 1.25rem; padding-top: .25rem; border-top: 1px solid var(--form-line); }
 .review-contributor { padding-bottom: 1rem; border-bottom: 1px solid var(--form-line); color: var(--form-muted); }
 .review-steps > li { margin-block: .9rem; padding-left: .2rem; }
 .review-steps li ul { margin-top: .45rem; }

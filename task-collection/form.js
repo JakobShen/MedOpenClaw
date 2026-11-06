@@ -148,10 +148,10 @@ function openReview(validate = true) {
     ${data.task.tools.length > 1 ? `<p class="small muted">Tools: ${escape(names(data.task.tools, step.toolIds))}</p>` : ''}
     ${data.task.modalities.length > 1 ? `<p class="small muted">Data: ${escape(names(data.task.modalities, step.modalityIds))}</p>` : ''}
     ${step.evidence.length ? `<ul>${step.evidence.map(e => `<li><span class="importance-tag">${escape(e.importance)}</span> ${escape(e.description)}</li>`).join('')}</ul>` : ''}</li>`).join('')}</ol>
-    <h3>Expected result</h3><p class="preserve-lines">${escape(data.expectedResult)}</p>
+    <section aria-label="Expected result"><h3>Expected result</h3><p class="preserve-lines">${escape(data.expectedResult)}</p></section>
     ${data.task.note ? `<p class="small muted">${escape(data.task.note)}</p>` : ''}
     ${data.task.reference ? `<p class="small"><a class="text-link" href="${escape(data.task.reference)}" target="_blank" rel="noopener noreferrer">Reference</a></p>` : ''}
-    ${data.comments ? `<h3>Comments</h3><p class="preserve-lines">${escape(data.comments)}</p>` : ''}`;
+    ${data.comments ? `<section class="review-comments" aria-label="Comments"><h3>Comments</h3><p class="preserve-lines">${escape(data.comments)}</p></section>` : ''}`;
   const fullMail = `mailto:${RECIPIENT}?subject=${encodeURIComponent(`MedOpenClaw task: ${state.task.name}`)}&body=${encodeURIComponent(taskSummary(state))}`;
   const longMail = fullMail.length > 1800;
   $('#send-email').href = longMail ? `mailto:${RECIPIENT}?subject=${encodeURIComponent(`MedOpenClaw task: ${state.task.name}`)}&body=${encodeURIComponent('Please find my task submission in the attached JSON file.\n\n(Attach the downloaded MedOpenClaw task file before sending.)')}` : fullMail;
