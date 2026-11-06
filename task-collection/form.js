@@ -1,4 +1,4 @@
-import { RECIPIENT, IMPORTANCE, uid, blankTask, blankStep, activeItems, effectiveIds, normalizeTask, exportTask, validationError, taskSummary } from './model.js';
+import { RECIPIENT, IMPORTANCE, uid, blankTask, blankStep, activeItems, effectiveIds, normalizeTask, exportTask, validationError, taskSummary } from './model.js?v=pe-20261107';
 import { SUBMISSION_ENDPOINT } from './config.js';
 
 const $ = selector => document.querySelector(selector);
@@ -72,7 +72,7 @@ function renderContexts() {
 }
 function evidenceMarkup(step, evidence, index) {
   return `<div class="evidence-row" data-evidence-row="${evidence.id}">
-    <label class="field"><span>Evidence ${index + 1}</span><textarea id="${evidence.id}" rows="2" data-step="${step.id}" data-evidence="${evidence.id}" data-field="description" placeholder="e.g. Volume of each target lesion (mm³), with visit ID.">${escape(evidence.description)}</textarea></label>
+    <label class="field"><span>Evidence ${index + 1}</span><textarea id="${evidence.id}" rows="2" data-step="${step.id}" data-evidence="${evidence.id}" data-field="description" placeholder="e.g. RV and LV diameters (mm), with series and slice.">${escape(evidence.description)}</textarea></label>
     <label class="field"><span>Importance</span><select data-step="${step.id}" data-evidence="${evidence.id}" data-field="importance" aria-label="Importance of evidence ${index + 1} in step ${state.steps.indexOf(step) + 1}"><option value="">Select…</option>${IMPORTANCE.map(level => `<option value="${level}" ${evidence.importance === level ? 'selected' : ''}>${level[0].toUpperCase() + level.slice(1)}</option>`).join('')}</select></label>
     <button type="button" class="button-text" data-action="remove-evidence" data-step="${step.id}" data-evidence="${evidence.id}" aria-label="Remove evidence ${index + 1} in step ${state.steps.indexOf(step) + 1}">Remove</button></div>`;
 }
@@ -94,12 +94,15 @@ function render() {
     form.elements[name].value = path.reduce((obj, key) => obj[key], state);
   }
   renderItems('tools'); renderItems('modalities'); renderSteps();
+  $('#example-heading').hidden = !state.task.exampleTitle;
+  $('#example-title').textContent = state.task.exampleTitle || '';
+  $('#example-subtitle').textContent = state.task.exampleTitle ? state.task.description : '';
   const note = $('#example-note');
   if (note) {
     note.hidden = !state.task.note;
     note.textContent = state.task.note || '';
     if (state.task.reference) {
-      const a = document.createElement('a'); a.href = state.task.reference; a.textContent = ' RANO 2.0 reference';
+      const a = document.createElement('a'); a.href = state.task.reference; a.textContent = ' Reference';
       a.target = '_blank'; a.rel = 'noopener noreferrer'; a.className = 'text-link'; note.append(a);
     }
   }
@@ -150,13 +153,15 @@ function openReview(validate = true) {
   const data = exportTask(state);
   const names = (items, ids) => items.filter(item => ids.includes(item.id)).map(item => item.name).join(', ');
   $('#review-content').innerHTML = `<p class="review-contributor"><strong>${escape(data.contact.name)}</strong> · ${escape(data.contact.affiliation)}<br>${escape(data.contact.email)}</p>
-    <h3>${escape(data.task.name)}</h3><p class="preserve-lines">${escape(data.task.description)}</p>
+    ${data.task.exampleTitle ? `<h3>${escape(data.task.exampleTitle)}</h3>` : ''}<h3>${escape(data.task.name)}</h3><p class="preserve-lines">${escape(data.task.description)}</p>
     <dl><dt>Available data</dt><dd>${escape(data.task.data)}</dd><dt>Software or tools</dt><dd>${escape(data.task.tools.map(item => item.name).join(', '))}</dd><dt>Data modalities</dt><dd>${escape(data.task.modalities.map(item => item.name).join(', '))}</dd></dl>
     <h3>Steps &amp; evidence</h3><ol class="review-steps">${data.steps.map(step => `<li><strong>${escape(step.description)}</strong>
     ${data.task.tools.length > 1 ? `<p class="small muted">Tools: ${escape(names(data.task.tools, step.toolIds))}</p>` : ''}
     ${data.task.modalities.length > 1 ? `<p class="small muted">Data: ${escape(names(data.task.modalities, step.modalityIds))}</p>` : ''}
     ${step.evidence.length ? `<ul>${step.evidence.map(e => `<li><span class="importance-tag">${escape(e.importance)}</span> ${escape(e.description)}</li>`).join('')}</ul>` : ''}</li>`).join('')}</ol>
     <h3>Expected result</h3><p class="preserve-lines">${escape(data.expectedResult)}</p>
+    ${data.task.note ? `<p class="small muted">${escape(data.task.note)}</p>` : ''}
+    ${data.task.reference ? `<p class="small"><a class="text-link" href="${escape(data.task.reference)}" target="_blank" rel="noopener noreferrer">Reference</a></p>` : ''}
     ${data.comments ? `<h3>Comments</h3><p class="preserve-lines">${escape(data.comments)}</p>` : ''}`;
   const fullMail = `mailto:${RECIPIENT}?subject=${encodeURIComponent(`MedOpenClaw task: ${state.task.name}`)}&body=${encodeURIComponent(taskSummary(state))}`;
   const longMail = fullMail.length > 1800;
@@ -207,7 +212,7 @@ document.addEventListener('click', async event => {
   if (example) {
     if (!await mayReplace()) return;
     try {
-      const response = await fetch('./examples.json'); if (!response.ok) throw new Error();
+      const response = await fetch('./examples.json?v=pe-20261107'); if (!response.ok) throw new Error();
       const examples = await response.json();
       const contact = structuredClone(state.contact); state = normalizeTask(examples[example]); state.contact = contact;
       loadedExample = true; render(); changed(); status('Example loaded. Edit it freely, or choose Start blank for your own task.');

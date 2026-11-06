@@ -27,6 +27,7 @@ export function normalizeTask(raw) {
   result.task = { name: text(raw.task.name), description: text(raw.task.description), data: text(raw.task.data),
     tools: tools.length ? tools.map(({ id, name }) => ({ id, name })) : result.task.tools,
     modalities: modalities.length ? modalities.map(({ id, name }) => ({ id, name })) : result.task.modalities };
+  if (text(raw.task.exampleTitle)) result.task.exampleTitle = raw.task.exampleTitle;
   if (text(raw.task.note)) result.task.note = raw.task.note;
   if (/^https:\/\//.test(text(raw.task.reference))) result.task.reference = raw.task.reference;
   result.steps = raw.steps.map(step => ({ id: uid(), description: text(step?.description),
@@ -73,7 +74,7 @@ export function validationError(state) {
 export function taskSummary(state) {
   const names = (items, ids) => items.filter(item => ids.includes(item.id)).map(item => item.name).join(', ');
   const data = exportTask(state);
-  const lines = ['MEDOPENCLAW TASK SUBMISSION', '', data.task.name, '', 'TASK', data.task.description,
+  const lines = ['MEDOPENCLAW TASK SUBMISSION', ...(data.task.exampleTitle ? ['', data.task.exampleTitle] : []), '', data.task.name, '', 'TASK', data.task.description,
     '', 'AVAILABLE DATA', data.task.data, '', `Tools: ${data.task.tools.map(item => item.name).join(', ')}`,
     `Data modalities: ${data.task.modalities.map(item => item.name).join(', ')}`, '', 'STEPS & EVIDENCE',
     'Suggested workflow; only recorded evidence is scored.'];

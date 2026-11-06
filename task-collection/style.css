@@ -25,6 +25,8 @@ button:disabled, a[aria-disabled="true"] { cursor: not-allowed; opacity: .55; }
 .example-bar { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; padding: 1rem 0 1.25rem; border-top: 1px solid var(--form-line); }
 .example-bar > span { font-weight: 600; margin-right: .2rem; }
 .example-bar .button-text { margin-left: auto; }
+.example-heading { margin-bottom: .75rem; }
+.example-heading h2 { font-size: 1.2rem; font-weight: 750; margin-bottom: .25rem; }
 .example-note { margin-bottom: 1rem; padding: .8rem 1rem; border-left: 3px solid var(--form-teal); background: var(--form-tint); }
 .example-note a { text-decoration: underline; color: var(--form-teal); }
 #task-form { display: grid; gap: 1.1rem; }
@@ -159,7 +161,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--form-teal) !impo
 }
 @media print {
   body { background: white; color: black; }
-  header, footer, .page-intro, .example-bar, .example-note, .draft-tools, .form-finish, .button, .button-text, .skip-link, #form-status { display: none !important; }
+  header, footer, .page-intro, .example-bar, .example-heading, .example-note, .draft-tools, .form-finish, .button, .button-text, .skip-link, #form-status { display: none !important; }
   .collection-main { padding: 0; }
   .collection-shell { max-width: none; }
   .form-section, .step-card { break-inside: avoid; padding: .7rem; box-shadow: none; }

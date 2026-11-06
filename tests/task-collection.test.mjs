@@ -193,36 +193,56 @@ test('an empty imported draft gets one editable step and one tool/modality field
   assert.equal(validationError(restored), 'Please enter your name.');
 });
 
-test('summary preserves contact, comments, expected result, example notes, and references', () => {
-  const state = normalizeTask(examples.rano);
+test('summary preserves contact, comments, expected result, example title, notes, and reference', () => {
+  const state = normalizeTask(examples.pulmonaryEmbolism);
   state.contact = testContact();
   state.comments = 'A free comment with multiple lines.\nSecond line.';
   const summary = taskSummary(state);
   for (const value of [state.task.name, state.task.description, state.task.data,
-    state.expectedResult, state.comments, state.task.note, state.task.reference,
+    state.expectedResult, state.comments, state.task.exampleTitle, state.task.note, state.task.reference,
     ...Object.values(state.contact)]) assert.ok(summary.includes(value), `Missing ${value}`);
   assert.ok(summary.includes('Tools: 3D Slicer, EHR / clinical records'));
-  assert.ok(summary.includes('Data: MRI, Text / clinical records'));
+  assert.ok(summary.includes('Data: CT, Clinical text / records'));
 });
 
-test('both shipped examples retain the five broad steps and every evidence item', () => {
-  for (const [name, raw] of Object.entries(examples)) {
-    const restored = normalizeTask(raw);
-    assert.deepEqual(restored.contact, { name: '', email: '', affiliation: '' }, 'Examples leave contributor details blank');
-    restored.contact = testContact();
-    assert.equal(validationError(restored), '', `${name} must be ready to review`);
-    assert.equal(restored.steps.length, 5);
-    assert.equal(restored.steps.reduce((count, step) => count + step.evidence.length, 0), name === 'rano' ? 6 : 2);
-    assert.deepEqual(restored.steps.map(step => step.description), raw.steps.map(step => step.description));
-    const summary = taskSummary(restored);
-    for (const step of raw.steps) {
-      for (const evidence of step.evidence) assert.ok(summary.includes(evidence.description));
-    }
+test('the sole pulmonary embolism example retains its six steps, seven evidence items, and per-step context', () => {
+  assert.deepEqual(Object.keys(examples), ['pulmonaryEmbolism']);
+  const raw = examples.pulmonaryEmbolism;
+  const restored = normalizeTask(raw);
+  assert.deepEqual(restored.contact, { name: '', email: '', affiliation: '' }, 'The example leaves contributor details blank');
+  restored.contact = testContact();
+  assert.equal(validationError(restored), '', 'The example must be ready to review');
+  assert.equal(restored.task.exampleTitle, 'Example 1 - Pulmonary Embolism');
+  assert.equal(restored.task.name, 'Risk Stratification of Acute Pulmonary Embolism (ESC 2019)');
+  assert.equal(restored.task.description, 'Classify the early mortality risk of acute pulmonary embolism');
+  assert.equal(restored.task.reference, 'https://doi.org/10.1093/eurheartj/ehz405');
+  assert.deepEqual(restored.steps.map(step => step.description), [
+    'Open the CTPA and locate the clots.',
+    'Adjust the views to a four-chamber plane.',
+    'Measure the right and left ventricles.',
+    'Check hemodynamic status and troponin.',
+    'Calculate the sPESI.',
+    'Assign the ESC 2019 risk class.',
+  ]);
+  assert.deepEqual(restored.steps.map(step => step.evidence.length), [1, 0, 2, 2, 2, 0]);
+  assert.deepEqual(restored.steps.flatMap(step => step.evidence.map(item => item.importance)),
+    ['important', 'essential', 'essential', 'essential', 'essential', 'essential', 'important']);
+  const exported = exportTask(restored);
+  const names = (items, ids) => items.filter(item => ids.includes(item.id)).map(item => item.name);
+  assert.deepEqual(exported.steps.map(step => names(exported.task.tools, step.toolIds)), [
+    ['3D Slicer'], ['3D Slicer'], ['3D Slicer'],
+    ['EHR / clinical records'], ['EHR / clinical records'], ['EHR / clinical records'],
+  ]);
+  assert.deepEqual(exported.steps.map(step => names(exported.task.modalities, step.modalityIds)), [
+    ['CT'], ['CT'], ['CT'], ['Clinical text / records'], ['Clinical text / records'],
+    ['CT', 'Clinical text / records'],
+  ]);
+  const imported = normalizeTask(JSON.parse(JSON.stringify(exported)));
+  assert.equal(imported.task.exampleTitle, raw.task.exampleTitle);
+  assert.deepEqual(imported.steps.map(step => step.evidence.map(({ description, importance }) => ({ description, importance }))),
+    raw.steps.map(step => step.evidence.map(({ description, importance }) => ({ description, importance }))));
+  const summary = taskSummary(imported);
+  for (const step of raw.steps) {
+    for (const evidence of step.evidence) assert.ok(summary.includes(evidence.description), `Missing ${evidence.description}`);
   }
-  const rano = normalizeTask(examples.rano);
-  assert.equal(rano.steps[4].toolIds.length, 2);
-  assert.equal(rano.steps[4].modalityIds.length, 2);
-  assert.ok(rano.task.data.includes('steroid use, radiotherapy'));
-  const vsd = exportTask(normalizeTask(examples.vsd));
-  assert.ok(vsd.steps.every(step => step.toolIds.length === 1 && step.modalityIds.length === 1));
 });

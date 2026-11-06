@@ -1,5 +1,5 @@
 {
-  "rano": {
+  "pulmonaryEmbolism": {
     "schemaVersion": 1,
     "contact": {
       "name": "",
@@ -7,9 +7,10 @@
       "affiliation": ""
     },
     "task": {
-      "name": "RANO 2.0 Longitudinal Tumor Response Assessment",
-      "description": "Assess tumor response over time.",
-      "data": "Brain MRIs over time and EHR / clinical records (e.g. steroid use, radiotherapy).",
+      "exampleTitle": "Example 1 - Pulmonary Embolism",
+      "name": "Risk Stratification of Acute Pulmonary Embolism (ESC 2019)",
+      "description": "Classify the early mortality risk of acute pulmonary embolism",
+      "data": "CT pulmonary angiography (CTPA) and EHR / clinical records (e.g. vital signs, comorbidities, troponin).",
       "tools": [
         {
           "id": "tool-slicer",
@@ -22,206 +23,126 @@
       ],
       "modalities": [
         {
-          "id": "modality-mri",
-          "name": "MRI"
+          "id": "modality-ct",
+          "name": "CT"
         },
         {
           "id": "modality-records",
-          "name": "Text / clinical records"
+          "name": "Clinical text / records"
         }
       ],
-      "note": "This example uses volumetric assessment. Include lesion IDs and scan dates, and link each recorded item to its source image or note. Importance labels are illustrative.",
-      "reference": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10860967/"
+      "note": "Measure the maximal ventricular diameters from the inner wall to the septum. Link each measurement to its series and slice, and each clinical item to its source note and time. Importance labels are illustrative.",
+      "reference": "https://doi.org/10.1093/eurheartj/ehz405"
     },
     "steps": [
       {
-        "id": "rano-step-1",
-        "description": "Select target lesions.",
+        "id": "pe-step-1",
+        "description": "Open the CTPA and locate the clots.",
         "toolIds": [
           "tool-slicer"
         ],
         "modalityIds": [
-          "modality-mri"
-        ],
-        "evidence": []
-      },
-      {
-        "id": "rano-step-2",
-        "description": "Segment and measure the target lesions.",
-        "toolIds": [
-          "tool-slicer"
-        ],
-        "modalityIds": [
-          "modality-mri"
+          "modality-ct"
         ],
         "evidence": [
           {
-            "id": "rano-evidence-2-1",
-            "description": "Volume of each target lesion at each visit (mm³).",
-            "importance": "essential"
-          }
-        ]
-      },
-      {
-        "id": "rano-step-3",
-        "description": "Compare measurements across visits.",
-        "toolIds": [
-          "tool-slicer"
-        ],
-        "modalityIds": [
-          "modality-mri"
-        ],
-        "evidence": [
-          {
-            "id": "rano-evidence-3-1",
-            "description": "Change in total target-lesion volume from baseline (%), with the baseline visit ID.",
-            "importance": "essential"
-          },
-          {
-            "id": "rano-evidence-3-2",
-            "description": "Change from the lowest prior total volume (%), with its visit ID.",
-            "importance": "essential"
-          },
-          {
-            "id": "rano-evidence-3-3",
-            "description": "New lesions: present / absent / uncertain.",
-            "importance": "essential"
-          },
-          {
-            "id": "rano-evidence-3-4",
-            "description": "Change in non-target lesions.",
-            "importance": "essential"
-          }
-        ]
-      },
-      {
-        "id": "rano-step-4",
-        "description": "Consider other findings and clinical factors.",
-        "toolIds": [
-          "tool-ehr"
-        ],
-        "modalityIds": [
-          "modality-records"
-        ],
-        "evidence": [
-          {
-            "id": "rano-evidence-4-1",
-            "description": "Relevant clinical findings (e.g., steroid dose, clinical status, treatment timing) and how they affect the response assessment.",
-            "importance": "essential"
-          }
-        ]
-      },
-      {
-        "id": "rano-step-5",
-        "description": "Assign the RANO 2.0 response category.",
-        "toolIds": [
-          "tool-slicer",
-          "tool-ehr"
-        ],
-        "modalityIds": [
-          "modality-mri",
-          "modality-records"
-        ],
-        "evidence": []
-      }
-    ],
-    "expectedResult": "Response category at each visit, linked to the recorded evidence.",
-    "comments": ""
-  },
-  "vsd": {
-    "schemaVersion": 1,
-    "contact": {
-      "name": "",
-      "email": "",
-      "affiliation": ""
-    },
-    "task": {
-      "name": "Ventricular Septal Defect (VSD) Assessment",
-      "description": "Determine whether an opening is visible between the left and right ventricles.",
-      "data": "Cardiac MRI, including cine images (moving images of the heart).",
-      "tools": [
-        {
-          "id": "tool-slicer",
-          "name": "3D Slicer"
-        }
-      ],
-      "modalities": [
-        {
-          "id": "modality-mri",
-          "name": "MRI"
-        }
-      ],
-      "note": "Link saved images and coordinates to the source series and cine frame. Importance labels are illustrative."
-    },
-    "steps": [
-      {
-        "id": "vsd-step-1",
-        "description": "Open the MRI.",
-        "toolIds": [
-          "tool-slicer"
-        ],
-        "modalityIds": [
-          "modality-mri"
-        ],
-        "evidence": []
-      },
-      {
-        "id": "vsd-step-2",
-        "description": "Segment the ventricles, if helpful.",
-        "toolIds": [
-          "tool-slicer"
-        ],
-        "modalityIds": [
-          "modality-mri"
-        ],
-        "evidence": []
-      },
-      {
-        "id": "vsd-step-3",
-        "description": "Adjust the views to show the wall between the ventricles.",
-        "toolIds": [
-          "tool-slicer"
-        ],
-        "modalityIds": [
-          "modality-mri"
-        ],
-        "evidence": []
-      },
-      {
-        "id": "vsd-step-4",
-        "description": "Inspect the slices and cine frames.",
-        "toolIds": [
-          "tool-slicer"
-        ],
-        "modalityIds": [
-          "modality-mri"
-        ],
-        "evidence": [
-          {
-            "id": "vsd-evidence-4-1",
-            "description": "Saved views showing the wall between the ventricles.",
+            "id": "pe-evidence-1-1",
+            "description": "Most proximal clot location (main / lobar / segmental / subsegmental), with series and slice.",
             "importance": "important"
+          }
+        ]
+      },
+      {
+        "id": "pe-step-2",
+        "description": "Adjust the views to a four-chamber plane.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-ct"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "pe-step-3",
+        "description": "Measure the right and left ventricles.",
+        "toolIds": [
+          "tool-slicer"
+        ],
+        "modalityIds": [
+          "modality-ct"
+        ],
+        "evidence": [
+          {
+            "id": "pe-evidence-3-1",
+            "description": "Maximal RV and LV diameters (mm), with series, slice and measurement endpoints.",
+            "importance": "essential"
           },
           {
-            "id": "vsd-evidence-4-2",
-            "description": "If visible: hole centre (x, y, z), with coordinate system and units (e.g. RAS, mm).",
+            "id": "pe-evidence-3-2",
+            "description": "RV/LV diameter ratio.",
             "importance": "essential"
           }
         ]
       },
       {
-        "id": "vsd-step-5",
-        "description": "Decide whether an opening is visible.",
+        "id": "pe-step-4",
+        "description": "Check hemodynamic status and troponin.",
         "toolIds": [
-          "tool-slicer"
+          "tool-ehr"
         ],
         "modalityIds": [
-          "modality-mri"
+          "modality-records"
+        ],
+        "evidence": [
+          {
+            "id": "pe-evidence-4-1",
+            "description": "Hemodynamic instability (cardiac arrest, obstructive shock, persistent hypotension): present / absent / uncertain, with time.",
+            "importance": "essential"
+          },
+          {
+            "id": "pe-evidence-4-2",
+            "description": "Troponin value, assay cut-off and sample time.",
+            "importance": "essential"
+          }
+        ]
+      },
+      {
+        "id": "pe-step-5",
+        "description": "Calculate the sPESI.",
+        "toolIds": [
+          "tool-ehr"
+        ],
+        "modalityIds": [
+          "modality-records"
+        ],
+        "evidence": [
+          {
+            "id": "pe-evidence-5-1",
+            "description": "Each sPESI item with its value and source: age >80 y, cancer, chronic heart failure or chronic lung disease, heart rate ≥110/min, systolic BP <100 mmHg, SaO₂ <90%.",
+            "importance": "essential"
+          },
+          {
+            "id": "pe-evidence-5-2",
+            "description": "sPESI total score.",
+            "importance": "important"
+          }
+        ]
+      },
+      {
+        "id": "pe-step-6",
+        "description": "Assign the ESC 2019 risk class.",
+        "toolIds": [
+          "tool-ehr"
+        ],
+        "modalityIds": [
+          "modality-ct",
+          "modality-records"
         ],
         "evidence": []
       }
     ],
-    "expectedResult": "Opening seen / not seen / uncertain, supported by the recorded evidence.",
+    "expectedResult": "ESC 2019 risk class (high / intermediate-high / intermediate-low / low), linked to the recorded evidence.",
     "comments": ""
   }
 }
