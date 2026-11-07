@@ -1,18 +1,21 @@
 :root {
   color-scheme: light;
-  --paper: #f6f8fd;
+  --paper: #fff;
   --panel: #fff;
-  --ink: #14233b;
-  --muted: #4b5a73;
-  --accent: #254bb8;
-  --deep: #172b5c;
-  --tint: #e9efff;
-  --line: #dbe3f3;
-  --control-line: #b8c7e4;
+  --ink: #072140;
+  --muted: #475868;
+  --accent: #005293;
+  --deep: #072140;
+  --tint: #f0f5fa;
+  --line: #d7e2eb;
+  --control-line: #b4c8da;
+  --nav-muted: #c3d6e9;
+  --nav-line: #416080;
+  --nav-active: #193b60;
   --page-width: 1240px;
   --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
   --font-sans: 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --figure-shadow: 0 14px 35px rgb(23 43 92 / .13);
+  --figure-shadow: 0 14px 35px rgb(7 33 64 / .13);
 }
 
 body {
@@ -24,8 +27,10 @@ body {
 ::selection, body::selection { background: var(--tint); color: var(--ink); }
 .shell { width: min(var(--page-width), calc(100% - 88px)); margin-inline: auto; }
 .focus-ring:focus-visible { outline-color: var(--accent); }
+.medcua-parent .focus-ring:focus-visible, .glass-nav .focus-ring:focus-visible,
+.bg-ink .focus-ring:focus-visible { outline-color: var(--nav-muted); }
 .bg-ink { background-color: var(--deep); }
-.bg-surface { background-color: var(--paper); }
+.bg-surface { background-color: #f7f9fc; }
 .bg-teal-soft, .hover\:bg-teal-soft:hover { background-color: var(--tint); }
 .bg-teal-deep, .hover\:bg-teal-deep:hover,
 .group:hover .group-hover\:bg-teal-deep { background-color: var(--accent); }
@@ -38,44 +43,52 @@ body {
 .group:hover .group-hover\:text-teal-deep { color: var(--accent); }
 .from-teal-soft {
   --tw-gradient-from: var(--tint) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(233 239 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgb(240 245 250 / 0) var(--tw-gradient-to-position);
 }
-.shadow-soft { box-shadow: 0 4px 18px rgb(23 43 92 / .045); }
+.shadow-soft { box-shadow: 0 4px 18px rgb(7 33 64 / .045); }
 
 .medcua-parent {
-  background: var(--tint);
-  border-bottom: 1px solid var(--line);
-  color: var(--accent);
+  background: var(--deep);
+  border-bottom: 1px solid var(--nav-line);
+  color: var(--nav-muted);
   font-size: .8rem;
 }
 .medcua-parent a { display: inline-block; padding: .3rem 0; text-underline-offset: .2em; }
 .medcua-parent a:hover { text-decoration: underline; }
-.glass-nav { background: var(--paper); border-color: var(--line); backdrop-filter: none; }
+.glass-nav { background: var(--deep); border-color: var(--nav-line); backdrop-filter: none; }
 .glass-nav > .shell { min-height: 72px; }
 .glass-nav a[aria-label="MedOpenClaw home"] { white-space: nowrap; }
-.glass-nav a[aria-label="MedOpenClaw home"] .text-sm { font-size: 1.06rem; letter-spacing: -.035em; }
+.glass-nav a[aria-label="MedOpenClaw home"] .text-sm {
+  color: var(--panel);
+  font-size: 1.06rem;
+  letter-spacing: -.035em;
+}
+.glass-nav a[aria-label="MedOpenClaw home"] .text-xs { color: var(--nav-muted); }
 .glass-nav nav a, .glass-nav > .shell > div a {
   border-radius: .45rem;
   white-space: nowrap;
 }
-.glass-nav nav a { font-weight: 620; }
-.glass-nav nav a[aria-current="page"] { color: var(--accent); }
-.glass-nav nav a[href="/MedCUA/contribute/"], .glass-nav .medcua-mobile-link {
-  border-color: transparent;
-  background: var(--deep);
+.glass-nav nav a { color: var(--nav-muted); font-weight: 620; }
+.glass-nav nav a:hover, .glass-nav nav a[aria-current="page"] {
+  background: var(--nav-active);
   color: var(--panel);
 }
-.glass-nav nav a[href="/MedCUA/contribute/"]:hover,
-.glass-nav .medcua-mobile-link:hover { background: var(--accent); }
-.glass-nav > .shell > div a[href="https://github.com/jakobshen/MedOpenClaw"] {
+.glass-nav > .shell > div a:not(.medcua-mobile-link) {
+  background: transparent;
+  border: 1px solid var(--nav-line);
+  color: var(--panel);
+}
+.glass-nav > .shell > div a:not(.medcua-mobile-link):hover {
+  background: var(--nav-active);
+  border-color: var(--nav-muted);
+}
+.glass-nav nav a[href="/MedCUA/contribute/"], .glass-nav .medcua-mobile-link {
+  border-color: transparent;
   background: var(--panel);
-  border: 1px solid var(--line);
-  color: var(--ink);
+  color: var(--deep);
 }
-.glass-nav > .shell > div a[href="https://github.com/jakobshen/MedOpenClaw"]:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.glass-nav nav a[href="/MedCUA/contribute/"]:hover,
+.glass-nav .medcua-mobile-link:hover { background: var(--tint); color: var(--deep); }
 
 .project-hero { padding-block: clamp(3.4rem, 7vw, 6.3rem); }
 .project-hero-grid {
@@ -171,7 +184,7 @@ main a.rounded-full, main button.rounded-full { border-radius: .48rem; }
 .demo-card-media video { background: var(--deep); }
 .leaderboard-table th { background: var(--tint); color: var(--ink); border-color: var(--line); }
 .leaderboard-table td { color: var(--muted); border-color: var(--line); }
-.leaderboard-table tr:hover td { background: var(--paper); }
+.leaderboard-table tr:hover td { background: var(--tint); }
 .score-pill { background: var(--tint); color: var(--accent); }
 footer.bg-white { background: var(--paper); }
 
