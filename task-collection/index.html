@@ -1,104 +1,23 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Contribute a medical workflow to MedOpenClaw. Describe the task, tools, steps, and evidence in a simple editable form."><link rel="canonical" href="https://jakobshen.github.io/MedOpenClaw/task-collection/"><meta property="og:title" content="Task Collection | MedOpenClaw"><meta property="og:description" content="Help define useful tasks for medical agents."><meta property="og:type" content="website"><meta property="og:image" content="/MedOpenClaw/assets/logo-lobster.png"><title>Task Collection | MedOpenClaw</title><link rel="stylesheet" href="/MedOpenClaw/_astro/BaseLayout.DCfjidWG.css"><link rel="stylesheet" href="./style.css?v=task-intro-20261107"></head><body>
-<a class="skip-link" href="#main-content">Skip to form</a>
-<header class="glass-nav sticky top-0 z-50"> <div class="shell flex min-h-16 items-center justify-between gap-4"> <a class="focus-ring flex items-center gap-3 rounded-full" href="/MedOpenClaw/" aria-label="MedOpenClaw home"> <span class="grid h-10 w-10 place-items-center rounded-full border border-line bg-white p-1 shadow-soft"> <img class="h-full w-full object-contain" src="/MedOpenClaw/assets/logo-lobster.png" alt=""> </span> <span class="leading-tight"> <span class="block text-sm font-black text-ink">MedOpenClaw</span> <span class="hidden text-xs font-semibold text-ink-soft sm:block">Auditable imaging agents</span> </span> </a> <nav class="hidden items-center gap-1 md:flex" aria-label="Primary navigation" data-desktop-nav> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/">Runtime</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/demos/">Demos</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/medflowbench/">MedFlowBench</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/leaderboard/">Leaderboard</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/about/">About Us</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold transition hover:bg-teal-soft hover:text-teal-deep text-ink-soft" href="/MedOpenClaw/contact/">Contact</a> <a class="focus-ring rounded-full px-3 py-2 text-sm font-bold bg-teal-soft text-teal-deep" href="/MedOpenClaw/task-collection/" aria-current="page">Task Collection</a> </nav> <div class="flex items-center gap-2"> <a class="focus-ring hidden items-center gap-2 rounded-full border border-line bg-white px-3 py-2 text-sm font-bold text-ink-soft transition hover:border-teal-deep hover:text-teal-deep sm:inline-flex" href="https://arxiv.org/abs/2603.24649"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-file-text"> <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path>  </svg>
-Paper
-</a> <a class="focus-ring inline-flex items-center gap-2 rounded-full bg-ink px-3 py-2 text-sm font-bold text-white transition hover:bg-teal-deep" href="https://github.com/jakobshen/MedOpenClaw"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="lucide lucide-code-xml"> <path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path>  </svg>
-Code
-</a> <details class="mobile-navigation"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="/MedOpenClaw/">Runtime</a><a href="/MedOpenClaw/demos/">Demos</a><a href="/MedOpenClaw/medflowbench/">MedFlowBench</a><a href="/MedOpenClaw/leaderboard/">Leaderboard</a><a href="/MedOpenClaw/about/">About Us</a><a href="/MedOpenClaw/contact/">Contact</a><a href="/MedOpenClaw/task-collection/" aria-current="page">Task Collection</a></nav></details> </div> </div> </header>
-<main id="main-content" class="collection-main">
-  <div class="collection-shell">
-    <div class="page-intro">
-      <p class="eyebrow">Task Collection</p>
-      <h1>Computer-Use Agents in Medicine: Breaking the Barrier</h1>
-      <p class="intro-copy">We are exploring AI agents that operate medical software such as 3D Slicer, QuPath, and EHR systems, much like a human user. They can open data, use tools or models, adjust views and parameters, and inspect results to decide what to do next.</p>
-      <p class="intro-copy">To develop and benchmark these agents, we are collecting real clinical and research workflows—especially specialized, variable, or infrequent tasks that still require manual work and lack a dedicated automated solution.</p>
-      <section class="task-criteria" aria-labelledby="task-criteria-heading">
-        <h2 id="task-criteria-heading">What kinds of tasks are we looking for?</h2>
-        <ul>
-          <li><strong>Time-consuming or repetitive</strong>Tasks that require many manual interactions.</li>
-          <li><strong>Not well solved today</strong>Tasks that existing models or standard pipelines do not handle well.</li>
-          <li><strong>Multi-step</strong>Workflows involving segmentation, measurement, visualization, comparison, quality control, or interpretation.</li>
-          <li><strong>Across tools or data</strong>Tasks that may involve multiple software tools, modalities, or time points.</li>
-        </ul>
-      </section>
-      <p class="intro-invitation">Share a workflow you encounter in practice. Below, describe its goal, tools, main steps, and the evidence needed to check the result.</p>
-      <div class="intro-bottom"><p id="save-status" class="small muted" role="status">Your draft is saved in this browser.</p><a class="text-link small" href="#task-form">Start filling in <span aria-hidden="true">↓</span></a></div>
-    </div>
-
-    <div class="example-bar" aria-label="View an example">
-      <span class="small">See an example</span>
-      <button class="button button-secondary button-compact" type="button" data-example="pulmonaryEmbolism" aria-haspopup="dialog" aria-controls="example-dialog">Pulmonary Embolism</button>
-    </div>
-
-    <noscript><p class="form-alert">Please enable JavaScript to add steps and evidence, save a draft, and prepare your submission.</p></noscript>
-    <div id="submission-result" class="submission-result" hidden role="status"></div>
-    <form id="task-form">
-      <section class="form-section" aria-labelledby="contributor-heading">
-        <div class="section-title"><div><h2 id="contributor-heading">Your details</h2><p class="small muted">No account needed. We use these details to follow up on your task.</p></div></div>
-        <div class="contact-grid contributor-grid">
-          <label class="field"><span>Name <span class="required-marker" aria-hidden="true">*</span></span><input name="contactName" required autocomplete="name"></label>
-          <label class="field"><span>Email <span class="required-marker" aria-hidden="true">*</span></span><input name="email" type="email" required autocomplete="email"></label>
-          <label class="field affiliation-field"><span>Affiliation <span class="required-marker" aria-hidden="true">*</span></span><input name="affiliation" required autocomplete="organization" placeholder="Your institution or organisation"></label>
-        </div>
-      </section>
-      <div hidden aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
-      <section class="form-section" aria-labelledby="task-heading">
-        <div class="section-title"><span class="section-number" aria-hidden="true">1</span><div><h2 id="task-heading">The task</h2><p class="small muted">Keep it brief. One task per form.</p></div></div>
-        <div class="field-stack">
-          <label class="field"><span>Task name <span class="required-marker" aria-hidden="true">*</span></span><input name="taskName" required autocomplete="off" placeholder="e.g. Stratify acute pulmonary embolism risk"></label>
-          <label class="field"><span>What should the agent do? <span class="required-marker" aria-hidden="true">*</span></span><textarea name="goal" required rows="2" placeholder="Describe the clinical question or goal."></textarea></label>
-          <label class="field"><span>What data is available? <span class="required-marker" aria-hidden="true">*</span></span><textarea name="dataDescription" required rows="2" placeholder="e.g. CTPA and clinical records, including vital signs and troponin."></textarea></label>
-        </div>
-      </section>
-
-      <section class="form-section" aria-labelledby="tools-heading">
-        <div class="section-title"><span class="section-number" aria-hidden="true">2</span><div><h2 id="tools-heading">Tools &amp; data types</h2><p class="small muted">Enter these once. If there are several, select which ones each step uses.</p></div></div>
-        <div class="setup-grid">
-          <div class="setup-column"><h3>Software or tools</h3><p class="small muted">Imaging software, EHR, browser, or other tools.</p><div id="tools-list" class="item-list"></div><button type="button" class="button-text add-control" data-action="add-tool">+ Add tool</button></div>
-          <div class="setup-column"><h3>Data modalities</h3><p class="small muted">MRI, CT, text / clinical records, or other data.</p><div id="modalities-list" class="item-list"></div><button type="button" class="button-text add-control" data-action="add-modality">+ Add modality</button></div>
-        </div>
-      </section>
-
-      <section class="form-section" aria-labelledby="steps-heading">
-        <div class="section-title"><span class="section-number" aria-hidden="true">3</span><div><h2 id="steps-heading">Steps &amp; evidence</h2><p class="small muted">Suggest the main steps. Add evidence only where needed.</p></div></div>
-        <div class="evidence-guide"><p><strong>Evidence</strong> is a measurement, location, saved view, or record needed to check the result.</p><p class="small muted">Other valid workflows are allowed. Only recorded evidence is scored. All listed evidence must be recorded. Choose Essential or Optional for each evidence item.</p></div>
-        <div id="steps-list" class="step-list"></div>
-        <button type="button" class="button button-secondary" data-action="add-step">+ Add step</button>
-      </section>
-
-      <section class="form-section" aria-labelledby="result-heading">
-        <div class="section-title"><span class="section-number" aria-hidden="true">4</span><div><h2 id="result-heading">The result</h2></div></div>
-        <div class="field-stack">
-          <label class="field"><span>What should the final answer contain? <span class="required-marker" aria-hidden="true">*</span></span><textarea name="expectedResult" required rows="2" placeholder="e.g. A risk class supported by the recorded evidence."></textarea></label>
-        </div>
-      </section>
-
-      <section class="form-section" aria-labelledby="comments-heading">
-        <div class="section-title"><div><h2 id="comments-heading">Comments <span class="optional">optional</span></h2></div></div>
-        <div class="field"><textarea name="comments" aria-labelledby="comments-heading" rows="3" placeholder="Anything else we should know?"></textarea></div>
-      </section>
-
-      <div class="form-finish">
-        <p class="small muted">Preview your task before submitting.</p>
-        <button id="review-button" class="button" type="submit">Review &amp; submit <span aria-hidden="true">→</span></button>
-      </div>
-      <p id="form-status" class="small status-message" role="status" aria-live="polite"></p>
-      <details class="draft-tools"><summary>Save / load draft</summary><div class="draft-actions"><button type="button" class="button button-secondary button-compact" data-action="download-json">Download draft</button><button type="button" class="button button-secondary button-compact" data-action="import-draft">Load draft</button><button type="button" class="button button-secondary button-compact" data-action="copy-summary">Copy summary</button><button type="button" class="button button-secondary button-compact" data-action="print">Print / save PDF</button><input type="file" id="draft-file" accept="application/json,.json" hidden></div><p class="small muted">Downloads include your task, steps, evidence, and importance selections.</p></details>
-    </form>
-  </div>
-</main>
-<dialog id="example-dialog" aria-labelledby="example-dialog-title"><div id="example-content"></div></dialog>
-<dialog id="review-dialog" aria-labelledby="review-title">
-  <div class="review-heading"><div><p class="eyebrow">Your submission</p><h2 id="review-title">Review your task</h2></div><button type="button" class="button-text close-dialog" data-action="close-review" aria-label="Close review">×</button></div>
-  <div id="review-content"></div>
-  <div class="review-actions"><button id="submit-task" class="button" type="button">Submit task</button><a id="send-email" class="button button-secondary" href="mailto:weixiang.shen@tum.de">Send by email instead</a><button id="review-copy" type="button" class="button button-secondary">Copy summary</button><button id="review-download" type="button" class="button button-secondary">Download draft</button></div>
-  <p id="delivery-note" class="small muted">Your task will be sent to the MedOpenClaw team at <a class="text-link" href="mailto:weixiang.shen@tum.de">weixiang.shen@tum.de</a>.</p>
-  <p id="privacy-note" class="small muted">Task descriptions only — do not include patient-identifiable information. Submissions are delivered through <a class="text-link" href="https://formspree.io/" target="_blank" rel="noopener noreferrer">Formspree</a>.</p>
-  <p id="send-status" class="small status-message" role="status" aria-live="polite"></p>
-</dialog>
-<footer class="border-t border-line bg-white py-10"> <div class="shell flex flex-col gap-5 md:flex-row md:items-center md:justify-between"> <div> <p class="text-sm font-bold text-ink">MedOpenClaw</p> <p class="mt-1 max-w-2xl text-sm leading-6 text-ink-soft">
-Controlled evaluation and auditable runtime research for full-study medical imaging agents.
-</p> </div> <div class="flex flex-wrap gap-3 text-sm font-semibold text-ink-soft"> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/">Runtime</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/demos/">Demos</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/medflowbench/">MedFlowBench</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/leaderboard/">Leaderboard</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/about/">About Us</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/contact/">Contact</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="/MedOpenClaw/task-collection/">Task Collection</a> <a class="focus-ring rounded px-1 hover:text-teal-deep" href="https://arxiv.org/abs/2603.24649">Paper</a> </div> </div> </footer>
-<script type="module" src="./form.js?v=comments-section-20261107"></script>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Collection · MedCUA</title>
+  <link rel="canonical" href="https://jakobshen.github.io/MedCUA/contribute/">
+  <meta http-equiv="refresh" content="2; url=/MedCUA/contribute/">
+  <script>
+    location.replace('/MedCUA/contribute/' + location.search + location.hash);
+  </script>
+  <style>
+    body { margin: 3rem auto; max-width: 38rem; padding: 0 1.25rem; background: #f7f7f3; color: #102d29; font: 1rem/1.65 system-ui, sans-serif; }
+    a { color: #006c56; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Task Collection has moved</h1>
+    <p><a href="/MedCUA/contribute/">Continue to MedCUA Task Collection</a></p>
+  </main>
+</body>
+</html>
