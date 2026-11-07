@@ -1,36 +1,53 @@
+/* MedOpenClaw theme layer: matches the MedCUA site (https://jakobshen.github.io/MedCUA/).
+   Light pages, slate text, a teal accent and self-hosted Geist type (SIL OFL 1.1, see fonts/).
+   It restyles the utility classes of the Astro build, so the page HTML stays unchanged. */
+
+@font-face { font-family: "Geist"; src: url("fonts/geist.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url("fonts/geist-mono.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url("fonts/instrument-serif-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+
 :root {
   color-scheme: light;
-  --paper: #fff;
-  --panel: #fff;
-  --ink: #072140;
-  --muted: #475868;
-  --accent: #005293;
-  --deep: #072140;
-  --tint: #f0f5fa;
-  --line: #d7e2eb;
-  --control-line: #b4c8da;
-  --nav-muted: #c3d6e9;
-  --nav-line: #416080;
-  --nav-active: #193b60;
+  --paper: #ffffff;
+  --paper-2: #f7f9fb;
+  --panel: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --ink-3: #64748b;
+  --accent: #0f766e;
+  --accent-600: #0d9488;
+  --accent-400: #2dd4bf;
+  --deep: #0f172a;
+  --tint: #f0fdfa;
+  --tint-line: #ccfbf1;
+  --line: #e6eaf0;
+  --control-line: #d4dbe4;
   --page-width: 1240px;
-  --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
-  --font-sans: 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --figure-shadow: 0 14px 35px rgb(7 33 64 / .13);
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-display: var(--font-sans);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, .06);
+  --shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 16px 36px -18px rgba(15, 23, 42, .2);
+  --figure-shadow: 0 2px 4px rgba(15, 23, 42, .05), 0 32px 64px -32px rgba(15, 23, 42, .4);
+  --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
 body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
-  line-height: 1.65;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-::selection, body::selection { background: var(--tint); color: var(--ink); }
-.shell { width: min(var(--page-width), calc(100% - 88px)); margin-inline: auto; }
+::selection, body::selection { background: var(--tint-line); color: var(--ink); }
+.shell { width: min(var(--page-width), calc(100% - 80px)); margin-inline: auto; }
 .focus-ring:focus-visible { outline-color: var(--accent); }
-.medcua-parent .focus-ring:focus-visible, .glass-nav .focus-ring:focus-visible,
-.bg-ink .focus-ring:focus-visible { outline-color: var(--nav-muted); }
+
+/* Utility colours from the Astro build, mapped to the MedCUA palette */
 .bg-ink { background-color: var(--deep); }
-.bg-surface { background-color: #f7f9fc; }
+.bg-surface { background-color: var(--paper-2); }
 .bg-teal-soft, .hover\:bg-teal-soft:hover { background-color: var(--tint); }
 .bg-teal-deep, .hover\:bg-teal-deep:hover,
 .group:hover .group-hover\:bg-teal-deep { background-color: var(--accent); }
@@ -43,155 +60,134 @@ body {
 .group:hover .group-hover\:text-teal-deep { color: var(--accent); }
 .from-teal-soft {
   --tw-gradient-from: var(--tint) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(240 245 250 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgb(240 253 250 / 0) var(--tw-gradient-to-position);
 }
-.shadow-soft { box-shadow: 0 4px 18px rgb(7 33 64 / .045); }
+.shadow-soft { box-shadow: var(--shadow-sm); }
+/* Geist is a variable font: the build's 800/900 weights read as heavy, so cap them */
+.font-black { font-weight: 650; }
+.font-extrabold { font-weight: 640; }
+.font-bold { font-weight: 600; }
+.text-2xl.font-black, .text-3xl.font-black, .text-4xl.font-black { letter-spacing: -.025em; }
 
+/* ---------- "Part of MedCUA" bar ---------- */
 .medcua-parent {
-  background: var(--deep);
-  border-bottom: 1px solid var(--nav-line);
-  color: var(--nav-muted);
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-3);
   font-size: .8rem;
 }
-.medcua-parent a { display: inline-block; padding: .3rem 0; text-underline-offset: .2em; }
-.medcua-parent a:hover { text-decoration: underline; }
-.glass-nav { background: var(--deep); border-color: var(--nav-line); backdrop-filter: none; }
-.glass-nav > .shell { min-height: 72px; }
+.medcua-parent a { display: inline-flex; align-items: center; gap: .35rem; padding: .4rem 0; color: var(--muted); text-decoration: none; }
+.medcua-parent a strong { color: var(--ink); font-weight: 600; }
+.medcua-parent a:hover, .medcua-parent a:hover strong { color: var(--accent); }
+
+/* ---------- Header ---------- */
+.glass-nav {
+  background: rgba(255, 255, 255, .86);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid rgba(15, 23, 42, .07);
+}
+.glass-nav > .shell { min-height: 68px; }
 .glass-nav a[aria-label="MedOpenClaw home"] { white-space: nowrap; }
-.glass-nav a[aria-label="MedOpenClaw home"] .text-sm {
-  color: var(--panel);
-  font-size: 1.06rem;
-  letter-spacing: -.035em;
+.glass-nav a[aria-label="MedOpenClaw home"] .text-sm { color: var(--ink); font-size: 1.08rem; font-weight: 650; letter-spacing: -.03em; }
+.glass-nav a[aria-label="MedOpenClaw home"] .text-xs { color: var(--ink-3); font-family: var(--font-mono); font-size: .64rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.glass-nav nav a, .glass-nav > .shell > div a { border-radius: 999px; white-space: nowrap; }
+.glass-nav nav a { position: relative; background: transparent; color: var(--muted); font-weight: 500; }
+.glass-nav nav a:hover { background: var(--paper-2); color: var(--ink); }
+.glass-nav nav a[aria-current="page"] { background: transparent; color: var(--ink); font-weight: 600; }
+.glass-nav nav a[aria-current="page"]::after {
+  content: ""; position: absolute; left: .75rem; right: .75rem; bottom: .15rem; height: 2px; border-radius: 2px; background: var(--accent);
 }
-.glass-nav a[aria-label="MedOpenClaw home"] .text-xs { color: var(--nav-muted); }
-.glass-nav nav a, .glass-nav > .shell > div a {
-  border-radius: .45rem;
-  white-space: nowrap;
-}
-.glass-nav nav a { color: var(--nav-muted); font-weight: 620; }
-.glass-nav nav a:hover, .glass-nav nav a[aria-current="page"] {
-  background: var(--nav-active);
-  color: var(--panel);
-}
-.glass-nav > .shell > div a:not(.medcua-mobile-link) {
-  background: transparent;
-  border: 1px solid var(--nav-line);
-  color: var(--panel);
-}
-.glass-nav > .shell > div a:not(.medcua-mobile-link):hover {
-  background: var(--nav-active);
-  border-color: var(--nav-muted);
-}
+.glass-nav > .shell > div a:not(.medcua-mobile-link) { background: var(--paper); border: 1px solid var(--control-line); color: var(--ink); }
+.glass-nav > .shell > div a:not(.medcua-mobile-link):hover { background: var(--paper-2); border-color: var(--accent-400); color: var(--ink); }
+.glass-nav > .shell > div a.bg-ink { background: var(--deep); border-color: var(--deep); color: #fff; }
+.glass-nav > .shell > div a.bg-ink:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .glass-nav nav a[href="/MedCUA/contribute/"], .glass-nav .medcua-mobile-link {
-  border-color: transparent;
-  background: var(--panel);
-  color: var(--deep);
+  margin-left: .35rem; border: 1px solid var(--deep); background: var(--deep); color: #fff; font-weight: 600;
 }
 .glass-nav nav a[href="/MedCUA/contribute/"]:hover,
-.glass-nav .medcua-mobile-link:hover { background: var(--tint); color: var(--deep); }
+.glass-nav .medcua-mobile-link:hover { border-color: var(--accent); background: var(--accent); color: #fff; }
 
-.project-hero { padding-block: clamp(3.4rem, 7vw, 6.3rem); }
-.project-hero-grid {
-  display: grid;
-  align-items: center;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
+/* ---------- Hero ---------- */
+/* The hero is a contained .shell, so the soft sky backdrop sits on <main> and spans the full width */
+main {
+  background:
+    radial-gradient(900px 520px at 90% 0%, rgba(94, 234, 212, .20), transparent 62%),
+    radial-gradient(760px 480px at 4% -6%, rgba(186, 230, 253, .42), transparent 62%),
+    linear-gradient(180deg, #f8fcfc 0%, #fdfefe 620px, #ffffff 900px);
+  background-repeat: no-repeat;
 }
-.project-kicker {
+.project-hero { position: relative; padding-block: clamp(3.2rem, 6.5vw, 6rem); }
+.project-hero-grid { display: grid; align-items: center; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); }
+.project-kicker, .eyebrow {
   display: block;
-  margin-bottom: .75rem;
+  padding: 0; border: 0; border-radius: 0; background: transparent;
   color: var(--accent);
-  font-size: .84rem;
-  font-weight: 670;
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500; letter-spacing: .14em; line-height: 1.4; text-transform: uppercase;
 }
-.runtime-title, .project-deck, .project-page-title, main h2 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -.045em;
-  line-height: 1.08;
-}
-.runtime-title { font-size: clamp(3rem, 6.1vw, 6.25rem); line-height: .99; }
+.project-kicker { margin-bottom: 1rem; }
+.runtime-title, .project-page-title, main h2 { font-family: var(--font-sans); color: var(--ink); text-wrap: balance; }
+.runtime-title { font-size: clamp(3rem, 6vw, 5.6rem); font-weight: 600; line-height: .98; letter-spacing: -.045em; }
 .project-deck {
-  max-width: 26ch;
-  margin: .8rem 0 1.05rem;
-  font-size: clamp(1.65rem, 2.9vw, 2.7rem);
-  text-wrap: balance;
+  max-width: 24ch; margin: 1rem 0 1.1rem;
+  color: var(--ink); font-family: var(--font-sans); font-size: clamp(1.45rem, 2.5vw, 2.15rem); font-weight: 500; line-height: 1.15; letter-spacing: -.03em; text-wrap: balance;
 }
-.project-page-title {
-  max-width: 22ch;
-  font-size: clamp(2.65rem, 4.6vw, 4.7rem);
-  text-wrap: balance;
-}
-.project-page-title + .project-lede { margin-top: 1rem; }
-.project-lede { max-width: 53ch; color: var(--muted); font-size: 1.05rem; line-height: 1.72; }
+.project-page-title { max-width: 22ch; font-size: clamp(2.5rem, 4.6vw, 4.2rem); font-weight: 600; line-height: 1.02; letter-spacing: -.045em; }
+.project-page-title + .project-lede { margin-top: 1.1rem; }
+main h2 { font-weight: 600; line-height: 1.08; letter-spacing: -.035em; }
+.project-lede { max-width: 54ch; color: var(--muted); font-size: 1.06rem; line-height: 1.68; }
 .project-actions, .project-hero-links { display: flex; flex-wrap: wrap; gap: .7rem; }
-.project-actions { margin-top: 1.55rem; }
+.project-actions { margin-top: 1.6rem; }
 .project-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .55rem;
-  min-height: 48px;
-  padding: .65rem 1.08rem;
-  border: 1px solid var(--control-line);
-  border-radius: .48rem;
-  color: var(--ink);
-  font-size: .93rem;
-  font-weight: 650;
-  line-height: 1.3;
-  transition: background-color .18s, border-color .18s;
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  min-height: 46px; padding: .65rem 1.2rem;
+  border: 1px solid var(--control-line); border-radius: 999px; background: rgba(255, 255, 255, .75);
+  color: var(--ink); font-size: .93rem; font-weight: 560; line-height: 1.2; text-decoration: none;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
 }
-.project-button:hover { border-color: var(--accent); background: var(--tint); }
-.project-button-primary { border-color: transparent; background: var(--deep); color: var(--panel); }
-.project-button-primary:hover { background: var(--accent); }
-.project-hero-links { margin-top: 1.12rem; gap: .65rem 1.15rem; }
-.project-hero-links a { color: var(--accent); font-size: .9rem; font-weight: 650; text-underline-offset: .2em; }
-.project-hero-links a:hover { text-decoration: underline; }
+.project-button:hover { border-color: var(--accent-400); background: #fff; transform: translateY(-1px); }
+.project-button-primary { border-color: var(--deep); background: var(--deep); color: #fff; box-shadow: 0 8px 20px -12px rgba(15, 23, 42, .5); }
+.project-button-primary:hover { border-color: var(--accent); background: var(--accent); color: #fff; }
+.project-hero-links { margin-top: 1.1rem; gap: .65rem 1.2rem; }
+.project-hero-links a { color: var(--accent); font-size: .92rem; font-weight: 560; text-decoration: none; }
+.project-hero-links a:hover { text-decoration: underline; text-underline-offset: .22em; }
 .project-hero-figure { min-width: 0; }
-.project-hero-figure a { display: block; border-radius: 1.05rem; }
+.project-hero-figure a { display: block; border-radius: 18px; }
 .project-hero-figure img {
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--line);
-  border-radius: 1.05rem;
-  background: var(--panel);
-  box-shadow: var(--figure-shadow);
+  width: 100%; height: auto;
+  border: 1px solid rgba(15, 23, 42, .1); border-radius: 18px; background: #000;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, .7), var(--figure-shadow);
 }
-.project-hero-figure figcaption { margin-top: .7rem; color: var(--muted); font-size: .81rem; }
+.project-hero-figure figcaption { margin-top: 1rem; color: var(--ink-3); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; }
 .project-hero a[href^="mailto:"] { overflow-wrap: anywhere; }
-.project-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; margin-top: 1.4rem; }
-.project-metrics > div { min-width: 0; padding: .68rem .8rem; }
-.project-metrics .text-3xl { font-variant-numeric: tabular-nums; }
+.project-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; margin-top: 1.4rem; }
+.project-metrics > div { min-width: 0; padding: .75rem .85rem; }
+.project-metrics .text-3xl, .metric-card .text-3xl { font-variant-numeric: tabular-nums; }
 
-.eyebrow {
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--accent);
-  font-size: .84rem;
-  line-height: 1.35;
-}
-.bg-ink .eyebrow { color: var(--tint); }
+/* ---------- Sections and cards ---------- */
+.bg-ink .eyebrow { color: var(--tint-line); }
 main > section:not(.project-hero) { border-top: 1px solid var(--line); }
-.section-pad { padding-block: clamp(3.15rem, 6.1vw, 5.55rem); }
-.section-pad-tight { padding-block: clamp(2.45rem, 5vw, 4rem); }
+.section-pad { padding-block: clamp(3.5rem, 7vw, 6rem); }
+.section-pad-tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
 main h3 { letter-spacing: -.02em; }
-main a.rounded-full, main button.rounded-full { border-radius: .48rem; }
-.metric-card, .wide-figure { background: var(--panel); border-color: var(--line); box-shadow: none; }
-.metric-card, .wide-figure, main article.rounded-lg { border-radius: .85rem; }
+main a.rounded-full, main button.rounded-full { border-radius: 999px; }
+.metric-card, .wide-figure { background: var(--panel); border-color: var(--line); box-shadow: var(--shadow-sm); }
+.metric-card, .wide-figure, main article.rounded-lg, main .rounded-lg.border { border-radius: 16px; }
+main a.rounded-lg.border:hover, main article.rounded-lg.border:hover { box-shadow: var(--shadow); }
 .demo-card-media { background: var(--tint); }
-.demo-card-media video { background: var(--deep); }
-.leaderboard-table th { background: var(--tint); color: var(--ink); border-color: var(--line); }
+.demo-card-media video { background: #000; }
+.leaderboard-table th { background: var(--paper-2); color: var(--ink); border-color: var(--line); font-weight: 600; }
 .leaderboard-table td { color: var(--muted); border-color: var(--line); }
 .leaderboard-table tr:hover td { background: var(--tint); }
 .score-pill { background: var(--tint); color: var(--accent); }
-footer.bg-white { background: var(--paper); }
+main pre { font-family: var(--font-mono); }
+footer.bg-white { background: var(--paper-2); }
 
 .task-collection-moved { max-width: 38rem; margin: 3rem auto; padding: 0 1.25rem; }
-.task-collection-moved h1 { margin: 0; font: 500 clamp(2.1rem, 7vw, 3.25rem)/1.1 var(--font-display); }
+.task-collection-moved h1 { margin: 0; font: 600 clamp(2rem, 6vw, 3rem)/1.1 var(--font-sans); letter-spacing: -.04em; }
 .task-collection-moved a { color: var(--accent); text-underline-offset: .2em; }
 
+/* ---------- Responsive ---------- */
 @media (max-width: 1199px) {
   .glass-nav > .shell { flex-wrap: wrap; gap: .45rem; padding-block: .7rem; }
   .glass-nav nav { order: 3; flex-basis: 100%; justify-content: center; flex-wrap: wrap; }
@@ -201,33 +197,35 @@ footer.bg-white { background: var(--paper); }
 }
 @media (max-width: 880px) {
   .project-hero-grid { grid-template-columns: 1fr; }
-  .project-hero-figure { max-width: 568px; }
-  .runtime-title { font-size: clamp(2.7rem, 9.1vw, 5.1rem); }
+  .project-hero-figure { max-width: 600px; }
 }
 @media (max-width: 767px) {
   .shell { width: calc(100% - 40px); }
   .glass-nav { position: relative; }
-  .glass-nav nav { display: flex; justify-content: flex-start; gap: .08rem .3rem; }
+  .glass-nav nav { display: flex; justify-content: flex-start; gap: .1rem .3rem; }
   .glass-nav nav a[href="/MedCUA/contribute/"] { display: none; }
-  .glass-nav nav a { font-size: .83rem; padding: .35rem .46rem; }
-  .project-hero { padding-top: 2.65rem; }
+  .glass-nav nav a { font-size: .85rem; padding: .35rem .55rem; }
+  .glass-nav nav a[aria-current="page"]::after { left: .55rem; right: .55rem; bottom: .05rem; }
+  .project-hero { padding-top: 2.6rem; }
 }
 @media (max-width: 480px) {
   .shell { width: calc(100% - 32px); }
   .glass-nav > .shell > div { gap: .35rem; }
   .glass-nav a[aria-label="MedOpenClaw home"] { gap: .4rem; }
-  .glass-nav a[aria-label="MedOpenClaw home"] .text-sm { font-size: .93rem; }
+  .glass-nav a[aria-label="MedOpenClaw home"] .text-sm { font-size: .98rem; }
   .glass-nav a[aria-label="MedOpenClaw home"] .h-10 { width: 2rem; height: 2rem; }
-  .glass-nav > .shell > div a { padding: .4rem .55rem; font-size: .8rem; }
+  .glass-nav > .shell > div a { padding: .4rem .6rem; font-size: .8rem; }
   .glass-nav > .shell > div a svg { display: none; }
+  .glass-nav .medcua-mobile-link { margin-left: 0; }
   .project-actions { gap: .5rem; }
-  .project-actions .project-button { padding-inline: .82rem; }
-  .project-hero-figure img { border-radius: .8rem; }
-  .runtime-title { font-size: clamp(2.65rem, 11.8vw, 3.75rem); }
+  .project-actions .project-button { padding-inline: .9rem; }
+  .project-hero-figure img { border-radius: 14px; }
+  .runtime-title { font-size: clamp(2.6rem, 12vw, 3.6rem); }
   .project-metrics .text-3xl { font-size: 1.45rem; }
   .project-metrics .text-sm { font-size: .78rem; line-height: 1.35; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .project-button { transition: none; }
+  .project-button:hover { transform: none; }
 }
