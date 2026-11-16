@@ -1,0 +1,306 @@
+/* MedCUA research family — presentation pages only. Questionnaire assets are independent. */
+:root {
+  --paper: #fff;
+  --paper-2: #f4f7fa;
+  --panel: #fff;
+  --ink: #003359;
+  --muted: #3f566b;
+  --ink-3: #52687b;
+  --accent: #0065bd;
+  --accent-600: #005293;
+  --accent-400: #0065bd;
+  --deep: #003359;
+  --tint: #edf4fa;
+  --tint-line: #d8e7f4;
+  --line: #d8e1e8;
+  --control-line: #bdcbd6;
+  --page-width: 1200px;
+  --shadow-sm: none;
+  --shadow: none;
+  --figure-shadow: none;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+html { scroll-padding-top: 7rem; scrollbar-color: #8ca4b8 #f4f7fa; }
+body { font-size: 16px; line-height: 1.65; color: var(--ink); }
+::selection { color: var(--ink); background: var(--tint-line); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+input, textarea { caret-color: var(--accent); }
+.shell { width: min(var(--page-width), calc(100% - 96px)); }
+main { background: var(--paper); }
+a { text-underline-offset: .22em; }
+main h1, main h2, main h3 { text-wrap: balance; }
+main h1, main h2 { letter-spacing: -.035em; }
+main h2 { font-size: clamp(2rem, 3.25vw, 3rem); font-weight: 500; line-height: 1.15; }
+main h3 { font-weight: 550; line-height: 1.3; letter-spacing: -.02em; }
+main p { text-wrap: pretty; }
+.font-black, .font-extrabold, .font-bold { font-weight: 550; }
+.text-ink-soft { color: var(--muted); }
+.text-teal-deep, .hover\:text-teal-deep:hover { color: var(--accent-600); }
+.bg-teal-soft { background-color: var(--tint); }
+.shadow-soft, .shadow-sm { box-shadow: none; }
+.sr-only, .project-hero-figure figcaption {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.editorial-skip {
+  position: fixed; top: 12px; left: 24px; z-index: 100;
+  padding: 12px 20px; color: white; background: var(--ink);
+  border-radius: 6px; transform: translateY(-150%);
+}
+.editorial-skip:focus { transform: translateY(0); }
+
+/* A quiet family link and a single, opaque navigation surface. */
+.medcua-parent { background: var(--ink); border: 0; color: #d5e4f0; font-size: 13px; }
+.medcua-parent a { min-height: 34px; padding: 4px 0; color: #d5e4f0; }
+.medcua-parent a strong, .medcua-parent a:hover, .medcua-parent a:hover strong { color: white; }
+.glass-nav {
+  background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none;
+  border-bottom: 1px solid var(--line); box-shadow: none;
+}
+.glass-nav > .shell { min-height: 80px; gap: 20px; }
+.glass-nav a[aria-label="MedOpenClaw home"] { gap: 10px; border-radius: 0; }
+.glass-nav a[aria-label="MedOpenClaw home"] > span:first-child {
+  width: 38px; height: 38px; padding: 0; border: 0; border-radius: 0;
+  background: transparent; box-shadow: none;
+}
+.glass-nav a[aria-label="MedOpenClaw home"] .text-sm { font-size: 19px; font-weight: 600; letter-spacing: -.03em; }
+.glass-nav a[aria-label="MedOpenClaw home"] .text-xs { display: none; }
+.glass-nav nav { gap: 0; }
+.glass-nav nav a { padding: 10px 9px; color: var(--muted); font-size: 13px; font-weight: 500; border-radius: 0; }
+.glass-nav nav a:hover { color: var(--ink); background: transparent; }
+.glass-nav nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+.glass-nav nav a[aria-current="page"]::after { left: 9px; right: 9px; bottom: 3px; background: var(--accent); }
+.glass-nav nav a[href="/MedCUA/contribute/"] {
+  margin-left: 3px; background: transparent; border: 0; color: var(--accent-600); font-weight: 550;
+}
+.glass-nav nav a[href="/MedCUA/contribute/"]:hover { color: var(--ink); background: transparent; }
+.glass-nav > .shell > div a:not(.medcua-mobile-link) {
+  min-height: 40px; border-radius: 6px; padding: 8px 12px; font-size: 13px; font-weight: 500;
+}
+.glass-nav > .shell > div a.bg-ink { color: var(--ink); background: var(--paper); border-color: var(--control-line); }
+.glass-nav > .shell > div a.bg-ink:hover { color: var(--accent-600); background: var(--paper-2); border-color: var(--accent-600); }
+
+/* The page opens with the actual research and its own visual material. */
+.project-hero { padding-block: 80px 88px; }
+.project-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.runtime-title { font-size: clamp(3.25rem, 6.5vw, 5.375rem); font-weight: 500; line-height: 1.05; letter-spacing: -.035em; }
+.project-page-title { max-width: 24ch; font-size: clamp(2.75rem, 4.5vw, 4.25rem); font-weight: 500; line-height: 1.08; letter-spacing: -.035em; }
+.project-deck { max-width: 27ch; margin: 0 0 24px; font-size: clamp(1.6rem, 2.65vw, 2.25rem); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
+.project-lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.75; color: var(--muted); }
+.project-actions { margin-top: 28px; gap: 12px; }
+.project-button {
+  min-height: 48px; padding: 12px 20px; border-radius: 6px; border-color: var(--control-line);
+  background: white; font-size: 15px; font-weight: 500; box-shadow: none;
+  transition: transform 150ms var(--ease), background-color 150ms var(--ease), border-color 150ms var(--ease);
+}
+.project-button:hover { background: var(--paper-2); border-color: var(--accent-600); transform: translateY(-1px); }
+.project-button:active { transform: translateY(1px); }
+.project-button-primary { color: white; border-color: var(--accent); background: var(--accent); box-shadow: none; }
+.project-button-primary:hover { color: white; border-color: var(--accent-600); background: var(--accent-600); }
+.project-hero-links { gap: 20px; margin-top: 24px; }
+.project-hero-links a { color: var(--accent-600); font-size: 14px; font-weight: 500; }
+.project-hero-figure { margin: 0; }
+.project-hero-figure a { overflow: hidden; border-radius: 12px; }
+.project-hero-figure img {
+  display: block; width: 100%; height: auto; border: 0; border-radius: 12px;
+  box-shadow: none; background: var(--paper-2);
+}
+.project-hero-figure a img { transition: transform 600ms var(--ease); }
+.project-hero-figure a:hover img { transform: scale(1.02); }
+.editorial-home-hero { display: block; padding-top: 64px; }
+.editorial-home-hero .runtime-title { margin: 0 0 40px; }
+.editorial-hero-content { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.editorial-home-hero .project-lede { margin-top: 0; max-width: 47ch; }
+.editorial-home-hero .project-hero-figure { padding-top: 4px; }
+.editorial-home-hero .project-hero-figure img { aspect-ratio: 16 / 10; object-fit: cover; }
+.editorial-home-hero .project-actions .project-button:not(.project-button-primary) { border-color: transparent; padding-inline: 8px; }
+.editorial-home-hero .project-hero-links { padding-top: 20px; border-top: 1px solid var(--line); }
+.editorial-home-hero .project-hero-links a:first-child { margin-right: auto; }
+.editorial-facts { padding-block: 24px; border-block: 1px solid var(--line); background: var(--paper-2); }
+.editorial-facts .shell { gap: 24px; }
+.editorial-facts .shell > div { min-height: 52px; padding: 0; justify-content: flex-start; gap: 12px; border: 0; border-radius: 0; background: transparent; }
+.editorial-facts .text-3xl { font-size: 26px; font-weight: 500; }
+.editorial-facts .text-sm { max-width: none; font-size: 14px; font-weight: 400; text-align: left; }
+.project-metrics { gap: 24px; margin-top: 36px; }
+.project-metrics > div { padding: 0 0 12px; background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.project-metrics .text-3xl { font-size: 28px; font-weight: 500; }
+.project-metrics .text-sm { font-size: 14px; font-weight: 400; }
+
+/* Readable sections: open columns, full-size figures and deliberate pauses. */
+main > section:not(.project-hero) { border-top: 0; }
+.section-pad { padding-block: 96px; }
+.section-pad-tight { padding-block: 72px; }
+main .max-w-3xl { max-width: 850px; }
+main h2.mt-5, main h2.mt-6, main h2.mt-3 { margin-top: 0; }
+.editorial-section-lede { max-width: 72ch; margin-top: 24px; color: var(--muted); font-size: 18px; line-height: 1.65; }
+main .text-lg.leading-8 { font-size: 17px; line-height: 1.75; }
+main .metric-card { border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+main .metric-card.p-6 { padding: 24px 0 0; border-top: 1px solid var(--control-line); }
+main .metric-card > .grid.h-12 { width: 32px; height: 32px; border-radius: 0; background: transparent; color: var(--accent-600); }
+main .metric-card h3 { font-size: 23px; }
+main .metric-card p, main .metric-card li { font-size: 16px; line-height: 1.75; }
+main .metric-card > h3.mt-6 { margin-top: 20px; }
+main .metric-card .h-11 { width: 32px; height: 32px; border-radius: 0; background: transparent; color: var(--accent-600); }
+main .metric-card:hover { box-shadow: none; }
+main .grid.gap-5 { gap: 32px; }
+.wide-figure { overflow: hidden; border: 0; border-radius: 12px; box-shadow: none; background: white; }
+.wide-figure .image-zoom-trigger { width: 100%; }
+.wide-figure img { width: 100%; max-height: none; }
+.image-zoom-trigger:focus-visible { outline-offset: -5px; }
+#project-film { background: var(--ink); }
+#project-film h2 { color: white; }
+#project-film video { margin-top: 32px !important; border-radius: 12px !important; }
+.editorial-page-home #overview .metric-card:first-child { border-top-color: #a8bac8; }
+.editorial-page-home #overview .metric-card:last-child { border-top-color: var(--accent-600); }
+.editorial-page-home #runtime .grid.gap-5 { gap: 48px; }
+.editorial-page-home #citation pre { margin-top: 24px; padding: 24px; background: var(--paper-2); border: 0; border-radius: 8px; font-size: 13px; line-height: 1.8; }
+.editorial-page-home section[aria-labelledby="contribute-title"] { padding-block: 56px; background: var(--ink); color: white; }
+.editorial-page-home section[aria-labelledby="contribute-title"] h2 { color: white; font-size: 32px; }
+.editorial-page-home section[aria-labelledby="contribute-title"] p { color: #d5e4f0; }
+.editorial-page-home section[aria-labelledby="contribute-title"] a { color: white; }
+
+/* Figures remain evidence, not decorative thumbnails. */
+.editorial-page-demos .project-hero-figure { background: var(--paper-2); border-radius: 12px; padding: 20px; }
+.editorial-page-demos main > section:nth-of-type(2) .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 32px; }
+.editorial-page-demos .metric-card { overflow: visible; }
+.demo-card-media { min-height: 0; aspect-ratio: 16 / 10; border-radius: 12px; background: var(--paper-2); overflow: hidden; }
+.demo-card-media .image-zoom-trigger { display: grid; place-items: center; width: 100%; height: 100%; padding: 20px; }
+.demo-card-media img { width: 100%; height: 100%; object-fit: contain; transition: transform 600ms var(--ease); }
+.demo-card-media .image-zoom-trigger:hover img { transform: scale(1.02); }
+.demo-card-media > span { left: 12px; top: 12px; padding: 5px 9px; border-radius: 4px; color: var(--ink); font-size: 12px; font-weight: 500; box-shadow: none; }
+.editorial-page-demos .metric-card > .p-5 { padding: 24px 0 0; }
+.editorial-page-demos .metric-card .rounded-full { border-radius: 4px; font-size: 13px; font-weight: 400; }
+.editorial-page-demos .metric-card h3 { font-size: 24px; }
+.editorial-page-demos .project-page-title { font-size: clamp(2.5rem, 4.3vw, 4rem); }
+.editorial-page-medflowbench .project-page-title { font-size: clamp(2.5rem, 4vw, 3.75rem); }
+.editorial-page-medflowbench .project-hero-figure { margin-top: 8px; }
+#failure-cases .metric-card { gap: 32px; padding-block: 32px; border-top: 1px solid var(--line); }
+#failure-cases .metric-card > figure { border-radius: 12px; overflow: hidden; }
+#failure-cases .metric-card > div { padding: 12px 0; }
+#failure-cases .metric-card img { padding: 16px; min-height: 0; }
+section#release { background: var(--ink); color: white; }
+section#release h2, section#release h3 { color: white; }
+section#release p { color: #d5e4f0; }
+section#release article { padding: 24px 0 0; border: 0; border-top: 1px solid #40637f; border-radius: 0; background: transparent; box-shadow: none; }
+section#release article > .grid { background: transparent; color: #d5e4f0; }
+
+/* Tables and the existing track switch keep their native interaction. */
+.table-scroll { border-radius: 8px; border-color: var(--line); scrollbar-color: #8ca4b8 #f4f7fa; }
+.leaderboard-table { font-size: 14px; }
+.leaderboard-table th { padding: 18px 20px; color: var(--ink); background: var(--paper-2); font-size: 13px; font-weight: 550; text-transform: none; letter-spacing: 0; }
+.leaderboard-table td { padding: 18px 20px; color: var(--muted); border-color: var(--line); }
+.leaderboard-table .score-pill { padding: 0; color: var(--ink); background: transparent; font-weight: 550; font-variant-numeric: tabular-nums; }
+.leaderboard-table tr:hover td { background: #f4f7fa; }
+.editorial-page-leaderboard .project-hero { padding-bottom: 56px; }
+.editorial-page-leaderboard .project-page-title { max-width: 20ch; font-size: clamp(2.75rem, 5.2vw, 4.75rem); }
+.editorial-page-leaderboard main > section:nth-of-type(2) { background: var(--paper-2); padding-block: 32px; }
+.editorial-page-leaderboard main > section:nth-of-type(2) .rounded-lg { border: 0; border-radius: 0; padding: 0; background: transparent; }
+[data-leaderboard] .track-tab, [data-subtabs] button { min-height: 44px; border-radius: 6px; padding: 10px 20px; font-weight: 500; }
+[data-leaderboard] .track-tab.bg-ink { background: var(--ink); }
+[data-subtabs] button.bg-teal-deep { background: var(--accent); }
+
+/* The paper's complete author list stays distinct from the umbrella team. */
+.editorial-page-about .project-hero { align-items: end; }
+.editorial-page-about .project-hero > div:last-child { padding: 24px 0; border: 0; border-block: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; }
+.editorial-page-about .project-hero > div:last-child .h-10 { background: transparent; color: var(--accent-600); }
+.editorial-page-about #funders .grid.gap-4 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.editorial-page-about #funders .grid.gap-4 > a { padding: 16px 0; border: 0; border-radius: 0; box-shadow: none; }
+.editorial-page-about #funders .h-24 { height: 96px; padding-inline: 12px; }
+.editorial-page-about #funders .h-24 .text-3xl { font-size: 22px; line-height: 1.2; text-align: center; }
+.editorial-page-about #funders img { max-height: 52px; }
+.editorial-page-about #funders a > div:last-child > span { display: none; }
+.editorial-page-about #funders .text-xs { font-size: 13px; font-weight: 400; }
+.editorial-page-about #team .grid.gap-6 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px 24px; }
+.editorial-page-about #team .grid.gap-6 > a { overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.editorial-page-about #team a > span.absolute { display: none; }
+.editorial-page-about #team .aspect-square { aspect-ratio: 1; overflow: hidden; border-radius: 12px; background: #e7edf3; }
+.editorial-page-about #team .aspect-square > div { padding: 0; }
+.editorial-page-about #team .aspect-square img {
+  width: 100%; height: 100%; max-width: none; border: 0; border-radius: 0;
+  object-fit: cover; box-shadow: none; outline: 0; transition: transform 600ms var(--ease);
+}
+.editorial-page-about #team a:hover img { transform: scale(1.02); }
+.editorial-page-about #team a > .p-6 { padding: 16px 0 0; }
+.editorial-page-about #team .text-2xl { font-size: 21px; font-weight: 550; letter-spacing: -.025em; }
+.editorial-page-about #team .uppercase { text-transform: none; font-size: 13px; letter-spacing: 0; font-weight: 500; }
+.editorial-page-about #team .text-sm.leading-6 { min-height: 0; margin-top: 8px; font-size: 13px; line-height: 1.6; font-weight: 400; }
+.editorial-page-about #team .aspect-square .rounded-full:not(img) { border-radius: 0; background: transparent; box-shadow: none; }
+.editorial-page-contact .project-hero > div:last-child { padding: 32px 0; border: 0; border-block: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; }
+.editorial-page-contact .project-page-title { font-size: clamp(3rem, 5.5vw, 5rem); }
+
+footer.bg-white { padding-block: 48px; background: var(--paper-2); border-color: var(--line); }
+footer .text-sm { font-size: 14px; }
+footer a { transition: color 150ms var(--ease); }
+footer a:hover { color: var(--accent); text-decoration: underline; }
+
+/* One brief entrance; every word is visible without script or motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .project-hero h1 { animation: editorial-settle 650ms var(--ease) both; }
+  .project-hero .project-hero-figure { animation: editorial-settle 850ms var(--ease) both; }
+}
+@keyframes editorial-settle { from { opacity: .65; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (min-width: 1100px) {
+  .glass-nav > .shell { flex-wrap: nowrap; padding-block: 0; }
+  .glass-nav nav { order: 0; flex-basis: auto; flex-wrap: nowrap; }
+}
+@media (max-width: 1099px) {
+  .glass-nav > .shell { flex-wrap: wrap; gap: 8px 20px; padding-block: 16px 12px; }
+  .glass-nav nav { order: 3; flex-basis: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  .project-hero-grid, .editorial-hero-content { gap: 32px; }
+  .editorial-home-hero .project-deck { font-size: 28px; }
+  .editorial-page-about #team .grid.gap-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .editorial-page-about #funders .grid.gap-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .shell { width: calc(100% - 48px); }
+  .glass-nav { position: relative; }
+  .project-hero { padding-block: 48px 56px; }
+  .project-hero-grid, .editorial-hero-content { grid-template-columns: 1fr; gap: 32px; }
+  .editorial-home-hero .runtime-title { margin-bottom: 28px; font-size: clamp(3rem, 8.5vw, 4.6rem); }
+  .project-deck, .editorial-home-hero .project-deck { max-width: 33ch; font-size: 30px; }
+  .project-hero-figure { max-width: none; }
+  .editorial-home-hero .project-hero-figure img { aspect-ratio: 16 / 9; }
+  .editorial-home-hero .project-lede { max-width: 62ch; }
+  .editorial-home-hero .project-hero-links { max-width: 420px; }
+  .project-page-title, .editorial-page-demos .project-page-title, .editorial-page-medflowbench .project-page-title { max-width: 25ch; font-size: clamp(2.6rem, 6vw, 3.5rem); }
+  .section-pad { padding-block: 64px; }
+  .section-pad-tight { padding-block: 56px; }
+  .editorial-facts .shell { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
+  .editorial-page-demos main > section:nth-of-type(2) .grid { grid-template-columns: 1fr; gap: 40px; }
+  .editorial-page-about #team .grid.gap-6 { gap: 32px 20px; }
+}
+@media (max-width: 520px) {
+  .shell { width: calc(100% - 40px); }
+  .glass-nav > .shell > div { gap: 8px; }
+  .glass-nav a[aria-label="MedOpenClaw home"] .text-sm { font-size: 18px; }
+  .glass-nav a[aria-label="MedOpenClaw home"] > span:first-child { width: 28px; height: 28px; }
+  .glass-nav nav a { min-height: 40px; padding: 8px; font-size: 13px; }
+  .glass-nav nav a:first-child { padding-left: 0; }
+  .glass-nav nav a[aria-current="page"]::after { left: 8px; right: 8px; }
+  .glass-nav nav a:first-child[aria-current="page"]::after { left: 0; }
+  .glass-nav .medcua-mobile-link { min-height: 40px; border-radius: 6px; padding: 8px 10px; font-size: 13px; background: var(--accent); border-color: var(--accent); }
+  .glass-nav > .shell > div a[href="https://github.com/jakobshen/MedOpenClaw"] { display: none; }
+  .editorial-home-hero .runtime-title { font-size: clamp(2.75rem, 10.5vw, 3.5rem); }
+  .project-deck, .editorial-home-hero .project-deck { font-size: 26px; }
+  .project-lede { font-size: 16px; }
+  .project-actions { gap: 8px; }
+  .project-button { min-height: 46px; padding-inline: 16px; }
+  .project-hero-links { gap: 16px; }
+  .editorial-facts .shell { gap: 12px 20px; }
+  .editorial-facts .shell > div { gap: 8px; }
+  .editorial-facts .text-3xl { font-size: 23px; }
+  .editorial-facts .text-sm { font-size: 13px; }
+  .project-metrics { gap: 16px; }
+  .project-metrics .text-3xl { font-size: 25px; }
+  .project-metrics .text-sm { font-size: 13px; }
+  .editorial-page-about #team .grid.gap-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
+  .editorial-page-about #funders .grid.gap-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .editorial-page-about #team .text-2xl { font-size: 18px; }
+  .editorial-page-about #team .text-sm.leading-6 { font-size: 13px; }
+  .leaderboard-table th, .leaderboard-table td { padding: 14px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+  .project-button:hover, .project-button:active, .project-hero-figure a:hover img, .demo-card-media .image-zoom-trigger:hover img, .editorial-page-about #team a:hover img { transform: none; }
+}
