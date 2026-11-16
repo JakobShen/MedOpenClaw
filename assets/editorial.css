@@ -486,3 +486,6 @@ footer a { display: inline-flex; min-height: 44px; align-items: center; }
 @media (prefers-reduced-motion: reduce) {
   .publication-link:hover svg { transform: none; }
 }
+
+/* Keep the mobile contribution action in the same restrained control family. */
+.glass-nav > .shell > div .medcua-mobile-link { border-radius: 4px; background: #003359; border-color: #003359; }
