@@ -1,10 +1,12 @@
 # MedOpenClaw presentation design
 
-MedOpenClaw is the imaging runtime project within MedCUA. The presentation pages use the same research identity as the umbrella site, with real study figures, viewer screenshots, and the existing project video.
+MedOpenClaw is the imaging runtime project within MedCUA. The user chose a refined research identity with deep-blue emphasis, restrained typography, and real imagery. Its light publication cover is deliberately distinct from MedCUA's broader navy introduction.
 
-- **Palette:** TUM deep blue `#003359` for headings and major surfaces, `#005293` for secondary blue, `#0065BD` for actions, white for the page, and `#F4F7FA` for quiet sections. Text uses `#3F566B`; borders use `#D8E1E8`.
-- **Type:** self-hosted Geist. Display headings are 44–86px with line height 1.05–1.15 and tracking no tighter than −0.035em. Reading text is 16–18px. Geist Mono is reserved for code and citation text.
-- **Layout:** a 1200px content shell with equal gutters. Open columns and broad figures carry the research; 64–96px section spacing separates ideas. Media frames have 12px corners, controls 6px. Tables retain their scroll container on small screens.
-- **Motion:** one short hero entrance and restrained hover feedback. All content is visible without JavaScript, and reduced-motion preferences disable animation.
-- **Scope:** `assets/editorial.css` is loaded only by the six public presentation pages. The original stylesheet, questionnaire code, questionnaire styles, and task-collection redirect remain unchanged.
-- **Content:** preserve the paper's full author list and claims, all publication and resource URLs, existing video/lightbox behavior, leaderboard data and track controls, and contact form behavior. The MedCUA core team is a separate roster.
+- **Palette:** TUM deep blue `#003359` for headings and primary controls, `#005293` for secondary blue, `#0065BD` for interactive emphasis, white for the page, and `#F2F6F9` for research context. Body text uses `#3F566B`; borders use `#D8E1E8`.
+- **Type:** self-hosted Geist. The homepage uses a descriptive 52px maximum headline; secondary pages cap titles at 53px. Reading text is 15–18px. Geist Mono is reserved for citation and code.
+- **Composition:** a 1200px shell with equal gutters. The cover is a publication introduction above a dominant, uncropped recorded viewer trace. A narrow resource column holds paper, code, benchmark facts, and demonstration links. No logo-size headline, repeating hero CTAs, or metric strip.
+- **Evidence:** use only existing research figures, viewer screenshots, video, and real team portraits. The cover shows `assets/videos/medopenclaw-trace-still.webp`, extracted from 00:34 of the original project video, at its native aspect ratio and opens the existing lightbox. The complete five-step `UCSF_PDGM_demo.png` figure remains in the runtime methods section. Scientific figures are never cropped to fit a decorative frame.
+- **Hierarchy:** the research argument, runtime methods, original video, replayable traces, participation, and full citation follow the cover. Open article columns and ruled method rows replace icon-card grids. Existing scientific copy and claims remain unchanged.
+- **Motion and access:** a short, already-visible cover entrance; restrained link and button feedback; reduced-motion support; visible keyboard focus; mobile layouts stack naturally. The existing video controls and image lightbox remain functional.
+- **Scope:** `assets/editorial.css` is loaded only by the six public presentation pages. The original stylesheet, scripts, contact form, questionnaire code, questionnaire styles, and task-collection redirect remain unchanged.
+- **Content:** preserve the paper's full author list and claims, all publication and resource URLs, leaderboard data and track controls, and contact form behavior. The MedCUA core team is a separate roster.
