@@ -196,6 +196,7 @@ section#release article > .grid { background: transparent; color: #d5e4f0; }
 .editorial-page-leaderboard .project-page-title { max-width: 20ch; font-size: clamp(2.75rem, 5.2vw, 4.75rem); }
 .editorial-page-leaderboard main > section:nth-of-type(2) { background: var(--paper-2); padding-block: 32px; }
 .editorial-page-leaderboard main > section:nth-of-type(2) .rounded-lg { border: 0; border-radius: 0; padding: 0; background: transparent; }
+.editorial-page-leaderboard main > section:nth-of-type(2) h2 { font-size: 1.25rem; letter-spacing: -.015em; line-height: 1.4; }
 [data-leaderboard] .track-tab, [data-subtabs] button { min-height: 44px; border-radius: 6px; padding: 10px 20px; font-weight: 500; }
 [data-leaderboard] .track-tab.bg-ink { background: var(--ink); }
 [data-subtabs] button.bg-teal-deep { background: var(--accent); }
@@ -320,8 +321,8 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 }
 .publication-intro .project-lede { margin: 3px 0 0; max-width: 48ch; font-size: 16px; line-height: 1.75; }
 .publication-evidence {
-  display: grid; grid-template-columns: minmax(0, 1fr) 232px; gap: 48px;
-  align-items: center; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: minmax(0, 1fr) 268px; gap: 32px;
+  align-items: center; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line);
 }
 .publication-figure { min-width: 0; margin: 0; }
 .publication-figure .image-zoom-trigger {
@@ -332,10 +333,10 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 .publication-cover .publication-figure { border-radius: 4px; overflow: hidden; background: #0b1014; }
 .publication-cover .publication-figure img { aspect-ratio: 16 / 9; }
 .no-break { white-space: nowrap; }
-.runtime-workflow { grid-column: 1 / -1; margin-top: 8px; }
-.publication-resources { min-width: 0; padding-block: 8px; }
-.publication-actions { display: grid; gap: 8px; }
-.publication-actions .project-button { justify-content: space-between; padding: 13px 16px; border-radius: 4px; background: var(--ink); border-color: var(--ink); }
+.runtime-workflow { grid-column: 1 / -1; }
+.publication-resources { min-width: 0; padding: 20px; background: var(--paper-2); border-radius: 12px; }
+.publication-actions { display: grid; gap: 4px; }
+.publication-actions .project-button { justify-content: space-between; padding: 11px 14px; border-radius: 4px; background: var(--ink); border-color: var(--ink); }
 .publication-actions .project-button:hover { background: var(--accent-600); border-color: var(--accent-600); }
 .publication-link {
   display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px;
@@ -344,14 +345,14 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 .publication-link svg { flex: 0 0 auto; transition: transform 180ms var(--ease); }
 .publication-link:hover { color: var(--accent); }
 .publication-link:hover svg { transform: translateX(3px); }
-.publication-actions > .publication-link { padding-inline: 16px; }
-.publication-benchmark { margin-top: 27px; padding-top: 12px; border-top: 1px solid var(--line); }
+.publication-actions > .publication-link { padding-inline: 14px; }
+.publication-benchmark { margin-top: 12px; padding-top: 6px; border-top: 1px solid var(--line); }
 .publication-benchmark > a { font-size: 16px; }
-.publication-benchmark dl { margin-top: 12px; }
-.publication-benchmark dl > div { display: flex; justify-content: space-between; gap: 16px; padding-block: 5px; font-size: 13px; line-height: 1.6; }
+.publication-benchmark dl { margin-top: 4px; }
+.publication-benchmark dl > div { display: flex; justify-content: space-between; gap: 12px; padding-block: 4px; font-size: 13px; line-height: 1.6; }
 .publication-benchmark dt { color: var(--muted); }
 .publication-benchmark dd { color: var(--ink); font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; }
-.publication-viewing { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); }
+.publication-viewing { margin-top: 14px; padding-top: 6px; border-top: 1px solid var(--line); }
 .publication-duration { margin-left: 8px; color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
 
 /* The research argument reads as an article, with hierarchy instead of tiles. */
@@ -370,7 +371,7 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 .editorial-page-home #overview .metric-card li { margin-top: 0; padding-left: 17px; position: relative; font-size: 15px; }
 .editorial-page-home #overview .metric-card li::before { content: ''; position: absolute; left: 0; top: .75em; width: 4px; height: 4px; background: #7891a5; border-radius: 50%; }
 .editorial-page-home #runtime { padding-block: 88px; }
-.editorial-page-home #runtime .shell { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 80px; }
+.editorial-page-home #runtime .shell { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 36px 80px; }
 .editorial-page-home #runtime h2 { max-width: 19ch; }
 .editorial-page-home #runtime .text-lg { margin-top: 24px; font-size: 16px; }
 .editorial-page-home #runtime .grid.gap-5 { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 0; }
@@ -393,11 +394,14 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 .editorial-page-home #traces .wide-figure { border-radius: 0; }
 .editorial-page-home #citation { padding-block: 64px; background: #f2f6f9; }
 .editorial-page-home #citation .shell { grid-template-columns: 232px minmax(0, 1fr); gap: 48px; }
-.editorial-page-home #citation pre { min-width: 0; margin-top: 0; padding: 0; border-radius: 0; background: transparent; font-size: 12px; }
-.editorial-page-home section[aria-labelledby="contribute-title"] { padding-block: 48px; }
-.editorial-page-home section[aria-labelledby="contribute-title"] h2 { font-size: 28px; }
-.editorial-page-home section[aria-labelledby="contribute-title"] p { max-width: 74ch; font-size: 15px; }
-.editorial-page-home section[aria-labelledby="contribute-title"] .shell > a { flex-shrink: 0; border: 1px solid #607d94; border-radius: 4px; min-height: 46px; }
+.editorial-page-home #citation pre { min-width: 0; margin-top: 0; padding: 0; border-radius: 0; background: transparent; font-size: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.editorial-page-home section[aria-labelledby="contribute-title"] { padding-block: 0 64px; color: var(--ink); background: var(--paper); }
+.editorial-page-home section[aria-labelledby="contribute-title"] .shell { gap: 20px 32px; padding: 26px 30px; background: var(--paper-2); border-radius: 12px; }
+.editorial-page-home section[aria-labelledby="contribute-title"] h2 { color: var(--ink); font-size: 26px; }
+.editorial-page-home section[aria-labelledby="contribute-title"] p { max-width: 68ch; color: var(--muted); font-size: 15px; }
+.editorial-page-home section[aria-labelledby="contribute-title"] p a { color: var(--accent-600); }
+.editorial-page-home section[aria-labelledby="contribute-title"] .shell > a { flex-shrink: 0; min-height: 46px; border: 1px solid var(--ink); border-radius: 4px; color: white; background: var(--ink); }
+.editorial-page-home section[aria-labelledby="contribute-title"] .shell > a:hover { border-color: var(--accent-600); background: var(--accent-600); }
 
 /* Secondary research pages share the scale, while retaining all content and controls. */
 .project-page-title,
@@ -422,9 +426,10 @@ footer a { display: inline-flex; min-height: 44px; align-items: center; }
   .publication-cover { padding-top: 40px; }
   .publication-intro { gap: 40px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
   .publication-intro h1 { font-size: 42px; }
-  .publication-evidence { grid-template-columns: minmax(0, 1fr) 210px; gap: 28px; margin-top: 32px; }
+  .publication-evidence { grid-template-columns: minmax(0, 1fr) 240px; gap: 24px; margin-top: 32px; }
+  .publication-resources { padding: 16px; }
   .editorial-page-home #overview .max-w-3xl,
-  .editorial-page-home #runtime .shell { gap: 40px; }
+  .editorial-page-home #runtime .shell { column-gap: 40px; }
   .editorial-page-home #traces > .shell > .grid { gap: 40px; }
 }
 @media (max-width: 800px) {
@@ -433,7 +438,7 @@ footer a { display: inline-flex; min-height: 44px; align-items: center; }
   .publication-intro h1 { max-width: 26ch; font-size: clamp(2.2rem, 5.8vw, 2.9rem); }
   .publication-intro .project-lede { max-width: 67ch; margin: 0; }
   .publication-evidence { grid-template-columns: 1fr; gap: 24px; margin-top: 28px; padding-top: 24px; }
-  .publication-resources { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; }
+  .publication-resources { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 24px; padding: 20px; }
   .publication-benchmark { grid-column: 2; grid-row: span 2; margin: 0; padding: 0 0 0 24px; border-top: 0; border-left: 1px solid var(--line); }
   .publication-benchmark dl { margin-top: 4px; }
   .publication-viewing { margin: 0; padding-top: 8px; }
@@ -454,33 +459,34 @@ footer a { display: inline-flex; min-height: 44px; align-items: center; }
 }
 @media (max-width: 520px) {
   .glass-nav > .shell { padding-block: 12px 8px; gap: 8px; }
-  .glass-nav nav { gap: 0 4px; }
-  .glass-nav nav a { min-height: 44px; font-size: 12px; padding: 9px 6px; }
-  .glass-nav nav a:first-child { padding-left: 0; }
+  .glass-nav > .shell nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 8px; width: 100%; }
+  .glass-nav > .shell nav a { justify-self: start; min-height: 44px; font-size: 12px; padding: 8px 0; }
+  .glass-nav nav a[aria-current="page"]::after { left: 0; right: 0; }
   .glass-nav .medcua-mobile-link { min-height: 40px; padding: 8px 10px; font-size: 12px; }
   .publication-cover { padding-top: 32px; }
   .publication-intro h1 { max-width: 21ch; font-size: clamp(1.95rem, 8.5vw, 2.55rem); }
   .publication-intro .project-lede { font-size: 15px; line-height: 1.75; }
   .publication-evidence { margin-top: 24px; padding-top: 20px; }
-  .publication-resources { grid-template-columns: 1fr; gap: 20px; padding: 0; }
-  .publication-actions { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; }
+  .publication-resources { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
+  .publication-actions { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 8px; }
+  .publication-actions .project-button { padding-inline: 10px; }
   .publication-actions > .publication-link { padding-inline: 8px; }
   .publication-benchmark { grid-column: auto; grid-row: auto; border-left: 0; border-top: 1px solid var(--line); padding: 12px 0 0; }
-  .publication-benchmark dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+  .publication-benchmark dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
   .publication-benchmark dl > div { font-size: 12px; gap: 8px; }
-  .publication-viewing { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 12px; }
+  .publication-viewing { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 6px; }
   .editorial-page-home main h2 { font-size: 28px; }
   .editorial-page-home #traces .mt-8 { grid-template-columns: 1fr; }
   .editorial-page-home #project-film { padding-block: 40px; }
   .editorial-page-home #project-film video { margin-top: 24px !important; }
   .editorial-page-home #citation { padding-block: 48px; }
+  .editorial-page-home section[aria-labelledby="contribute-title"] { padding-bottom: 48px; }
+  .editorial-page-home section[aria-labelledby="contribute-title"] .shell { padding: 22px; }
   footer .shell { gap: 24px; }
   footer .shell > div:last-child { gap: 0 16px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .publication-figure { animation: publication-appear 850ms var(--ease) both; }
-  .publication-figure img { transition: filter 300ms var(--ease); }
-  .publication-figure button:hover img { filter: contrast(1.035); }
 }
 @keyframes publication-appear { from { opacity: .78; clip-path: inset(0 0 3% 0); } to { opacity: 1; clip-path: inset(0); } }
 @media (prefers-reduced-motion: reduce) {
